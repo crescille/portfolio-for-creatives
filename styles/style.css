@@ -33,8 +33,8 @@
 /* Remember, the more fonts you load, the longer it can take for your page to load. */
 
 
-/* Anonymous Pro Font */
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Lilex Font */
+@import url('https://fonts.googleapis.com/css2?family=Lilex:ital,wght@0,100..700;1,100..700&display=swap');
 
 
 /*
@@ -101,9 +101,9 @@
 
 :root {
   /* Typography */
-  --font-family-body: "Anonymous Pro", sans-serif;
-  --font-family-heading: "Anonymous Pro", serif;
-  --font-family-project-title: "Anonymous Pro", serif;
+  --font-family-body: "Lilex", sans-serif;
+  --font-family-heading: "Lilex", serif;
+  --font-family-project-title: "Lilex", serif;
   /* Core Colours */
   --color-text-primary: #222;
   --color-text-secondary: #333;
