@@ -36,6 +36,8 @@
 /* Lilex Font */
 @import url('https://fonts.googleapis.com/css2?family=Lilex:ital,wght@0,100..700;1,100..700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+
 
 /*
 
@@ -103,7 +105,7 @@
   /* Typography */
   --font-family-body: "Lilex", monospace;
   --font-family-heading: "Lilex", monospace;
-  --font-family-project-title: "Lilex", monospace;
+  --font-family-project-title: "Doto", sans-serif;
   /* Core Colours */
   --color-text-primary: #222;
   --color-text-secondary: #333;
