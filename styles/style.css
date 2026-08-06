@@ -101,9 +101,9 @@
 
 :root {
   /* Typography */
-  --font-family-body: "Lilex", sans-serif;
-  --font-family-heading: "Lilex", serif;
-  --font-family-project-title: "Lilex", serif;
+  --font-family-body: "Lilex", monospace;
+  --font-family-heading: "Lilex", monospace;
+  --font-family-project-title: "Lilex", monospace;
   /* Core Colours */
   --color-text-primary: #222;
   --color-text-secondary: #333;
