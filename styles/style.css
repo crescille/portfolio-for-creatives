@@ -712,10 +712,10 @@ a.nav-link-primary:hover {
   flex-direction: column;
   flex: 1;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: var(--padding-small);
-  text-align: center; /* Keeps text centered */
+  text-align: left;
 }
 
 .hero-icon {
