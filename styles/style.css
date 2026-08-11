@@ -466,7 +466,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--h4-color);
@@ -1250,6 +1250,7 @@ a.nav-link-primary:hover {
      • JS:  js/interactive-blobs.js
 ---------------------------------------------------------------- */
 
+
 .holding-page-animation {
   width: 10rem;
   margin: 0 auto;
@@ -1447,7 +1448,7 @@ to keep your styles reusable and consistent.
   }
 
   .hero-headline-wrapper {
-    padding-top: var(--padding-jumbo);
+    padding-top: 20rem;
     padding-bottom: var(--padding-jumbo);
     padding-left: var(--padding-ultra);
     padding-right: var(--padding-ultra);
@@ -1637,6 +1638,18 @@ to keep your styles reusable and consistent.
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
+
+
+.hero-divider {
+  border: none;
+  height: 0.5px;
+  background-color: #28100c;
+}
+
+.footer-divider {
+  margin-top: 2rem;
+}
+
 
 /*
 
