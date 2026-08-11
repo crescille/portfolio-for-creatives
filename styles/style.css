@@ -164,8 +164,8 @@
   --duration-slow: 0.75s; /* Prominent animations (page transitions) */
   /* Rounded Corners */
   --radius-sm: 0.5rem; /* Small interactive elements */
-  --radius-md: 1rem; /* Cards/containers */
-  --radius-lg: 2rem; /* Large decorative elements */
+  --radius-md: 0.5rem; /* Cards/containers */
+  --radius-lg: 0.5rem; /* Large decorative elements */
   --radius-full: 50%; /* Circles/pills */
   /* Padding Scale */
   --padding-tiny: 0.5rem; /* Micro-spacing: icon padding, toggle switches */
@@ -1389,7 +1389,7 @@ to keep your styles reusable and consistent.
   }
 
   h2 {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
   }
 
   h3 {
