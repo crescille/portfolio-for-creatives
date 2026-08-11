@@ -567,7 +567,6 @@ sup {
   font-weight: 600;
   position:relative;
   display:inline-block;
-  padding: 2px 6px;
 }
 
 .work-grid-project-title span {
@@ -835,7 +834,7 @@ a.nav-link-primary:hover {
 .portfolio,
 .project-wrapper,
 .work-sidebar-wrapper {
-  padding: var(--padding-tiny); /* Padding to keep content from touching edges */
+  padding: var(--padding-medium); /* Padding to keep content from touching edges */
 }
 
 /* Work Sidebar on Mobile */
@@ -1200,7 +1199,10 @@ a.nav-link-primary:hover {
 /* Project details section */
 .project-details {
   width: 100%;
-  padding: var(--padding-small);
+  padding-bottom: var(--padding-small);
+  padding-top: var(--padding-small);
+  padding-right: var(--padding-small);
+
   background: /* TODO: Remove gradient background if you prefer a simpler design */
 }
 
@@ -1683,6 +1685,7 @@ to keep your styles reusable and consistent.
 
 .footer-divider {
   margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 .about-image {
