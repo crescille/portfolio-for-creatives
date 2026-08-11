@@ -107,31 +107,31 @@
   --font-family-heading: "Lilex", monospace;
   --font-family-project-title: "Lilex", monospace;
   /* Core Colours */
-  --color-text-primary: #222;
-  --color-text-secondary: #333;
+  --color-text-primary: #28100c;
+  --color-text-secondary: #28100c;
   --color-accent-primary: #5200ff;
   --color-accent-secondary: #ff057c;
   --color-overlay-primary: rgba(82, 0, 255, 0.5);
-  --color-highlight: lemonchiffon;
+  --color-highlight: #fffacd;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
-  --color-bg: #fdfdfd;
-  --color-bg-about: #f5f5f5;
-  --color-bg-footer: #f5f5f5;
+  --color-bg: #E3DDCF;
+  --color-bg-about: #E3DDCF;
+  --color-bg-footer: #E3DDCF;
   --color-bg-holding-page: rgba(82, 0, 255, 0.6);
   /* Headings */
-  --h1-color: #5200ff;
-  --h2-color: #5200ff;
-  --h3-color: #5200ff;
-  --h4-color: #5200ff;
-  --h5-color: #5200ff;
-  --h6-color: #5200ff;
+  --h1-color: #28100c;
+  --h2-color: #28100c;
+  --h3-color: #28100c;
+  --h4-color: #28100c;
+  --h5-color: #28100c;
+  --h6-color: #28100c;
   /* Special Text Colours */
   --color-text-holding-title: #ebedf0;
   --color-text-project-category: #ffffff;
-  --color-text-project-description: #222;
-  --color-text-project-sidebar: #222;
-  --color-text-project-title: #5200ff;
+  --color-text-project-description: #28100c;
+  --color-text-project-sidebar: #28100c;
+  --color-text-project-title: #28100c;
   --color-text-work-grid-title: #ffffff;
   /* Link States */
   --color-link: #5200ff;
@@ -152,9 +152,9 @@
   --color-gradient-hero: linear-gradient(90deg, #ff00ff, #00ffff);
   --color-gradient-project-details: linear-gradient(-225deg, #ff057c 0%, #8d0b93 50%, #321575 100%);
   /* Special Elements */
-  --color-icon-heart: darkred;
+  --color-icon-heart: #591E21;
   --color-text-holding-footer: #f8f8ff;
-  --color-bg-selection: #5200ff;
+  --color-bg-selection: #fffacd;
   --color-shadow-stroke: rgba(0, 0, 0, 0.4);
   /* Assets */
   --image-noise-texture: url(/assets/temp/noise.svg);
