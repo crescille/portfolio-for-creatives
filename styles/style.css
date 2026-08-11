@@ -711,7 +711,7 @@ a.nav-link-primary:hover {
   flex-direction: column;
   justify-content: space-between;
   padding: var(--padding-small);
-  align-items: flex-end;
+  align-items: center;
 }
 
 .nav-branding-group {
@@ -725,6 +725,7 @@ a.nav-link-primary:hover {
 @media (min-width: 768px) {
   .nav-branding-group {
     flex-direction: row;
+    justify-content: flex-end; /* right-aligned when row */
   }
 }
 
