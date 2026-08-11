@@ -445,7 +445,7 @@ svg {
 h1 {
   font-size: 2rem;
   font-family: var(--font-family-heading);
-  line-height: 1.2;
+  line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--h1-color);
 }
@@ -717,13 +717,15 @@ a.nav-link-primary:hover {
 .nav-branding-group {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end
+  justify-content: flex-end;
+  text-align: right;
 }
+
 .nav-branding-item {
   padding: var(--padding-tiny);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   .nav-branding-group {
     flex-direction: column;
   }
@@ -1702,6 +1704,7 @@ to keep your styles reusable and consistent.
 
 .uppercase-heading {
   text-transform: uppercase;
+  text-align: right;
 }
 
 /*
