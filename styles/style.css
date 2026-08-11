@@ -109,7 +109,7 @@
   /* Core Colours */
   --color-text-primary: #28100c;
   --color-text-secondary: #28100c;
-  --color-accent-primary: #5200ff;
+  --color-accent-primary: #28100c;
   --color-accent-secondary: #ff057c;
   --color-overlay-primary: rgba(82, 0, 255, 0.5);
   --color-highlight: #fffacd;
@@ -134,12 +134,12 @@
   --color-text-project-title: #28100c;
   --color-text-work-grid-title: #ffffff;
   /* Link States */
-  --color-link: #5200ff;
-  --color-link-hover: #111;
-  --color-link-visited: #5200ff;
+  --color-link: #51441B;
+  --color-link-hover: #28100c;
+  --color-link-visited: #528799;
   /* Navigation */
-  --color-nav-link: #5200ff;
-  --color-nav-link-hover: #321575;
+  --color-nav-link: #28100c;
+  --color-nav-link-hover: #528799;
   --color-nav-arrow: #5200ff;
   --color-nav-arrow-hover: #000;
   --color-nav-arrow-stroke: #5200ff;
@@ -173,7 +173,7 @@
   --padding-medium: 2rem; /* Standard spacing: desktop buttons, card content */
   --padding-large: 3rem; /* Section spacing: content blocks, banner padding */
   --padding-jumbo: 4rem; /* Hero elements: full-width containers, page headers */
-  --padding-ultra: 8rem; /* Full-bleed spacing: edge-to-edge layouts, super-sized headers */
+  --padding-ultra: 2rem; /* Full-bleed spacing: edge-to-edge layouts, super-sized headers */
   /* Flex Gap Scale */
   --gap-tiny: 0.5rem; /* Micro-gap: icon spacing, small button groups */
   --gap-small: 1rem; /* Compact gap: card elements, form fields */
@@ -443,7 +443,7 @@ svg {
 /* Heading Styles (h1 - h6) */
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -451,10 +451,10 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--h2-color);
 }
 
@@ -711,7 +711,7 @@ a.nav-link-primary:hover {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 3rem;
+  gap: 1rem;
   align-items: flex-start;
   justify-content: center;
   padding: var(--padding-small);
