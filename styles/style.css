@@ -562,7 +562,7 @@ sup {
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
   font-size: 2rem;
-  color: var(--color-text-work-grid-title);
+  color: #27100C;
   text-wrap: balance;
   font-weight: 600;
   position:relative;
@@ -864,7 +864,7 @@ a.nav-link-primary:hover {
   display:block;
 }
 .work-page-grid-item a:hover .work-grid-project-title {
-  color: #528799; /* pick your accent color */
+  color: #27100C;; /* pick your accent color */
 }
 
 .work-page-grid-item a:hover .work-grid-project-title::before {
