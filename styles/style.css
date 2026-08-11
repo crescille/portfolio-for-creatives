@@ -864,7 +864,7 @@ a.nav-link-primary:hover {
   display:block;
 }
 .work-page-grid-item a:hover .work-grid-project-title {
-  color: #27100C; /* pick your accent color */
+  color: #528799; /* pick your accent color */
 }
 
 .work-page-grid-item a:hover .work-grid-project-title::before {
