@@ -132,7 +132,7 @@
   --color-text-project-description: #28100c;
   --color-text-project-sidebar: #28100c;
   --color-text-project-title: #28100c;
-  --color-text-work-grid-title: #28100c;
+  --color-text-work-grid-title: #51441B;
   /* Link States */
   --color-link: #51441B;
   --color-link-hover: #28100c;
@@ -166,7 +166,7 @@
   --radius-sm: 0rem; /* Small interactive elements */
   --radius-md: 0rem; /* Cards/containers */
   --radius-lg: 0rem; /* Large decorative elements */
-  --radius-full: 50%; /* Circles/pills */
+  --radius-full: 0%; /* Circles/pills */
   /* Padding Scale */
   --padding-tiny: 0.5rem; /* Micro-spacing: icon padding, toggle switches */
   --padding-small: 1rem; /* Compact spacing: mobile buttons, form tags */
@@ -561,10 +561,10 @@ sup {
 
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--color-text-work-grid-title);
   text-wrap: balance;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* 🏷️ Project category label — displays the type or role of the project */
