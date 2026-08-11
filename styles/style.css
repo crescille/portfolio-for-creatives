@@ -446,7 +446,7 @@ h1 {
   font-size: 2rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
   color: var(--h1-color);
 }
 
@@ -567,18 +567,21 @@ sup {
   font-weight: 600;
   position:relative;
   display:inline-block;
+  padding: 2px 6px;
   transition: color 0.3s ease;
+  z-index: 1;
 }
 /* Underline that grows in on hover */
-.work-grid-project-title::after {
+.work-grid-project-title::before {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: 0;
   width: 0%;
-  height: 2px;
-  background-color: currentColor;
+  height: 100%;
+  background-color: #528799;
   transition: width 0.35s ease;
+  z-index: -1;
 }
 
 /* 🏷️ Project category label — displays the type or role of the project */
@@ -863,7 +866,7 @@ a.nav-link-primary:hover {
   display:block;
 }
 .work-page-grid-item a:hover .work-grid-project-title {
-  color: #ff5a1f; /* pick your accent color */
+  color: #27100C; /* pick your accent color */
 }
 
 .work-page-grid-item a:hover .work-grid-project-title::after {
