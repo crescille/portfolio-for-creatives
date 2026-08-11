@@ -128,11 +128,11 @@
   --h6-color: #28100c;
   /* Special Text Colours */
   --color-text-holding-title: #ebedf0;
-  --color-text-project-category: #ffffff;
+  --color-text-project-category: #28100c;
   --color-text-project-description: #28100c;
   --color-text-project-sidebar: #28100c;
   --color-text-project-title: #28100c;
-  --color-text-work-grid-title: #ffffff;
+  --color-text-work-grid-title: #28100c;
   /* Link States */
   --color-link: #51441B;
   --color-link-hover: #28100c;
@@ -163,9 +163,9 @@
   --duration-normal: 0.3s; /* Standard transitions (button clicks) */
   --duration-slow: 0.75s; /* Prominent animations (page transitions) */
   /* Rounded Corners */
-  --radius-sm: 0.5rem; /* Small interactive elements */
-  --radius-md: 0.5rem; /* Cards/containers */
-  --radius-lg: 0.5rem; /* Large decorative elements */
+  --radius-sm: 0rem; /* Small interactive elements */
+  --radius-md: 0rem; /* Cards/containers */
+  --radius-lg: 0rem; /* Large decorative elements */
   --radius-full: 50%; /* Circles/pills */
   /* Padding Scale */
   --padding-tiny: 0.5rem; /* Micro-spacing: icon padding, toggle switches */
@@ -446,7 +446,7 @@ h1 {
   font-size: 2rem;
   font-family: var(--font-family-heading);
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   color: var(--h1-color);
 }
 
@@ -460,7 +460,7 @@ h2 {
 
 h3 {
   font-size: 1.325rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   line-height: 1.2;
   color: var(--h3-color);
 }
@@ -561,9 +561,10 @@ sup {
 
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
-  font-size: 2.875rem;
+  font-size: 2rem;
   color: var(--color-text-work-grid-title);
   text-wrap: balance;
+  font-weight: 500;
 }
 
 /* 🏷️ Project category label — displays the type or role of the project */
