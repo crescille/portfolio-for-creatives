@@ -985,7 +985,7 @@ a.nav-link-primary:hover {
 
 /* Image section in the About page grid */
 .about-grid-image {
-  grid-column: 1 / 2; /* Image spans the first column */
+  grid-column: 2 / 3; /* Image spans the first column */
   grid-row: 1 / 3; /* Image spans the first row */
   align-self: stretch;
 }
@@ -999,13 +999,14 @@ a.nav-link-primary:hover {
 /* Desktop: three columns, text pinned top/bottom around the image */
 @media (min-width: 768px) {
   .about-grid {
-    grid-template-columns: 1fr 1fr 1fr; /* three equal columns */
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: var(--padding-jumbo) /* three equal columns */
   }
 
 /* Text section in the About page grid */
 .about-grid-text-top {
   grid-column: 1 / 2; /* Text spans the first column */
-  grid-row: 1 / 2; /* Text spans the first row */
+  grid-row: 1 / 3; /* Text spans the first row */
   align-self: start; 
 }
 
