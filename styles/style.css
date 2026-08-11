@@ -568,8 +568,13 @@ sup {
   position:relative;
   display:inline-block;
   padding: 2px 6px;
-  transition: color 0.3s ease;
 }
+
+.work-grid-project-title span {
+  position: relative;
+  z-index: 1;
+}
+
 /* Underline that grows in on hover */
 .work-grid-project-title::before {
   content: "";
@@ -580,6 +585,7 @@ sup {
   height: 100%;
   background-color: #528799;
   transition: width 0.35s ease;
+  z-index: 0;
 }
 
 /* 🏷️ Project category label — displays the type or role of the project */
