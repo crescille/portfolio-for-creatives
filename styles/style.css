@@ -716,7 +716,8 @@ a.nav-link-primary:hover {
 
 .nav-branding-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-end
 }
 .nav-branding-item {
   padding: var(--padding-tiny);
@@ -724,8 +725,7 @@ a.nav-link-primary:hover {
 
 @media (min-width: 768px) {
   .nav-branding-group {
-    flex-direction: row;
-    justify-content: flex-end; /* right-aligned when row */
+    flex-direction: column;
   }
 }
 
@@ -1683,6 +1683,7 @@ to keep your styles reusable and consistent.
   }
 }
 
+/* NEWLY ADDED */
 
 .hero-divider {
   border: none;
@@ -1697,6 +1698,10 @@ to keep your styles reusable and consistent.
 
 .about-image {
   padding: var(--padding-small)
+}
+
+.uppercase-heading {
+  text-transform: uppercase;
 }
 
 /*
