@@ -448,15 +448,15 @@ h1 {
   line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--h1-color);
-  font-weight: 700;
 }
 
 h2 {
-  font-size: 1rem; 
+  font-size: 1.5rem; 
   font-family: var(--font-family-heading);
   line-height: 1.2;
   margin-bottom: 0.75rem;
   color: var(--h2-color);
+  Font-weight: 500;
 }
 
 h3 {
@@ -1736,6 +1736,9 @@ to keep your styles reusable and consistent.
   .work-page-grid-item > a.grayscale:hover img {
     filter: grayscale(0);
   }
+
+  
+  /* Footer marquee animation */
 .marquee-top {
   overflow: hidden;
   width: 100%;
@@ -1746,7 +1749,7 @@ to keep your styles reusable and consistent.
 .marquee-top__track {
   display: inline-flex;
   width: max-content;
-  animation: marquee-top-scroll 25s linear infinite;
+  animation: marquee-top-scroll 15s linear infinite;
 }
 
 .marquee-top__content {
@@ -1763,6 +1766,8 @@ to keep your styles reusable and consistent.
 }
 
 .marquee-top__item {
+  display: inline-flex;
+  align-items: center;
   padding: 0 1.5rem;
 }
 
@@ -1773,7 +1778,7 @@ to keep your styles reusable and consistent.
 }
 
 .marquee-top__item:not(:last-child)::after {
-  content: "•";
+  content: "/";
   margin-left: 1.5rem;
   opacity: 0.5;
 }
@@ -1783,9 +1788,27 @@ to keep your styles reusable and consistent.
   to   { transform: translateX(-50%); }
 }
 
-.marquee-top:hover .marquee-top__track {
-  animation-play-state: paused;
+/* Force the marquee to stay horizontal on mobile, even if a broader
+   mobile rule elsewhere tries to stack lists into a column */
+
+   @media (max-width: 768px) {
+  .marquee-top__list,
+  .marquee-top__content,
+  .marquee-top__track {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+ 
+  .marquee-top__item {
+    display: inline-flex !important;
+  }
+ 
+  .marquee-top__track {
+    animation: marquee-top-scroll 15s linear infinite !important;
+  }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-top__track {
