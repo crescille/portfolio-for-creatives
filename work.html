@@ -39,15 +39,34 @@
         </ul>
       </header>
       <div class="hero-headline-wrapper">
-        <h2 class="hero-headline">Hey, I’m Crescille!
+        <h2 class="hero-headline">
+          <span class="hero-greeting-word" id="heroGreeting">Hey</span>,
+          I’m Crescille!
 Your friendly neighbourhood graphic designer.</h2>
 <h2 class="hero-headline"> Located in Vancouver, BC</h2>
       </div>
+      <script>
+         const greetings = ["Hey", "Bonjour", "Kumusta", "Hola", "Ciao", "Hej", "Olá", "Namaste"];
+  const greetingEl = document.getElementById("heroGreeting");
+  let greetingIndex = 0;
+
+  function cycleGreeting() {
+    greetingEl.classList.add("is-hidden");
+    setTimeout(() => {
+      greetingIndex = (greetingIndex + 1) % greetings.length;
+      greetingEl.textContent = greetings[greetingIndex];
+      greetingEl.classList.remove("is-hidden");
+    }, 350);
+  }
+  setInterval(cycleGreeting, 1800);
+      </script>
+
       <footer class="hero-footer">
      <!-- Add a marquee here -->
       </footer>
       <hr class="hero-divider footer-divider">
     </section>
+</body>
 
     <main class="main-work-section">
       <section class="portfolio">

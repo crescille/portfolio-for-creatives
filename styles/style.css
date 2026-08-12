@@ -525,6 +525,23 @@ sup {
   margin-inline: 0; /* Horizontally centers the text in its container */
 }
 
+.hero-greeting-word {
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease; /* Smooth transition for hover effects */
+}
+
+.hero-greeting-word.is-hidden {
+  opacity: 0; /* Makes the word invisible */
+  transform: translateY(0.25rem); /* Moves it up slightly for a subtle effect */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-greeting-word {
+    transition: none; /* Disables animations for users who prefer reduced motion */
+  }
+}
+
+
 /* Large project title — appears on individual project pages */
 .project-title {
   font-size: 3.625rem;
