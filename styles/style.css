@@ -1018,7 +1018,7 @@ a.nav-link-primary:hover {
     align-self: end; /* pins content to the bottom, matching image's bottom */
   }
 
-  @media (min-width: 768px) {
+  
   .footer-global {
     padding: var(--padding-tiny);
   }
@@ -1026,7 +1026,6 @@ a.nav-link-primary:hover {
   .footer-full-width {
     padding: var(--padding-tiny);
     text-align: center;
-  }
   }
 /* 
 
@@ -1638,9 +1637,7 @@ to keep your styles reusable and consistent.
 
   .footer-global {
     padding-top: 0;
-    padding-right: 0;
     padding-bottom: var(--padding-jumbo);
-    padding-left: 0;
     grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
   }
 
