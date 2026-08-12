@@ -448,10 +448,11 @@ h1 {
   line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--h1-color);
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1rem; 
   font-family: var(--font-family-heading);
   line-height: 1.2;
   margin-bottom: 0.75rem;
@@ -1059,6 +1060,7 @@ a.nav-link-primary:hover {
 .footer-contact-social {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
+  padding: var(--padding-small);
 }
 /* -------------------------------------------------------------------------- */
 /* 🌊 FULL-WIDTH BOTTOM SECTION                                               */
@@ -1084,7 +1086,10 @@ a.nav-link-primary:hover {
   margin-bottom: 2rem;
 }
 .footer-socials-list {
+  display: flex;
+  flex-direction:row;
   margin-bottom: 2rem;
+  gap: 0.75rem;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1455,7 +1460,7 @@ to keep your styles reusable and consistent.
   }
 
   h1 {
-    font-size: 4.275rem;
+    font-size: 2rem;
   }
 
   h2 {
