@@ -49,7 +49,7 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media all {
   .nav-list {
     display: none;
     flex-direction: column;
