@@ -1018,6 +1018,16 @@ a.nav-link-primary:hover {
     align-self: end; /* pins content to the bottom, matching image's bottom */
   }
 
+  @media (min-width: 768px) {
+  .footer-global {
+    padding: var(--padding-tiny);
+  }
+
+  .footer-full-width {
+    padding: var(--padding-tiny);
+    text-align: center;
+  }
+  }
 /* 
 
 ███████  ██████   ██████  ████████ ███████ ██████  
@@ -1052,6 +1062,7 @@ a.nav-link-primary:hover {
 .footer-tagline {
   grid-column: 1 / 2; /* Full width (single column) */
   grid-row: 1 / 2;
+  padding: var(--padding-small);
 }
 .footer-highlights {
   grid-column: 1 / 2;
@@ -1239,8 +1250,7 @@ a.nav-link-primary:hover {
   padding-bottom: var(--padding-small);
   padding-top: var(--padding-small);
   padding-right: var(--padding-small);
-
-  background: /* TODO: Remove gradient background if you prefer a simpler design */
+ /* TODO: Remove gradient background if you prefer a simpler design */
 }
 
 /* Previous/Next Arrow Styles */
@@ -1628,9 +1638,9 @@ to keep your styles reusable and consistent.
 
   .footer-global {
     padding-top: 0;
-    padding-right: var(--padding-jumbo);
+    padding-right: 0;
     padding-bottom: var(--padding-jumbo);
-    padding-left: var(--padding-jumbo);
+    padding-left: 0;
     grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
   }
 
