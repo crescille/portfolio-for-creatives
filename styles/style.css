@@ -1739,6 +1739,13 @@ to keep your styles reusable and consistent.
 
   
   /* Footer marquee animation */
+
+.marquee {
+  flex: 1;
+}
+
+
+
 .marquee-top {
   position: relative;
   overflow: hidden;
@@ -1750,12 +1757,11 @@ to keep your styles reusable and consistent.
   padding: 1.5rem 0;
 }
 
-@media all {
+
 .marquee-top__track {
   display: inline-flex;
   width: max-content;
   animation: marquee-top-scroll 15s linear infinite;
-}
 }
 
 .marquee-top__content {
