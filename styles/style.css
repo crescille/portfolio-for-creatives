@@ -1231,7 +1231,6 @@ a.nav-link-primary:hover {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  background: var(--color-bg-project-description);
   padding: var(--padding-small);
   width: 100%;
   margin-bottom: 1rem; /* Space below the description */
@@ -1564,17 +1563,6 @@ to keep your styles reusable and consistent.
     grid-gap: 1rem;
   }
 
-  /* Grayscale filter with full-colour on hover and tap */
-
-  .work-page-grid-item a.grayscale img {
-    filter: grayscale(100);
-  }
-
-  .work-page-grid-item > a.grayscale:active img,
-  .work-page-grid-item > a.grayscale:hover img {
-    filter: grayscale(0);
-  }
-
   /* Padding around work grid and project page */
 
   .portfolio,
@@ -1736,6 +1724,73 @@ to keep your styles reusable and consistent.
 .uppercase-heading {
   text-transform: uppercase;
   text-align: right;
+}
+
+/* Grayscale filter with full-colour on hover and tap */
+
+  .work-page-grid-item a.grayscale img {
+    filter: grayscale(100);
+  }
+
+  .work-page-grid-item > a.grayscale:active img,
+  .work-page-grid-item > a.grayscale:hover img {
+    filter: grayscale(0);
+  }
+.marquee-top {
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  padding: 1.5rem 0;
+}
+
+.marquee-top__track {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee-top-scroll 25s linear infinite;
+}
+
+.marquee-top__content {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.marquee-top__list {
+  display: inline-flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marquee-top__item {
+  padding: 0 1.5rem;
+}
+
+.marquee-top__item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.marquee-top__item:not(:last-child)::after {
+  content: "•";
+  margin-left: 1.5rem;
+  opacity: 0.5;
+}
+
+@keyframes marquee-top-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-top:hover .marquee-top__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-top__track {
+    animation: none;
+  }
 }
 
 /*
