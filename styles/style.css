@@ -1739,13 +1739,7 @@ to keep your styles reusable and consistent.
 
   
   /* Footer marquee animation */
-
-.marquee {
-  flex: 1;
-}
-
-
-
+  
 .marquee-top {
   position: relative;
   overflow: hidden;
