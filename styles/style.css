@@ -1748,7 +1748,8 @@ to keep your styles reusable and consistent.
   white-space: nowrap;
   border-top: 0.5px solid #28100c;
   border-bottom: 0.5px solid #28100c;
-  padding: var(--padding-tiny);
+  padding-top: var(--padding-tiny);
+  padding-bottom: var(--padding-tiny);
 }
 
 
