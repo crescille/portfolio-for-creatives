@@ -39,7 +39,7 @@ body {
 .menu-toggle {
   display: none;
   flex-direction: column;
-  cursor: pointer;
+  cursor: url("../assets/temp/up-cursor.png"), auto;
 }
 .bar {
   height: 3px;
