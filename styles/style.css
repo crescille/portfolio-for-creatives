@@ -112,7 +112,7 @@
   --color-accent-primary: #28100c;
   --color-accent-secondary: #ff057c;
   --color-overlay-primary: rgba(82, 0, 255, 0.5);
-  --color-highlight: #fffacd;
+  --color-highlight: #E1E42D;
   --color-fallback: #ff057c; /* Fallback color for glitch effect on 404 page */
   /* Backgrounds */
   --color-bg: #f5f5f5;
@@ -134,12 +134,12 @@
   --color-text-project-title: #28100c;
   --color-text-work-grid-title: #28100c;
   /* Link States */
-  --color-link: #528799;
-  --color-link-hover: #528799;
+  --color-link: #E1E42D;
+  --color-link-hover: #E1E42D;
   --color-link-visited: #28100c;
   /* Navigation */
   --color-nav-link: #28100c;
-  --color-nav-link-hover: #528799;
+  --color-nav-link-hover: #E1E42D;
   --color-nav-arrow: #5200ff;
   --color-nav-arrow-hover: #000;
   --color-nav-arrow-stroke: #5200ff;
@@ -543,7 +543,7 @@ sup {
   display: inline-block;
   opacity: 0;
   transform: translateY(40px);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -615,7 +615,7 @@ sup {
   bottom: 0;
   width: 0%;
   height: 100%;
-  background-color: #528799;
+  background-color: #E1E42D;
   transition: width 0.35s ease;
   z-index: 0;
 }
@@ -1578,7 +1578,7 @@ to keep your styles reusable and consistent.
   /* Work Page Grid for Large Devices */
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-gap: 1rem;
   }
 
@@ -1709,7 +1709,7 @@ to keep your styles reusable and consistent.
   /* TODO: Add styles here for X-large devices. */
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax (400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax (500px, 1fr));
   }
 }
 
@@ -1719,7 +1719,7 @@ to keep your styles reusable and consistent.
   /* TODO: Add styles here for XX-large devices. */
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
 }
 
@@ -1802,7 +1802,7 @@ to keep your styles reusable and consistent.
   font-size: 1rem;
   white-space: nowrap;
    text-transform: uppercase;
-  color:#808080
+  color:#808080;
   font-weight: 400;
 }
 
@@ -1821,5 +1821,24 @@ to keep your styles reusable and consistent.
 @media (prefers-reduced-motion: reduce) {
   .marquee-top__track {
     animation: none;
+  }
+}
+
+.work-page-grid-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+}
+
+.work-page-grid-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-page-grid-item {
+    transition: none;
+    transform: translateY(0);
+    opacity: 1;
   }
 }

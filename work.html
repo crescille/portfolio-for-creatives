@@ -90,8 +90,8 @@
       el.style.transform = "translateY(40px)";
     });
     void restLine1.offsetWidth;
-    w1.forEach((el, i) => { el.style.transitionDelay = (i * 90) + "ms"; });
-    w2.forEach((el, i) => { el.style.transitionDelay = (w1.length * 90 + 200 + i * 90) + "ms"; });
+    w1.forEach((el, i) => { el.style.transitionDelay = (i * 180) + "ms"; });
+    w2.forEach((el, i) => { el.style.transitionDelay = (w1.length * 180 + 400 + i * 180) + "ms"; });
     requestAnimationFrame(() => {
       [...w1, ...w2].forEach((el) => {
         el.style.opacity = "1";
@@ -257,5 +257,25 @@
 
       window.addEventListener("scroll", myScrollFunc);
     </script>
+<script>
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = [...gridItems].indexOf(entry.target);
+          entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  gridItems.forEach((item) => observer.observe(item));
+</script>
+
   </body>
 </html>
