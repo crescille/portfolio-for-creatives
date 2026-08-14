@@ -42,10 +42,9 @@
       <div class="hero-headline-wrapper">
         <h1 class="hero-headline">
           <span class="hero-greeting-word" id="heroGreeting">Hey</span>,
-          I'm Crescille!
-          Your friendly neighbourhood graphic designer.
+          <span id="restLine1"> I'm Crescille! Your friendly neighbourhood graphic designer. </span>
         </h1>
-        <h1 class="hero-headline">Located in Vancouver, BC</h1>
+        <h1 class="hero-headline" id="line2">Located in Vancouver, BC</h1>
       </div>
 
       <script>
@@ -62,6 +61,46 @@
           }, 350);
         }
         setInterval(cycleGreeting, 1800);
+          const restLine1Text = "I'm Crescille! Your friendly neighbourhood graphic designer.";
+  const line2Text = "Located in Vancouver, BC";
+
+  function build(container, text) {
+    container.innerHTML = "";
+    const words = text.split(" ");
+    words.forEach((word, wi) => {
+      const w = document.createElement("span");
+      w.className = "word";
+      w.textContent = word;
+      container.appendChild(w);
+      if (wi < words.length - 1) container.appendChild(document.createTextNode(" "));
+    });
+  }
+
+  const restLine1 = document.getElementById("restLine1");
+  const line2 = document.getElementById("line2");
+  build(restLine1, restLine1Text);
+  build(line2, line2Text);
+
+  function play() {
+    const w1 = restLine1.querySelectorAll(".word");
+    const w2 = line2.querySelectorAll(".word");
+    [...w1, ...w2].forEach((el) => {
+      el.style.transitionDelay = "0ms";
+      el.style.opacity = "0";
+      el.style.transform = "translateY(40px)";
+    });
+    void restLine1.offsetWidth;
+    w1.forEach((el, i) => { el.style.transitionDelay = (i * 90) + "ms"; });
+    w2.forEach((el, i) => { el.style.transitionDelay = (w1.length * 90 + 200 + i * 90) + "ms"; });
+    requestAnimationFrame(() => {
+      [...w1, ...w2].forEach((el) => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      });
+    });
+  }
+
+  setTimeout(play, 200);
       </script>
 
       <footer class="hero-footer">

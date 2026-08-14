@@ -122,21 +122,21 @@
   /* Headings */
   --h1-color: #28100c;
   --h2-color: #28100c;
-  --h3-color: #28100c;
+  --h3-color: #808080;
   --h4-color: #808080;
   --h5-color: #28100c;
   --h6-color: #28100c;
   /* Special Text Colours */
   --color-text-holding-title: #ebedf0;
-  --color-text-project-category: #28100c;
+  --color-text-project-category: #808080;
   --color-text-project-description: #28100c;
   --color-text-project-sidebar: #28100c;
   --color-text-project-title: #28100c;
   --color-text-work-grid-title: #28100c;
   /* Link States */
   --color-link: #528799;
-  --color-link-hover: #28100c;
-  --color-link-visited: #528799;
+  --color-link-hover: #528799;
+  --color-link-visited: #28100c;
   /* Navigation */
   --color-nav-link: #28100c;
   --color-nav-link-hover: #528799;
@@ -448,7 +448,7 @@ h1 {
   line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--h1-color);
-  text-tra
+  text-transform: uppercase;
 }
 
 h2 {
@@ -457,8 +457,9 @@ h2 {
   line-height: 1.2;
   margin-bottom: 0.75rem;
   color: var(--h2-color);
-  Font-weight: 500;
-  text-transform: uppercase;}
+  Font-weight: 400;
+  text-transform: uppercase;
+}
 
 h3 {
   font-size: 1.325rem;
@@ -473,6 +474,7 @@ h4 {
   margin-bottom: 1rem;
   color: var(--h4-color);
   text-transform: uppercase;
+  font-weight:400;
 }
 
 h5 {
@@ -537,12 +539,23 @@ sup {
   transform: translateY(0.25rem); /* Moves it up slightly for a subtle effect */
 }
 
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-greeting-word {
     transition: none; /* Disables animations for users who prefer reduced motion */
   }
+   .word {
+    transition: none;
+    transform: translateY(0);
+    opacity: 1;
 }
-
+}
 
 /* Large project title — appears on individual project pages */
 .project-title {
@@ -581,10 +594,10 @@ sup {
 
 /* 📂 Project grid title — used in grid view (like a portfolio gallery) */
 .work-grid-project-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #27100C;
   text-wrap: balance;
-  font-weight: 600;
+  font-weight: 400;
   position:relative;
   display:inline-block;
 }
@@ -881,7 +894,7 @@ a.nav-link-primary:hover {
 /* Defining the work page grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Creates a responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Creates a responsive grid */
   grid-gap: 1rem; /* Space between grid items */
   /* The auto-fit and minmax() function help ensure responsiveness across screen sizes */
 }
@@ -1546,7 +1559,7 @@ to keep your styles reusable and consistent.
   }
 
   .hero-headline-wrapper {
-    padding-top: 20rem;
+    padding-top: 28rem;
     padding-bottom: var(--padding-jumbo);
     padding-left: var(--padding-ultra);
     padding-right: var(--padding-ultra);
@@ -1786,7 +1799,7 @@ to keep your styles reusable and consistent.
 
 .marquee-top__item h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   white-space: nowrap;
    text-transform: uppercase;
   color:#808080
