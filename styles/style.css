@@ -1233,7 +1233,7 @@ a.nav-link-primary:hover {
 }
 
 .footer-fineprint {
-  font-size: 1rem; /* Slightly smaller for disclaimers or captions */
+  font-size: 0.85rem; /* Slightly smaller for disclaimers or captions */
   text-transform: uppercase;
   color:#808080; /* Themed color */
 }
@@ -1914,6 +1914,10 @@ html, body {
   cursor: none;
 }
 
+a, a:hover, button, .grayscale {
+  cursor: none;
+}
+
 .lightbox, .lightbox * {
   cursor: auto; /* let the lightbox plugin behave normally */
 }
@@ -1944,7 +1948,7 @@ html, body {
 
 #cursor .info {
   font-family: "Lilex", monospace;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: #28100c;
   letter-spacing: 0.08em;

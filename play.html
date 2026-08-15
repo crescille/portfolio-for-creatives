@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
-   <body class="work-page" id="top">
+  <body class="work-page" id="top">
     <section>
       <header class="hero-header">
         <ul class="nav-branding">
@@ -28,19 +28,18 @@
           <li class="nav-branding-item">
             <ul class="nav-branding-group">
               <li class="nav-branding-item">
-                <a href="work.html" class="nav-link-primary">[Work]</a>
+                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="play.html" class="nav-link-primary">[Play]</a>
+                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="about.html" class="nav-link-primary">[About]</a>
+                <a href="about.html" class="nav-link-primary"><span>About</span></a>
               </li>
             </ul>
           </li>
         </ul>
       </header>
-    </section>
 
 <div class="project-description-container padding-large">
       <div class="project-title col-2">
@@ -121,43 +120,84 @@
       </section>
     </main>
 
-<ul class="footer-global">     
-<li class="footer-tagline">
-  <ul class="footer-list">
-  <li class="footer-item">
-    <p>
-      <a href="mailto:crescilleb@gmail.com" class="nav-link-primary">crescilleb@gmail.com</a>
-      <br>
-      +1 [236] 515-2004
-      </p>
-    </li>
-  </ul>
-</li>
+ <ul class="footer-global">
+      <li class="footer-tagline">
+        <ul class="footer-list">
+          <li class="footer-item">
+            <p class="footer-fineprint">
+          &copy; <span id="copyright-years">2020-</span>. Designed & Coded with
+          <span class="heart">❤</span>
+          by Crescille Buyuccan
+            </p>
+          </li>
+        </ul>
+      </li>
 
       <li class="footer-contact-social">
         <ul class="footer-socials-list">
-          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/">Instagram</a></li>
-          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/">LinkedIn</a></li>
-          <li class="footer-item"><a href="https://www.behance.net/crescille">Behance</a></li>
+          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary" ><span>Instagram</span></a></li>
+          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary" ><span>LinkedIn</span></a></li>
+          <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
+          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary"><span>Email</span></a></li>
         </ul>
-        </li>
-        </ul>
+      </li>
 
-      <ul><li class="footer-full-width">
-        <p class="footer-fineprint">
-          &copy; <span id="copyright-years">2020-</span>. Designed & Coded
-          <span class="heart">❤</span>
-          by Crescille Buyuccan.
-        </p>
+    
         <script>
           document.getElementById("copyright-years").textContent += new Date().getFullYear();
         </script>
       </li>
     </ul>
-    
-<script src="./lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
 
-<script src="./scripts/cursor.js"></script>
+    <div class="flier">
+      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+    </div>
+
+
+<script>
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = [...gridItems].indexOf(entry.target);
+        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  gridItems.forEach((item) => observer.observe(item));
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.createElement("div");
+  cursor.id = "cursor";
+  cursor.innerHTML = `<span class="info">view</span>`;
+  document.body.appendChild(cursor);
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll("[data-cursor-title]").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor.classList.add("hovering");
+    });
+    el.addEventListener("mouseleave", () => {
+      cursor.classList.remove("hovering");
+    });
+  });
+});
+</script>
   
   </body>
 </html>

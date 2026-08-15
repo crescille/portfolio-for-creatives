@@ -1,15 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Free Creative Portfolio Template: October 2025 Version | Project Page</title>
+    <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don’t forget to include your keyword!" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/branding-images/favicon.png" />
+    <meta property="og:image" content="screenshot.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
-  <body class="project-1">
-    <header class="hero-header">
-      <ul class="nav-branding">
-        <li><a href="work.html" class="custom-navigation">Work</a></li>
-        <li class="nav-branding-logo">
-          <a href="index.html"><img src="assets/branding-images/logo.svg" alt="Your portfolio logo" /></a>
-        </li>
-        <li><a href="about.html" class="custom-navigation">About</a></li>
-      </ul>
-    </header>
+  <body class="work-page" id="top">
+    <section>
+      <header class="hero-header">
+        <ul class="nav-branding">
+          <!-- Logo (standalone LI) -->
+          <li class="nav-branding-logo">
+            <a href="index.html">
+              <img src="assets/branding-images/logo.svg" alt="Your portfolio logo" />
+            </a>
+          </li>
+          <li class="nav-branding-item">
+            <ul class="nav-branding-group">
+              <li class="nav-branding-item">
+                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
+              </li>
+              <li class="nav-branding-item">
+                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
+              </li>
+              <li class="nav-branding-item">
+                <a href="about.html" class="nav-link-primary"><span>About</span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </header>
+
     <div class="project-wrapper">
       <aside class="project-aside">
         <div class="project-info">
@@ -78,7 +107,7 @@
     </div>
 
    
-    <ul class="footer-global">
+  <ul class="footer-global">
       <li class="footer-tagline">
         <ul class="footer-list">
           <li class="footer-item">
@@ -93,10 +122,10 @@
 
       <li class="footer-contact-social">
         <ul class="footer-socials-list">
-          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/">Instagram</a></li>
-          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/">LinkedIn</a></li>
-          <li class="footer-item"><a href="https://www.behance.net/crescille">Behance</a></li>
-          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary">Email</a></li>
+          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary" ><span>Instagram</span></a></li>
+          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary" ><span>LinkedIn</span></a></li>
+          <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
+          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary"><span>Email</span></a></li>
         </ul>
       </li>
 
@@ -107,22 +136,32 @@
       </li>
     </ul>
 
-    <div id="myID" class="bottomMenu hide"><a href="project-4.html">Next Project</a></div>
+    <div class="flier">
+      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+    </div>
 
-    <script>
-      myID = document.getElementById("myID");
 
-      var myScrollFunc = function () {
-        var y = window.scrollY;
-        if (y >= 800) {
-          myID.className = "bottomMenu show";
+<script>
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = [...gridItems].indexOf(entry.target);
+        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
         } else {
-          myID.className = "bottomMenu hide";
+          entry.target.classList.remove("is-visible");
         }
-      };
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
 
-      window.addEventListener("scroll", myScrollFunc);
-    </script>
+  gridItems.forEach((item) => observer.observe(item));
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

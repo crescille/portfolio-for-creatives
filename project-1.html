@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
-    <body class="work-page" id="top">
-    <section class="project-page-wrapper">
+  <body class="work-page" id="top">
+    <section>
       <header class="hero-header">
         <ul class="nav-branding">
           <!-- Logo (standalone LI) -->
@@ -26,24 +26,23 @@
           <li class="nav-branding-item">
             <ul class="nav-branding-group">
               <li class="nav-branding-item">
-                <a href="work.html" class="nav-link-primary">Work</a>
+                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="play.html" class="nav-link-primary">Play</a>
+                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="about.html" class="nav-link-primary">About</a>
+                <a href="about.html" class="nav-link-primary"><span>About</span></a>
               </li>
             </ul>
           </li>
         </ul>
       </header>
-
-    <div class="project-wrapper-full-width">
-      <main class="project-full-width">
         <figure class="project-image project-hero-image">
           <img src="assets/temp/first-name-last-name--project-title--category--placeholder-neo-classical-1.jpg" width="1920" height="1080" loading="lazy" alt="Describe your project" />
         </figure>
+    <div class="project-wrapper-full-width">
+      <main class="project-full-width">
         <div class="project-description-container">
           <div class="project-title col-2">
             <h2>Project Description Block</h2>
@@ -114,7 +113,7 @@
 </section>
 
 
-    <ul class="footer-global">
+ <ul class="footer-global">
       <li class="footer-tagline">
         <ul class="footer-list">
           <li class="footer-item">
@@ -129,10 +128,10 @@
 
       <li class="footer-contact-social">
         <ul class="footer-socials-list">
-          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/">Instagram</a></li>
-          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/">LinkedIn</a></li>
-          <li class="footer-item"><a href="https://www.behance.net/crescille">Behance</a></li>
-          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary">Email</a></li>
+          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary" ><span>Instagram</span></a></li>
+          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary" ><span>LinkedIn</span></a></li>
+          <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
+          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary"><span>Email</span></a></li>
         </ul>
       </li>
 
@@ -143,23 +142,33 @@
       </li>
     </ul>
 
+    <div class="flier">
+      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+    </div>
 
-    <div id="myID" class="bottomMenu hide"><a href="project-2.html">Next Project</a></div>
 
-    <script>
-      myID = document.getElementById("myID");
+<script>
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
 
-      var myScrollFunc = function () {
-        var y = window.scrollY;
-        if (y >= 800) {
-          myID.className = "bottomMenu show";
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = [...gridItems].indexOf(entry.target);
+        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
         } else {
-          myID.className = "bottomMenu hide";
+          entry.target.classList.remove("is-visible");
         }
-      };
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
 
-      window.addEventListener("scroll", myScrollFunc);
-    </script>
+  gridItems.forEach((item) => observer.observe(item));
+</script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const cursor = document.createElement("div");

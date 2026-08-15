@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
-  <body class="about-page">
-    <header class="hero-header">
+  <body class="work-page" id="top">
+    <section>
+      <header class="hero-header">
         <ul class="nav-branding">
           <!-- Logo (standalone LI) -->
           <li class="nav-branding-logo">
@@ -25,18 +26,19 @@
           <li class="nav-branding-item">
             <ul class="nav-branding-group">
               <li class="nav-branding-item">
-                <a href="work.html" class="nav-link-primary">Work</a>
+                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="play.html" class="nav-link-primary">Play</a>
+                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
               </li>
               <li class="nav-branding-item">
-                <a href="about.html" class="nav-link-primary">About</a>
+                <a href="about.html" class="nav-link-primary"><span>About</span></a>
               </li>
             </ul>
           </li>
         </ul>
       </header>
+
     <ul class="about-grid">
       <li class="about-grid-text-top">
         <h1>Nice to meet you,</h1>
@@ -76,19 +78,53 @@ Bachelor of Design in Visual Communication
       </li>
     </ul>
 
-        <ul>
-      <li>
-        <li class="footer-full-width">
-        <p class="footer-fineprint">
+ <ul class="footer-global">
+      <li class="footer-tagline">
+        <ul class="footer-list">
+          <li class="footer-item">
+            <p class="footer-fineprint">
           &copy; <span id="copyright-years">2020-</span>. Designed & Coded with
           <span class="heart">❤</span>
           by Crescille Buyuccan
-        </p>
+            </p>
+          </li>
+        </ul>
+      </li>
+
+    
         <script>
           document.getElementById("copyright-years").textContent += new Date().getFullYear();
         </script>
       </li>
     </ul>
+
+    <div class="flier">
+      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+    </div>
+
+
+<script>
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = [...gridItems].indexOf(entry.target);
+        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  gridItems.forEach((item) => observer.observe(item));
+</script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const cursor = document.createElement("div");
