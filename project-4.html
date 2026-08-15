@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor.style.top = e.clientY + "px";
   });
 
-  document.querySelectorAll("[data-cursor-title]").forEach((el) => {
+  document.querySelectorAll("a").forEach((el) => {
     el.addEventListener("mouseenter", () => {
       cursor.classList.add("hovering");
     });
