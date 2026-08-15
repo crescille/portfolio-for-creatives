@@ -2,7 +2,7 @@ button {
   color: white;
   padding: 1em;
   border: 0;
-  cursor: url("../assets/temp/up-cursor.png"), auto;
+  cursor: pointer;
   background: red;
 }
 

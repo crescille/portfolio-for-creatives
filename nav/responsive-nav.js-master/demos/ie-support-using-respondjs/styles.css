@@ -139,7 +139,7 @@ body {
   -ms-user-select: none;
   user-select: none;
   border: 0;
-  cursor: url("../assets/temp/up-cursor.png"), auto;
+  cursor: pointer;
   width: 70px;
   height: 55px;
   float: right;

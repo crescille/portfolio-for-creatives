@@ -139,7 +139,7 @@
   --color-link-visited: #28100c;
   /* Navigation */
   --color-nav-link: #28100c;
-  --color-nav-link-hover: #E1E42D;
+  --color-nav-link-hover: #28100c;
   --color-nav-arrow: #5200ff;
   --color-nav-arrow-hover: #000;
   --color-nav-arrow-stroke: #5200ff;
@@ -204,10 +204,6 @@
 html {
   box-sizing: border-box; /* Makes sure padding and borders don't add extra width to elements */
   scroll-behavior: smooth; /* Adds smooth scrolling between sections */
-  cursor: url("../assets/temp/up-cursor.png"), auto !important; /* Custom cursor (change the URL below to use your own) */
-
-  /* TODO: Replace the URL above to add a custom cursor. 
-     If you want to use the default browser cursor, just delete this line. */
 }
 
 /* Ensure all elements, including pseudo-elements, follow border-box sizing */
@@ -620,6 +616,10 @@ sup {
   z-index: 0;
 }
 
+.work-grid-project-title:hover::before {
+  width: 100%;
+}
+
 /* 🏷️ Project category label — displays the type or role of the project */
 .work-grid-project-category {
   color: var(--color-text-project-category);
@@ -678,6 +678,36 @@ a.nav-link-primary {
 }
 a.nav-link-primary:hover {
   color: var(--color-nav-link-hover);
+}
+
+.nav-link-primary,
+.footer-item a {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-primary span,
+.footer-item a span {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-link-primary::before,
+.footer-item a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #E1E42D;
+  transition: width 0.35s ease;
+  z-index: 0;
+}
+
+.nav-link-primary:hover::before,
+.footer-item a:hover::before {
+  width: 100%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1878,3 +1908,53 @@ to keep your styles reusable and consistent.
   }
 }
 
+/* Custom cursor styles */
+
+html, body {
+  cursor: none;
+}
+
+.lightbox, .lightbox * {
+  cursor: auto; /* let the lightbox plugin behave normally */
+}
+
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: #E1E42D;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.25s cubic-bezier(.2,.8,.2,1),
+              height 0.25s cubic-bezier(.2,.8,.2,1),
+              padding 0.25s ease;
+}
+
+#cursor.hovering {
+  width: auto;
+  height: auto;
+  padding: 10px 16px;
+}
+
+#cursor .info {
+  font-family: "Lilex", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #28100c;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease 0.1s;
+}
+
+#cursor.hovering .info {
+  opacity: 1;
+}

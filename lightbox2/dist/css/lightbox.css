@@ -94,7 +94,7 @@ body.lb-disable-scrolling {
 
 .lb-prev, .lb-next {
   height: 100%;
-  cursor: url("../assets/temp/up-cursor.png"), auto;
+  cursor: pointer;
   display: block;
 }
 
@@ -190,6 +190,6 @@ body.lb-disable-scrolling {
 }
 
 .lb-data .lb-close:hover {
-  cursor: url("../assets/temp/up-cursor.png"), auto;
+  cursor: pointer;
   opacity: 1;
 }
