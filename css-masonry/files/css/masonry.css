@@ -58,7 +58,7 @@ a {
 /* Masonry grid */
 .masonry {
   transition: all .5s ease-in-out;
-  column-gap: 30px;
+  column-gap: 0.85rem;
   column-fill: initial;
 }
 

@@ -487,6 +487,23 @@ h6 {
   color: var(--h6-color);
 }
 
+
+/* Footer purpose only */
+h6.footer-tag {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0;
+  padding-top: 0.85rem;
+  white-space: nowrap;
+  font-size: 10rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #E1E42D;
+  pointer-events: none;
+}
+
 /* ------------------------------------------------------------------ */
 /* 📝 Paragraph and Text Styles                                       */
 /* Base text styles for body copy, bold, italic, and fine print       */
@@ -852,7 +869,6 @@ a.nav-link-primary:hover {
   margin-right: calc(-50vw + 50%);
   margin-top: calc(-1 * var(--padding-small));
   height: 600px;
-  margin: 0;
   overflow: hidden;
 }
 
@@ -1076,7 +1092,7 @@ a.nav-link-primary:hover {
 .about-grid {
   display: grid; /* Set to grid layout */
   grid-template-columns: 1fr; /* Single column layout for mobile and smaller screens */
-  grid-gap: 3rem; /* Space between grid items */
+  grid-gap: 2rem; /* Space between grid items */
   background: var(--color-bg-about); /* Background color for the section */
   padding: var(--padding-small); /* Padding around the grid */
   flex: 1; /* Flex-grow to take up available space */
@@ -1116,7 +1132,138 @@ a.nav-link-primary:hover {
     align-self: end; /* pins content to the bottom, matching image's bottom */
   }
 }
-  
+ 
+/* Awards Footer */
+
+.awards-section{
+  padding: var(--padding-small);
+  padding-bottom: var(--padding-large);
+  margin:0 auto;
+  position:relative;
+}
+.awards-section h2{
+  font-size:1rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#7a7a76;
+  margin:0 0 32px;
+  font-weight:400;
+}
+.awards-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid #808080;
+}
+.awards-row{
+  position:relative;
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+  padding:16px 4px;
+  border-bottom:1px solid #808080;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  transition:opacity .3s ease;
+}
+.awards-list:hover .awards-row:not(:hover){
+  opacity:.35;
+}
+.awards-row .awards-year{
+  font-size:0.85rem;
+  color:#7a7a76;
+  width:40px;
+  flex-shrink:0;
+  font-variant-numeric:tabular-nums;
+}
+.awards-row .awards-title{
+  font-size:clamp(16px,2vw,20px);
+  letter-spacing:-0.01em;
+  margin:0;
+  flex:1;
+  overflow:hidden;
+}
+.awards-row .awards-title span{
+  display:inline-block;
+  transition:transform .4s cubic-bezier(.19,1,.22,1);
+}
+.awards-row:hover .awards-title span{
+  transform:translateY(-3px);
+}
+.awards-row .awards-project{
+  font-size:12px;
+  color:#7a7a76;
+  max-width:200px;
+  text-align:right;
+  flex-shrink:0;
+}
+
+.awards-row{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:16px 4px;
+  border-bottom:1px solid #808080;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  transition:opacity .3s ease;
+}
+
+.awards-row .awards-arrow{
+  flex-shrink:0;
+  transform:rotate(0deg);
+  transition:transform .35s cubic-bezier(.19,1,.22,1);
+}
+
+.awards-row:hover .awards-arrow{
+  transform:rotate(45deg);
+}
+
+.awards-float-img{
+  position:fixed;
+  top:0;
+  left:0;
+  width:200px;
+  height:240px;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(0);
+  transition:opacity .25s ease;
+  z-index:50;
+  will-change:transform,opacity;
+  background:#111;
+}
+.awards-float-img.active{
+  opacity:1;
+  animation:awardsPop .35s cubic-bezier(.25,1.1,.4,1) forwards;
+}
+.awards-float-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+@keyframes awardsPop{
+  0%{   transform:translate(-50%,-50%) scale(0.7); }
+  70%{  transform:translate(-50%,-50%) scale(1.03); }
+  100%{ transform:translate(-50%,-50%) scale(1); }
+}
+
+@media (max-width:700px){
+  .awards-row{flex-wrap:wrap;}
+  .awards-row .awards-project{
+    text-align:left;
+    width:100%;
+    max-width:none;
+    order:3;
+  }
+  .awards-float-img{display:none;}
+}
 
 /* 
 
@@ -1135,13 +1282,11 @@ a.nav-link-primary:hover {
 
 .footer-global {
   display: grid;
-  grid-template-columns: 1fr; /* Single column layout */
-  grid-gap: 1rem; /* Consistent spacing between sections */
-  min-height: auto; /* Allows footer to expand based on content, no fixed height */
-  background: var(--color-bg-footer); /* Using CSS variable for theming */
-  padding: var(--padding-small); /* Internal spacing */
-
-  /* Note: Using 'fr' units ensures proper scaling across devices */
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;;
+  min-height: auto;
+  background: var(--color-bg-footer);
+  padding: var(--padding-small);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1159,26 +1304,37 @@ a.nav-link-primary:hover {
   grid-row: 2 / 3;
 }
 .footer-contact-social {
+  grid-column: 2 / 2;
+  grid-row: 3 / 4;
+  padding: var(--padding-small);
+}
+
+.footer-explore {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
   padding: var(--padding-small);
 }
+
 /* -------------------------------------------------------------------------- */
 /* 🌊 FULL-WIDTH BOTTOM SECTION                                               */
 /* Typically used for copyright/legal information                             */
 /* -------------------------------------------------------------------------- */
-.footer-full-width {
-  grid-column: 1 / 2;
-  grid-row: 4 / 5;
-  text-align: center; /* Center copyright text */
-  align-self: end; /* Push to bottom */
+
+
+.footer-bottom {
+  grid-column: 1 / 4;   /* spans all 3 columns */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;             /* small, independent spacing */
+  text-align: center;
 }
 
 /* ------------------------------- */
 /* 📜 Reusable footer list styles */
 /* ------------------------------- */
 .footer-list {
-  margin-bottom: 2rem;
+  margin-bottom: 0.85rem;
 }
 .footer-awards-list {
   margin-bottom: 2rem;
@@ -1188,10 +1344,15 @@ a.nav-link-primary:hover {
 }
 .footer-socials-list {
   display: flex;
-  flex-direction:row;
-  margin-bottom: 2rem;
-  gap: 2rem;
+  flex-direction:column;
   justify-content: flex-end;
+  text-align: right;
+}
+.footer-socials-list-explore {
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1203,7 +1364,6 @@ a.nav-link-primary:hover {
   line-height: 1.2; /* Consistent line height for footer items to improve spacing */
   margin-bottom: 0.25rem;
   text-transform: uppercase;
-
 }
 
 /* ------------------------------- */
@@ -1235,14 +1395,15 @@ a.nav-link-primary:hover {
 .footer-fineprint {
   font-size: 0.85rem; /* Slightly smaller for disclaimers or captions */
   text-transform: uppercase;
-  color:#808080; /* Themed color */
+  color:#28100c; /* Themed color */
+  padding: var(--padding-small);
 }
 
 /* New item badges */
 .badge-new {
   background: var(--color-highlight);
   padding: 0.1rem;
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
 }
 
@@ -1624,7 +1785,7 @@ to keep your styles reusable and consistent.
   }
 
   .hero-headline-wrapper {
-    padding-top: 28rem;
+    padding-top: 26rem;
     padding-bottom: var(--padding-jumbo);
     padding-left: var(--padding-ultra);
     padding-right: var(--padding-ultra);
@@ -1717,11 +1878,7 @@ to keep your styles reusable and consistent.
   /* 🖥️ FOOTER GRID - DESKTOP LAYOUT */
   /* ------------------------------- */
 
-  .footer-global {
-    padding-top: var(--padding-small);
-    padding-bottom: var(--padding-jumbo);
-    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
-  }
+
 
   /* Column 1: Tagline/Message */
   .footer-tagline {
@@ -1740,16 +1897,23 @@ to keep your styles reusable and consistent.
     grid-row: 1 / 2;
     grid-column: 3 / 4;
   }
+  
+  .footer-explore {
+     grid-row: 1 / 2;
+    grid-column: 1 / 4;
+  }
 
   /* ------------------------------- */
   /* 📏 FULL-WIDTH BOTTOM SECTION */
   /* ------------------------------- */
-  .footer-full-width {
-    grid-row: 2 / 3;
-    grid-column: 1 / 4; /* Spans all three columns */
-    text-align: center;
-    align-self: end; /* Aligns content to bottom */
-  }
+.footer-bottom {
+  grid-column: 1 / 4;   /* spans all 3 columns */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;             /* small, independent spacing */
+  text-align: center;
+}
 
   /* Work Sidebar on Large Devices */
 
@@ -1830,10 +1994,11 @@ to keep your styles reusable and consistent.
   width: 100%;
   display: flex;
   white-space: nowrap;
-  border-top: 0.5px solid #808080;
-  border-bottom: 0.5px solid #808080;
+  /* border-top: 0.5px solid #a8a6a6;
+  border-bottom: 0.5px solid #a8a6a6; */
   padding-top: var(--padding-tiny);
   padding-bottom: var(--padding-tiny);
+  background-color: #E1E42D;
 }
 
 
@@ -1853,7 +2018,7 @@ to keep your styles reusable and consistent.
   align-items: center;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.25rem;
 }
 
 .marquee-top__item {
@@ -1867,8 +2032,8 @@ to keep your styles reusable and consistent.
   font-size: 1rem;
   white-space: nowrap;
    text-transform: uppercase;
-  color:#808080;
-  font-weight: 400;
+  color:#28100c;
+  font-weight: 300;
 }
 
 .marquee-top__item:not(:last-child)::after {
@@ -1931,7 +2096,7 @@ a, a:hover, button, .grayscale {
   background: #E1E42D;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  transform: translate(0%, 0%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1961,4 +2126,80 @@ a, a:hover, button, .grayscale {
 
 #cursor.hovering .info {
   opacity: 1;
+}
+
+/* ============================================================== */
+/* FOOTER CLOSER — Social + Explore                                */
+/* ============================================================== */
+.footer-closer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.85rem;
+  padding-right: var(--padding-small);
+  padding-left: var(--padding-small);
+  padding-top: var(--padding-small);
+  list-style: none;
+}
+
+.footer-explore        { order: 1; }
+.footer-contact-social { order: 2; }
+
+@media (min-width: 992px) {
+  .footer-closer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .footer-explore {
+    grid-column: 1 / 2;
+    order: initial;
+  }
+
+  .footer-contact-social {
+    grid-column: 3 / 4;
+    order: initial;
+  }
+}
+
+.footer-tag-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+#falling-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.footer-tag {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0;
+  padding-top: 110px;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 7vw, 10rem);
+}
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.footer-fineprint,
+.footer-scroll-top {
+  margin: 0; /* remove default <p> spacing so they align nicely */
+}
+
+.footer-scroll-top {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: var(--padding-small);
 }

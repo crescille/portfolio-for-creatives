@@ -1,0 +1,87 @@
+gsap.registerPlugin(ScrollTrigger);
+
+// --- 1. Define content ---
+const items = [
+  { title: "Low tide",        num: "01", h: 420, img: "https://picsum.photos/seed/1/340/420" },
+  { title: "Terracotta",      num: "02", h: 300, img: "https://picsum.photos/seed/2/340/300" },
+  { title: "Northbound",      num: "03", h: 480, img: "https://picsum.photos/seed/3/340/480" },
+  { title: "Quiet hour",      num: "04", h: 260, img: "https://picsum.photos/seed/4/340/260" },
+  { title: "Ridge line",      num: "05", h: 340, img: "https://picsum.photos/seed/5/340/340" },
+  { title: "Still water",     num: "06", h: 320, img: "https://picsum.photos/seed/6/340/320" },
+  { title: "Passing through", num: "07", h: 400, img: "https://picsum.photos/seed/7/340/400" },
+  { title: "Overcast",        num: "08", h: 300, img: "https://picsum.photos/seed/8/340/300" },
+];
+
+const grid = document.getElementById('grid');
+const columns = 3;
+const gap = 24;
+const gridWidth = grid.getBoundingClientRect().width || 1100;
+const colWidth = (gridWidth - gap * (columns - 1)) / columns;
+
+// --- 2. Masonry layout: place each item in the shortest column ---
+const colHeights = new Array(columns).fill(0);
+
+items.forEach((item, i) => {
+  const col = colHeights.indexOf(Math.min(...colHeights));
+  const left = col * (colWidth + gap);
+  const top = colHeights[col];
+
+  const el = document.createElement('div');
+  el.className = 'item';
+  el.style.left = left + 'px';
+  el.style.top = top + 'px';
+  el.style.width = colWidth + 'px';
+  el.style.height = item.h + 'px';
+
+  el.innerHTML = `
+    <div class="item_media">
+      <span class="item_overlay-title">${item.title}</span>
+      <img src="${item.img}" alt="">
+    </div>
+    <div class="item_caption" style="top:${item.h + 8}px;">
+      <span class="item_caption-title">${item.title}</span>
+      <span class="item_caption-number">${item.num}</span>
+    </div>
+  `;
+  grid.appendChild(el);
+
+  colHeights[col] += item.h + gap + 28; // + caption space
+});
+
+grid.style.height = Math.max(...colHeights) + 'px';
+
+// --- 3. Animate from scattered, floating positions into the computed masonry layout ---
+const tl = gsap.timeline();
+const els = grid.querySelectorAll('.item');
+
+function rand(min, max) { return Math.random() * (max - min) + min; }
+
+els.forEach((el, i) => {
+  // wide, varied drift in every direction + slight rotation, like tiles floating before they land
+  const xOffset = rand(-140, 140);
+  const yOffset = rand(-120, 120);
+  const rotation = rand(-18, 18);
+  const scaleStart = rand(0.55, 0.8);
+
+  tl.from(el, {
+    xPercent: xOffset,
+    yPercent: yOffset,
+    rotation: rotation,
+    opacity: 0,
+    scale: scaleStart,
+    boxShadow: '0 30px 50px rgba(0,0,0,0.25)',
+    duration: 1,
+    ease: 'power1.inOut',
+  }, i * 0.03);
+});
+
+tl.to('.showcase_heading', { opacity: 0, scale: 0.6 }, 0);
+
+ScrollTrigger.create({
+  trigger: '.section_showcase',
+  start: 'top top',
+  end: 'bottom bottom',
+  scrub: true,
+  pin: '.showcase_wrapper',
+  animation: tl,
+});

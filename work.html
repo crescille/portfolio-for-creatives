@@ -44,11 +44,11 @@
           <span class="hero-greeting-word" id="heroGreeting">Hey</span>,
           <span id="restLine1"> I'm Crescille! Your friendly neighbourhood graphic designer. </span>
         </h1>
-        <h1 class="hero-headline" id="line2">Located in Vancouver, BC</h1>
+        <h1 class="hero-headline" id="line2">Based in Vancouver, BC</h1>
       </div>
 
       <script>
-        const greetings = ["Hey", "Bonjour", "Olá", "Kumusta", "Aloha","Namaste","Ciao", "Nǐ hǎo","Hej", "Kon'nichiwa","Salam", "Szia", "Sawubona", "Hola"];
+        const greetings = ["Hey", "Bonjour", "Olá", "Kumusta", "Aloha","Namaste","Ciao", "Nǐ hǎo","Hej", "Konnichiwa","Salam", "Szia", "Sawubona", "Hola"];
         const greetingEl = document.getElementById("heroGreeting");
         let greetingIndex = 0;
 
@@ -212,44 +212,136 @@
       </div>
 </section>
 
-    <ul class="footer-global">
-      <li class="footer-tagline">
-        <ul class="footer-list">
-          <li class="footer-item">
-            <p class="footer-fineprint">
-          &copy; <span id="copyright-years">2020-</span>. Designed & Coded with
-          <span class="heart">❤</span>
-          by Crescille Buyuccan
-            </p>
-          </li>
-        </ul>
-      </li>
-
-      <li class="footer-contact-social">
-        <ul class="footer-socials-list">
-          <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary" ><span>Instagram</span></a></li>
-          <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary" ><span>LinkedIn</span></a></li>
-          <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
-          <li class="footer-item"><a href="mailto:crescilleb@gmail.com" class="nav-link-primary"><span>Email</span></a></li>
-        </ul>
-      </li>
-
-    
-        <script>
-          document.getElementById("copyright-years").textContent += new Date().getFullYear();
-        </script>
-      </li>
+<ul class="footer-closer">
+  <li class="footer-contact-social">
+    <ul class="footer-socials-list">
+      <h2>Social</h2>
+      <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary"><span>Instagram</span></a></li>
+      <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary"><span>LinkedIn</span></a></li>
+      <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
     </ul>
+  </li>
 
-    <div class="flier">
-      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+  <li class="footer-explore">
+    <ul class="footer-socials-list-explore">
+      <h2>Explore</h2>
+      <li class="footer-item"><a href="work.html" class="nav-link-primary"><span>Work</span></a></li>
+      <li class="footer-item"><a href="play.html" class="nav-link-primary"><span>Play</span></a></li>
+      <li class="footer-item"><a href="about.html" class="nav-link-primary"><span>About</span></a></li>
+    </ul>
+  </li>
+</ul>
+
+<ul class="footer-global">
+  <li class="footer-bottom">
+    <div class="footer-tag-wrapper">
+      <div id="falling-shapes"></div>
+      <h6 class="footer-tag">Let's connect</h6>
     </div>
+    <div class="footer-bottom-row">
+      <p class="footer-fineprint">
+        &copy; <span id="copyright-years">2020-</span>. Designed & Coded by yours truly
+      </p>
+      <p class="footer-scroll-top"><a href="#top">▲ Back to top</a></p>
+    </div>
+  </li>
+</ul>
 
+<div class="flier">
+  <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
+</div>
+
+<script>
+  document.getElementById("copyright-years").textContent += new Date().getFullYear();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+  let engine, runner, shapeEls = [], shapeBodies = [];
+
+  function initFallingShapes() {
+    const container = document.getElementById('falling-shapes');
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+
+    container.innerHTML = '';
+    if (runner) Matter.Runner.stop(runner);
+    shapeEls = [];
+    shapeBodies = [];
+
+    engine = Matter.Engine.create();
+    const { Bodies, World, Mouse, MouseConstraint, Runner: MRunner } = Matter;
+
+    const ground = Bodies.rectangle(w/2, h+10, w, 20, { isStatic: true });
+    const leftWall = Bodies.rectangle(-5, h/2, 10, h, { isStatic: true });
+    const rightWall = Bodies.rectangle(w+5, h/2, 10, h, { isStatic: true });
+
+   const words = ['Figma', 'Illustrator','after effects', 'premiere pro', 'indesign', 'photoshop', 'blender','touchdesigner'];
+    const colors = ['#eef05a', '#fa57f0','#8ACE00'];
+
+    words.forEach((word, i) => {
+      const el = document.createElement('div');
+      el.textContent = word;
+      el.style.cssText = `
+        position:absolute; top:0; left:0;
+        padding:12px 22px;
+        background:${colors[i % colors.length]};
+        color:#1c1a17; font-weight:400; font-size:1rem; text-transform: uppercase;
+        white-space:nowrap; will-change:transform;
+      `;
+      container.appendChild(el);
+      shapeEls.push(el);
+
+      const pillWidth = word.length * 12 + 60;
+      const pillHeight = 44;
+      const body = Bodies.rectangle(
+        w * (0.15 + i * (0.7 / words.length)),
+        -50 - i * 40,
+        pillWidth,
+        pillHeight,
+        { chamfer: { radius: pillHeight / 2 }, angle: (Math.random() - 0.5) * 0.6 }
+      );
+      shapeBodies.push(body);
+    });
+
+    World.add(engine.world, [ground, leftWall, rightWall, ...shapeBodies]);
+
+    const mouse = Mouse.create(container);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: { stiffness: 0.2, render: { visible: false } }
+    });
+    World.add(engine.world, mouseConstraint);
+
+    runner = MRunner.create();
+    MRunner.run(runner, engine);
+
+    (function sync() {
+      shapeBodies.forEach((body, i) => {
+        const el = shapeEls[i];
+        const bw = el.offsetWidth, bh = el.offsetHeight;
+        el.style.transform =
+          `translate(${body.position.x - bw/2}px, ${body.position.y - bh/2}px) rotate(${body.angle}rad)`;
+      });
+      requestAnimationFrame(sync);
+    })();
+  }
+
+  const shapesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initFallingShapes();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  shapesObserver.observe(document.getElementById('falling-shapes'));
+</script>
 
 <script>
   const gridItems = document.querySelectorAll(".work-page-grid-item");
 
-  const observer = new IntersectionObserver(
+  const gridObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const index = [...gridItems].indexOf(entry.target);
@@ -265,31 +357,31 @@
     { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
   );
 
-  gridItems.forEach((item) => observer.observe(item));
+  gridItems.forEach((item) => gridObserver.observe(item));
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cursor = document.createElement("div");
-  cursor.id = "cursor";
-  cursor.innerHTML = `<span class="info">view</span>`;
-  document.body.appendChild(cursor);
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = document.createElement("div");
+    cursor.id = "cursor";
+    cursor.innerHTML = `<span class="info">view</span>`;
+    document.body.appendChild(cursor);
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
 
-  document.querySelectorAll("a").forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      cursor.classList.add("hovering");
-    });
-    el.addEventListener("mouseleave", () => {
-      cursor.classList.remove("hovering");
+    document.querySelectorAll("a").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("hovering");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hovering");
+      });
     });
   });
-});
 </script>
 
-  </body>
+</body>
 </html>
