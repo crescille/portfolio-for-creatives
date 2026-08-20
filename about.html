@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Free Creative Portfolio Template: October 2025 Version | About Page</title>
+    <title>Crescille Buyuccan Portfolio | About Page</title>
     <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don’t forget to include your keyword!" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,42 +39,36 @@
         </ul>
       </header>
 
-    <ul class="about-grid">
-      <li class="about-grid-text-top">
-        <h1>Nice to meet you,</h1>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          <br>
-        <a href="mailto:crescilleb@gmail.com" class="footer-item">Let's connect!</a></p>
-
-      </li>
-      <li class="about-grid-image">
-        <figure class="about-image">
-          <img src="assets/Images/Placeholder-Portrait.jpg" width="1500" height="1500" alt="Your Photo" />
-        </figure>
-        <figure class="about-image">
-          <img src="assets/Images/Placeholder-Portrait2.jpg" width="1500" height="1500" alt="Your Photo" />
-        </figure>
-      </li>
-      <li class="about-grid-text-bottom"> 
-        <h2>Socials</h2>
-        <p> 
-          <a href="https://www.instagram.com/chu.iim/">Instagram</a>
-          <br>
-          <a href="https://www.linkedin.com/in/crescille-buyuccan/">LinkedIn</a>
-          <br>
-          <a href="https://www.behance.net/crescille">Behance</a>
-        </p>
+    <section class="hero-split">
+  <div class="hero-about">
+    <div class="hero-about-top">
+      <h1>About me</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <br>
+        <a href="#" class="footer-item">Download my resume</a></p>
+    </div>
+    <div class="hero-about-bottom">
+      <h2 class="hero-label">Education</h2>
+      <p class="hero-value">Capilano University</p>
+      <p class="hero-value">Bachelor of Design in Visual Communication</p>
+      <p class="hero-value">2023 - Present</p>
       
-        <h2>Education</h2>
-        <p>Capilano University
-          <br>
-Bachelor of Design in Visual Communication
-          <br>
-          2023 - Present
-        </p>
-      </li>
-    </ul>
+    </div>
+          
+  </div>
+
+  <div class="hero-photo-block" id="dragZone">
+    <div class="hero-photo-item" style="left: 0px; top: 0px; width: 300px; height: 400px;">
+      <img src="assets/Images/Placeholder-Portrait.jpg" alt="Photo 1" />
+    </div>
+    <div class="hero-photo-item" style="left: 480px; top: 250px; width: 350px; height: 450px;">
+      <img src="assets/Images/Placeholder-Portrait2.jpg" alt="Photo 2" />
+    </div>
+    <div class="hero-photo-item" style="left: 185px; top: 310px; width: 400px; height: 275px;">
+      <img src="assets/Images/Placeholder-Portrait3.jpg" alt="Photo 3" />
+    </div>
+  </div>
+</section>
 
 <section class="awards-section">
   <h2 class="work-grid-title"><span>Achievements</span></h2>
@@ -122,6 +116,10 @@ Bachelor of Design in Visual Communication
     </li>
   </ul>
 </section>
+
+
+
+
     <section class="marquee-top">
       <div class="marquee-top__track">
         <div class="marquee-top__content">
@@ -190,34 +188,29 @@ Bachelor of Design in Visual Communication
       </li>
     </ul>
 
-    <div class="flier">
-      <img src="assets/branding-images/smiley-face.svg" alt="Describe your image" />
-    </div>
-
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cursor = document.createElement("div");
-  cursor.id = "cursor";
-  cursor.innerHTML = `<span class="info">view</span>`;
-  document.body.appendChild(cursor);
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = document.createElement("div");
+    cursor.id = "cursor";
+    cursor.innerHTML = `<span class="info">view</span>`;
+    document.body.appendChild(cursor);
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
 
-  document.querySelectorAll("[data-cursor-title]").forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      cursor.classList.add("hovering");
-    });
-    el.addEventListener("mouseleave", () => {
-      cursor.classList.remove("hovering");
+    document.querySelectorAll("a").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("hovering");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hovering");
+      });
     });
   });
-});
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const awardsFloatImg = document.getElementById("awardsFloatImg");
@@ -257,9 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script>
@@ -364,6 +354,41 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   gridItems.forEach((item) => gridObserver.observe(item));
+</script>
+
+<script>document.querySelectorAll('.hero-photo-item').forEach((el) => {
+  const zone = el.parentElement;
+  let dragging = false;
+  let offX = 0;
+  let offY = 0;
+
+  el.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    el.setPointerCapture(e.pointerId);
+    const rect = el.getBoundingClientRect();
+    offX = e.clientX - rect.left;
+    offY = e.clientY - rect.top;
+    el.style.zIndex = 10;
+  });
+
+  el.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const zoneRect = zone.getBoundingClientRect();
+    let newLeft = e.clientX - zoneRect.left - offX;
+    let newTop = e.clientY - zoneRect.top - offY;
+
+    newLeft = Math.max(0, Math.min(newLeft, zoneRect.width - el.offsetWidth));
+    newTop = Math.max(0, Math.min(newTop, zoneRect.height - el.offsetHeight));
+
+    el.style.left = newLeft + 'px';
+    el.style.top = newTop + 'px';
+  });
+
+  el.addEventListener('pointerup', () => {
+    dragging = false;
+    el.style.zIndex = 1;
+  });
+});
 </script>
 
   </body>

@@ -1,20 +1,3 @@
-/*
- * =============================================
- * PORTFOLIO FOR CREATIVES – MAIN STYLESHEET
- * =============================================
- * Author: James Neufeld
- * Version: 2.1 | Last Updated: April 13, 2025
- * License: GNU General Public License v3.0 (GPL-3.0)
- * https://www.gnu.org/licenses/gpl-3.0.en.html
- * 
- * CONTENTS:                    DESIGN SYSTEM:
- * 1. Base Styles               - Comprehensive color & font theming 🎨
- * 2. Typography                - Mobile-first responsive architecture 📱
- * 3. Layout Components
- * 4. Page Templates
- * 5. Responsive Breakpoints
- * =============================================
- */
 
 /* 
 ███████  ██████  ███    ██ ████████ ███████ 
@@ -23,15 +6,6 @@
 ██      ██    ██ ██  ██ ██    ██         ██ 
 ██       ██████  ██   ████    ██    ███████ 
 */
-
-/* ------------------------------- */
-/* 🌐 Google Fonts - Customize Your Site's Typography */
-/* You can add your own fonts here, but be mindful of performance */
-/* ------------------------------- */
-
-/* TODO: Replace these Google Fonts with the ones you want to use on your site. */
-/* Remember, the more fonts you load, the longer it can take for your page to load. */
-
 
 /* Lilex Font */
 @import url('https://fonts.googleapis.com/css2?family=Lilex:ital,wght@0,100..700;1,100..700&display=swap');
@@ -496,12 +470,19 @@ h6.footer-tag {
   margin: 0;
   padding-top: 0.85rem;
   white-space: nowrap;
-  font-size: 10rem;
+  font-size: clamp(1rem, 12vw, 10rem);
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
   color: #E1E42D;
   pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  h6.footer-tag {
+    white-space: normal;
+    font-size: clamp(5rem, 12vw, 5rem);
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -580,10 +561,14 @@ sup {
 
 /* Project description text — pairs with the project title */
 .project-description {
-  font-size: 1.225rem;
-  line-height: 1.2;
-  color: var(--color-text-project-description);
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #28100c;
+}
+
+.project-description-hero{
+  font-size: 1rem;
+  color: #f5f5f5;
+  text-transform: uppercase;
 }
 
 /* 🧱 Full-width headings — useful in layouts that span edge-to-edge */
@@ -975,9 +960,8 @@ a.nav-link-primary:hover {
 /* Defining the work page grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Creates a responsive grid */
-  grid-gap: 1rem; /* Space between grid items */
-  /* The auto-fit and minmax() function help ensure responsiveness across screen sizes */
+  grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+  grid-gap: 1rem;
 }
 
 /* Individual Work Grid Item */
@@ -1136,7 +1120,8 @@ a.nav-link-primary:hover {
 /* Awards Footer */
 
 .awards-section{
-  padding: var(--padding-small);
+  padding: var(--padding-medium);
+  padding-top: var(--padding-large);
   padding-bottom: var(--padding-large);
   margin:0 auto;
   position:relative;
@@ -1476,9 +1461,9 @@ a.nav-link-primary:hover {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  padding: var(--padding-small);
   width: 100%;
-  margin-bottom: 1rem; /* Space below the description */
+  padding-top: var(--padding-small);
+  padding-bottom: var(--padding-small);
 }
 
 /* Column styles for one-column, two-column and four-column layouts (mobile-first) */
@@ -1535,12 +1520,11 @@ a.nav-link-primary:hover {
 /* ------------------------------- */
 
 .project-info-list {
-  margin-bottom: 1rem;
 }
+
 .project-item {
   font-size: 1rem;
   line-height: 1.2; /* Consistent line height for project items to improve spacing */
-  margin-bottom: 0.25rem;
 }
 
 /*
@@ -1938,7 +1922,7 @@ to keep your styles reusable and consistent.
   /* TODO: Add styles here for X-large devices. */
 
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax (500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
 }
 
@@ -2175,16 +2159,6 @@ a, a:hover, button, .grayscale {
   z-index: 2;
 }
 
-.footer-tag {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin: 0;
-  padding-top: 110px;
-  white-space: nowrap;
-  font-size: clamp(1.5rem, 7vw, 10rem);
-}
-
 .footer-bottom-row {
   display: flex;
   justify-content: space-between;
@@ -2202,4 +2176,164 @@ a, a:hover, button, .grayscale {
   font-size: 0.85rem;
   text-transform: uppercase;
   padding: var(--padding-small);
+}
+
+/* Make the hero figure the positioning context */
+.project-hero-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark gradient rising from the bottom */
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 25%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  pointer-events: none; /* lets clicks pass through to the image if needed */
+}
+
+/* Two-column text sitting on top of the gradient */
+.hero-text-columns {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: var(--padding-small);
+  color: #f5f5f5;
+  z-index: 2;
+}
+
+.hero-text-col {
+  width: 25%;  
+  flex-shrink: 0;
+}
+
+/* About me page hero */
+.hero-split {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  overflow: hidden;
+}
+
+.hero-about {
+  width: 40%;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-about-top h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.hero-about-top p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #28100c;
+  max-width: 90%;
+}
+
+.hero-about-bottom .hero-label {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #28100c;;
+}
+
+.hero-about-bottom .hero-value {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #28100c;
+}
+
+.hero-photo-block {
+  width: 60%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo-item {
+  position: absolute;
+  border-radius: 0; /* rectangles, no rounding */
+  cursor: grab;
+  overflow: hidden;
+}
+
+.hero-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none; /* so drag grabs the wrapper, not the image */
+}
+
+.hero-photo-item:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 768px) {
+  .hero-split {
+    flex-direction: column;
+    height: auto; /* let content determine height instead of a fixed 700px */
+  }
+
+  .hero-about {
+    width: 100%;
+  }
+
+  .hero-photo-block {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-photo-block {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    padding: var(--padding-small);
+  }
+
+  .hero-photo-item {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5;
+    pointer-events: none;
+  }
+
+  .hero-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
