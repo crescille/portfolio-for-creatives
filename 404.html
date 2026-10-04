@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Error Page</title>
-    <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don’t forget to include your keyword!" />
+    <meta name="description" content="You’ve noclipped out of the site and into the backrooms. The page you were looking for doesn’t exist, go find the right door to get back." />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
@@ -13,38 +13,35 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
-  <body class="work-page" id="top">
-    <section>
-      <header class="hero-header">
-        <ul class="nav-branding">
-          <!-- Logo (standalone LI) -->
-          <li class="nav-branding-logo">
-            <a href="index.html">
-              <img src="assets/branding-images/logo.svg" alt="Your portfolio logo" />
-            </a>
-          </li>
-          <li class="nav-branding-item">
-            <ul class="nav-branding-group">
-              <li class="nav-branding-item">
-                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
-              </li>
-              <li class="nav-branding-item">
-                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
-              </li>
-              <li class="nav-branding-item">
-                <a href="about.html" class="nav-link-primary"><span>About</span></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
       </header>
       
-      <div class="error-headline-wrapper">
-        <a href="work.html"> <object type="image/svg+xml" data="assets/temp/boy-character-floating.svg" class="error-page-animation"></object></a>
-        <h1>404 File Not Found</h1>
-        <h3>Create a custom error page that matches your personal brand.</h3>
-         
-      </div>
+      <body class="br-page">
+<main class="br-stage">
+  <p class="br-tag">[ You’ve entered the backrooms ]</p>
+
+  <div class="br-photo" id="brPhoto" role="img" aria-label="An empty yellow office hallway under fluorescent lights"></div>
+
+  <h1 class="br-big" aria-label="404 File Not Found">404/404/404<span class="br-thumb"></span></h1>
+
+  <nav class="br-doors" aria-label="Exits">
+    <a href="index.html" class="br-door">[ Take me <u>back</u>...]</a>
+    <a href="index.html" class="br-door">[ Take me <u>back</u>...]</a>
+    <a href="index.html" class="br-door">[ Take me <u>back</u>...]</a>
+  </nav>
+
+  <div class="br-win br-static" id="brDenied" role="alertdialog" aria-label="Access Denied" hidden>
+    <div class="br-title"><span>Access Denied</span>
+      <div class="br-tbtns"><button class="br-tbtn" aria-label="Close">✕</button></div>
+    </div>
+    <div class="br-wbody"><span class="br-ic-err"></span><span id="brDeniedMsg">Fail</span></div>
+  </div>
+
+  <div class="br-layer" id="brLayer"></div>
+  <div class="br-console" id="brConsole" aria-hidden="true"></div>
+
+  <div class="br-console br-console-right" id="brConsole2" aria-hidden="true"></div>
+  
+</main>
     </section>
     
 
@@ -70,6 +67,190 @@
     });
   });
 </script>
+
+<!-- Backrooms behaviour -->
+<script>
+(() => {
+  const HOME = "index.html";
+  const SPAWN_LIMIT = 12;
+
+  const layer = document.getElementById("brLayer");
+  const photo = document.getElementById("brPhoto");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const MESSAGES = [
+    ["Detected", "Anomaly detected"],
+    ["Portfolio", "Page not found"],
+    ["Warning", "Entity nearby"],
+    ["Loading", "Anomaly spawned"],
+    ["Error", "No signal"],
+    ["Error", "Wall not responding"],
+  ];
+
+const PC_ICON = `<span class="br-ic-pc" aria-hidden="true"></span>`;
+
+  let z = 10, spawned = 0, finalShown = false;
+
+  function makeWin({ title, msg, icon = "err", x, y, delay = 0, final = false, help = false }) {
+    setTimeout(() => {
+      const w = document.createElement("div");
+      w.className = "br-win";
+      w.setAttribute("role", "dialog");
+      w.setAttribute("aria-label", title);
+      w.style.left = `min(${x}%, calc(100% - var(--br-w) - 8px))`;
+      w.style.top = `${y}%`;
+      w.style.zIndex = ++z;
+      w.innerHTML = `
+        <div class="br-title"><span>${title}</span>
+          <div class="br-tbtns">${help ? '<button class="br-tbtn" tabindex="-1" aria-hidden="true">?</button>' : ""}
+            <button class="br-tbtn br-close" aria-label="Close">✕</button></div>
+        </div>
+        <div class="br-wbody">${icon === "pc" ? PC_ICON : '<span class="br-ic-err"></span>'}<span>${msg}</span></div>`;
+      w.addEventListener("pointerdown", () => (w.style.zIndex = ++z));
+      w.querySelector(".br-close").addEventListener("click", () => closeWin(w, final));
+      layer.appendChild(w);
+    }, delay);
+  }
+
+  const rand = (min, max) => min + Math.random() * (max - min);
+
+  function closeWin(w, final) {
+    w.remove();
+    if (final) return;
+    if (spawned < SPAWN_LIMIT) {
+      for (let i = 0; i < 2; i++) {
+        const [title, msg] = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+        makeWin({ title, msg, x: rand(0, 85), y: rand(4, 62), delay: 120 + i * 220 });
+      }
+      spawned += 2;
+    } else if (!layer.querySelector(".br-win") && !finalShown) {
+      finalShown = true;
+      makeWin({ title: "Level 0", msg: "Nothing left to close. Try the doors.", x: 40, y: 30, delay: 300, final: true });
+    }
+  }
+
+  // windows pile up on load
+  [
+    { title: "Detected",  msg: "Anomaly detected", x: 66,   y: 14,   delay: 500 },
+    { title: "Detected",  msg: "Anomaly detected", x: 68.5, y: 17.5, delay: 800 },
+    { title: "Detected",  msg: "Anomaly detected", x: 71,   y: 21,   delay: 1100 },
+    { title: "Portfolio", msg: "Page not found", icon: "pc", help: true, x: 21, y: 37, delay: 1500 },
+    { title: "Portfolio", msg: "Page not found", icon: "pc", help: true, x: 18, y: 40, delay: 1800 },
+  ].forEach(makeWin);
+
+  
+  const denied = document.getElementById("brDenied");
+  const deniedMsg = document.getElementById("brDeniedMsg");
+  const FAILS = ["Fail", "Fail. Again.", "That’s not the way out", "Wrong door", "Still here"];
+  let fails = 0;
+
+  function deny() {
+    deniedMsg.textContent = FAILS[Math.min(fails++, FAILS.length - 1)];
+    denied.classList.remove("br-shake");
+    if (denied.hidden) {
+      denied.hidden = false;
+    } else {
+      void denied.offsetWidth;
+      denied.classList.add("br-shake");
+    }
+  }
+  denied.querySelector(".br-tbtn").addEventListener("click", () => (denied.hidden = true));
+
+  const doors = document.querySelectorAll(".br-door");
+  const real = Math.floor(Math.random() * doors.length);
+  doors.forEach((d, i) => {
+    if (i === real) d.href = HOME;
+    else d.addEventListener("click", (e) => { e.preventDefault(); deny(); });
+  });
+
+  // random fluorescent bursts
+  if (!reduced) {
+    (function flicker() {
+      setTimeout(() => {
+        photo.classList.remove("br-burst");
+        void photo.offsetWidth;
+        photo.classList.add("br-burst");
+        flicker();
+      }, rand(3500, 9000));
+    })();
+  }
+/* ---------- popping console text ---------- */
+      const MAX_LINES = () => (matchMedia("(max-width: 900px)").matches ? 5 : 8);
+      const TYPE_IT = true;
+
+      function startConsole(id, lines, startDelay) {
+        const con = document.getElementById(id);
+        if (!con) return;
+        const cursorEl = document.createElement("span");
+        cursorEl.className = "br-cursor";
+        let lineIdx = 0;
+
+        function nextLine() {
+          const text = lineIdx < 6
+            ? lines[lineIdx]
+            : lines[Math.floor(Math.random() * lines.length)];
+          lineIdx++;
+
+          const line = document.createElement("div");
+          con.appendChild(line);
+          line.appendChild(cursorEl);
+          while (con.children.length > MAX_LINES()) con.firstChild.remove();
+
+          const finish = () => setTimeout(nextLine, rand(300, 1100));
+          if (!TYPE_IT || reduced) { line.prepend(text); return finish(); }
+
+          let i = 0;
+          (function step() {
+            line.insertBefore(document.createTextNode(text[i++]), cursorEl);
+            if (i < text.length) setTimeout(step, rand(15, 45));
+            else finish();
+          })();
+        }
+        setTimeout(nextLine, startDelay);
+      }
+
+      // left console
+      startConsole("brConsole", [
+       "C:\\> run backrooms.exe",
+    "Loading.............. OK",
+    "Scanning for exits...",
+    "_0 exits found",
+    "Injecting noclip.dll into memory...",
+    "WARNING: Page not found",
+    "The requested URL was not found on this server.",
+    "Mapping carpet [##########] 100%",
+    "Anomaly spawned in sector 3",
+    "Attempting to return user to homepage...",
+    "ACCESS DENIED",
+    "Entity signature detected in sector 7",
+    "Deleting C:\\EXITS\\*.* ... done",
+    "Rebooting reality.sys... FAILED",
+    "Tracing user location... Level 0",
+    "Infection progress: 67%",
+    "Do not panic.",
+      ], 2400);
+
+      // right console
+      startConsole("brConsole2", [
+        "C:\\> run backrooms.exe ping homepage",
+        "Request timed out.",
+        "Request pending...",
+        "Request timed out.",
+        "Opening exit_01.exe... locked",
+        "Opening exit_02.exe... locked",
+        "Footsteps detected: 3 meters away",
+        "Almond water reserves: 67%",
+        "User has been here for 00:03:12",
+        "Spawning hallway_8273...",
+        "Signal lost",
+        "Trying exit.bat ... file not found",
+        "file not found",
+        "It's here...",
+        "Unable to locate exit",
+      ], 4200);
+    })();
+</script>
+
 
   </body>
 </html>
