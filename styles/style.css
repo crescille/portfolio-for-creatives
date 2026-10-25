@@ -3041,3 +3041,7 @@ a.project-nav__link:hover {
     overflow-wrap: break-word;
   }
 }
+
+.hero-greeting {
+  white-space: nowrap;
+}
