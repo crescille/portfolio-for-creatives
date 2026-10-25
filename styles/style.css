@@ -525,7 +525,7 @@ sup {
   margin-inline: 0; /* Horizontally centers the text in its container */
 }
 .hero-greeting-word {
-  display: inline-block;
+  display: inline;
   transition: opacity 0.35s ease, transform 0.35s ease; /* Smooth transition for hover effects */
 }
 
@@ -537,16 +537,6 @@ sup {
   transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-greeting-word {
-    transition: none; /* Disables animations for users who prefer reduced motion */
-  }
-   .word {
-    transition: none;
-    transform: translateY(0);
-    opacity: 1;
-}
-}
 
 /* Large project title — appears on individual project pages */
 .project-title {
