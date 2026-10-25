@@ -524,7 +524,6 @@ sup {
   text-wrap: balance; /* Prevents awkward line breaks (like elegant typography) */
   margin-inline: 0; /* Horizontally centers the text in its container */
 }
-
 .hero-greeting-word {
   display: inline-block;
   transition: opacity 0.35s ease, transform 0.35s ease; /* Smooth transition for hover effects */
@@ -3032,5 +3031,13 @@ a.project-nav__link:hover {
 @media (max-width: 600px) {
   h6.footer-tag {
     font-size: 11vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-headline-wrapper .hero-headline {
+    font-size: 6vw;
+    line-height: 1.15;
+    overflow-wrap: break-word;
   }
 }
