@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Crescille Buyuccan Portfolio | Work Page</title>
+    <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don't forget to include your keyword!" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/branding-images/favicon.png" />
+    <meta property="og:image" content="screenshot.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+
+  <body class="work-page" id="top">
+    <section>
+      <header class="hero-header">
+        <ul class="nav-branding">
+          <!-- Logo (standalone LI) -->
+          <li class="nav-branding-logo">
+            <a href="work.html">
+              <img src="assets/branding-images/crescille-buyuccan--logo--branding.svg" alt="Your portfolio logo" />
+            </a>
+          </li>
+          <li class="nav-branding-item">
+            <ul class="nav-branding-group">
+              <li class="nav-branding-item">
+                <a href="work.html" class="nav-link-primary"><span>Work</span></a>
+              </li>
+              <li class="nav-branding-item">
+                <a href="play.html" class="nav-link-primary"><span>Play</span></a>
+              </li>
+              <li class="nav-branding-item">
+                <a href="about.html" class="nav-link-primary"><span>About</span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </header>
+
+        <div class="hero-headline-wrapper">
+        <h1 class="hero-headline">
+          (<span class="hero-greeting-word" id="heroGreeting">Hey</span>)
+          <br>
+          <span id="restLine1">(&#128131;)It's Crescille! Your friendly neighbourhood(&#10024;)graphic designer</span>
+        </h1>
+        <h1 class="hero-headline" id="line2">Based in Vancouver, BC(&#127956;)</h1>
+      </div>
+
+      <script>
+        const greetings = ["Hey", "Bonjour", "Olá", "Kumusta", "Aloha", "Namaste", "Ciao", "Nǐ hǎo", "Hej", "Konnichiwa", "Salam", "Szia", "Sawubona", "Hola"];
+        const greetingEl = document.getElementById("heroGreeting");
+        const restLine1 = document.getElementById("restLine1");
+        const line2 = document.getElementById("line2");
+
+        const TYPE_SPEED = 40;   // ms per letter for the greeting
+        const LINE_SPEED = 12;   // ms per letter for the two intro lines
+        const ERASE_SPEED = 25;  // ms per letter erased
+        const HOLD = 1500;       // how long a finished greeting stays
+        const GAP = 150;         // pause before typing the next greeting
+
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        // Puts every letter in place but invisible, so the layout never jumps
+        function prepare(el) {
+          const text = el.textContent.trim();
+          el.textContent = "";
+          return Array.from(text).map((letter) => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.visibility = "hidden";
+            el.appendChild(span);
+            return span;
+          });
+        }
+
+        // Shows the letters one at a time
+        async function reveal(letters, speed) {
+          for (const letter of letters) {
+            letter.style.visibility = "visible";
+            await wait(speed);
+          }
+        }
+
+        // ---- Greeting cycle: type, hold, erase, next ----
+        let greetingIndex = 0;
+
+        function typeWord(word, count = 0) {
+          const letters = Array.from(word);
+          greetingEl.textContent = letters.slice(0, count).join("");
+          if (count < letters.length) {
+            setTimeout(() => typeWord(word, count + 1), TYPE_SPEED);
+          } else {
+            setTimeout(() => eraseWord(word, letters.length), HOLD);
+          }
+        }
+
+        function eraseWord(word, count) {
+          const letters = Array.from(word);
+          greetingEl.textContent = letters.slice(0, count).join("");
+          if (count > 0) {
+            setTimeout(() => eraseWord(word, count - 1), ERASE_SPEED);
+          } else {
+            greetingIndex = (greetingIndex + 1) % greetings.length;
+            setTimeout(() => typeWord(greetings[greetingIndex]), GAP);
+          }
+        }
+
+// ---- Intro: type everything once ----
+        async function intro() {
+          const greetingLetters = prepare(greetingEl);
+          const line1Letters = prepare(restLine1);
+          const line2Letters = prepare(line2);
+
+          await wait(100);
+          await reveal(greetingLetters, TYPE_SPEED);
+
+          // Start cycling greetings now, without waiting for the lines below
+          setTimeout(() => eraseWord(greetings[0], greetings[0].length), HOLD);
+
+          await wait(80);
+          await reveal(line1Letters, LINE_SPEED);
+          await wait(120);
+          await reveal(line2Letters, LINE_SPEED);
+        }
+
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduceMotion) {
+          intro();
+        }
+      </script>
+    </section>
+
+<main class="main-work-section">
+  <section class="portfolio">
+    <h2 class="uppercase-heading work-accordion-heading">Selected Works (6)</h2>
+<nav class="work-view-toggle" aria-label="Project view">
+  <a class="work-view-btn" href="work.html">Grid</a>
+  <a class="work-view-btn" href="work-version-2.html" aria-current="page">List</a>
+</nav>
+    <ul class="work-accordion">
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="project-1.html">
+          <span class="work-accordion-num">(01)</span>
+          <h2 class="work-grid-project-title"><span>&amp;Action</span></h2>
+          <h4 class="work-grid-project-category">Branding / Social Media / Print Media</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+                <img src="assets/Images/crescille-buyuccan--&action--branding.jpg" width="1920" height="1080" loading="lazy" alt="&amp;Action film conference branding" />
+              </figure>
+              <div class="work-accordion-text">
+                <p>&amp;Action is a two-day immersive conference empowering emerging filmmakers, screenwriters, editors and visual storytellers to move from idea to execution. Hands-on workshops, mentorship and networking help sharpen ideas and move work forward.</p>
+                <a class="work-accordion-link" href="project-1.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="project-2.html">
+          <span class="work-accordion-num">(02)</span>
+          <h2 class="work-grid-project-title"><span>Cerv</span></h2>
+          <h4 class="work-grid-project-category">Branding / Packaging / Advertising / Web Design</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+                <img src="assets/Images/crescille-buyuccan--cerv--branding.jpg" width="1920" height="1080" loading="lazy" alt="Cerv branding" />
+              </figure>
+              <div class="work-accordion-text">
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit officia ex quo incididunt omnis ea facere minim ex in in soluta ut sint temporibus velit et possimus animi laborum in blanditiis eos sunt deserunt nulla voluptas deserunt assumenda culpa id reprehenderit illum in cum occaecat non lorem similique sunt at cillum</p>
+                <a class="work-accordion-link" href="project-2.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="project-3.html">
+          <span class="work-accordion-num">(03)</span>
+          <h2 class="work-grid-project-title"><span>Kasama</span></h2>
+          <h4 class="work-grid-project-category">Packaging / Print Media / Web Design</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+                <img src="assets/Images/crescille-buyuccan--kasama--branding.jpg" width="1920" height="1080" loading="lazy" alt="Kasama packaging" />
+              </figure>
+              <div class="work-accordion-text">
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit officia ex quo incididunt omnis ea facere minim ex in in soluta ut sint temporibus velit et possimus animi laborum in blanditiis eos sunt deserunt nulla voluptas deserunt assumenda culpa id reprehenderit illum in cum occaecat non lorem similique sunt at cillum</p>
+                <a class="work-accordion-link" href="project-3.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="project-4.html">
+          <span class="work-accordion-num">(04)</span>
+          <h2 class="work-grid-project-title"><span>Off Beat Studio</span></h2>
+          <h4 class="work-grid-project-category">Branding / Advertising / Web Design</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+                <img src="assets/Images/crescille-buyuccan--offbeat--branding.jpg" width="1920" height="1080" loading="lazy" alt="Off Beat Studio branding" />
+              </figure>
+              <div class="work-accordion-text">
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit officia ex quo incididunt omnis ea facere minim ex in in soluta ut sint temporibus velit et possimus animi laborum in blanditiis eos sunt deserunt nulla voluptas deserunt assumenda culpa id reprehenderit illum in cum occaecat non lorem similique sunt at cillum</p>
+                <a class="work-accordion-link" href="project-4.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="project-5.html">
+          <span class="work-accordion-num">(05)</span>
+          <h2 class="work-grid-project-title"><span>Re:Set</span></h2>
+          <h4 class="work-grid-project-category">Branding / Poster / AR Design</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+                <a href="project-5.html">
+                  <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Re:Set branding" />
+                </a>
+              </figure>
+              <div class="work-accordion-text">
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit officia ex quo incididunt omnis ea facere minim ex in in soluta ut sint temporibus velit et possimus animi laborum in blanditiis eos sunt deserunt nulla voluptas deserunt assumenda culpa id reprehenderit illum in cum occaecat non lorem similique sunt at cillum</p>
+                <a class="work-accordion-link" href="project-5.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="work-accordion-item">
+        <a class="work-accordion-head" href="404.html">
+          <span class="work-accordion-num">(06)</span>
+          <h2 class="work-grid-project-title"><span>Capstone Project</span></h2>
+          <h4 class="work-grid-project-category">Pending</h4>
+          <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
+        </a>
+        <div class="work-accordion-panel">
+          <div class="work-accordion-panel-inner">
+            <div class="work-accordion-body">
+              <figure class="work-accordion-image">
+  <a href="404.html">
+    <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Capstone project preview" />
+  </a>
+</figure>
+              <div class="work-accordion-text">
+                <p>lorem ipsum dolor sit amet consectetur adipiscing elit officia ex quo incididunt omnis ea facere minim ex in in soluta ut sint temporibus velit et possimus animi laborum in blanditiis eos sunt deserunt nulla voluptas deserunt assumenda culpa id reprehenderit illum in cum occaecat non lorem similique sunt at cillum</p>
+                <a class="work-accordion-link" href="404.html">View project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+
+<ul class="footer-closer">
+  <li class="footer-contact-social">
+    <ul class="footer-socials-list">
+      <h2>Social</h2>
+      <li class="footer-item"><a href="https://www.instagram.com/chu.iim/" class="nav-link-primary"><span>Instagram</span></a></li>
+      <li class="footer-item"><a href="https://www.linkedin.com/in/crescille-buyuccan/" class="nav-link-primary"><span>LinkedIn</span></a></li>
+      <li class="footer-item"><a href="https://www.behance.net/crescille" class="nav-link-primary"><span>Behance</span></a></li>
+    </ul>
+  </li>
+
+  <li class="footer-explore">
+    <ul class="footer-socials-list-explore">
+      <h2>Explore</h2>
+      <li class="footer-item"><a href="work.html" class="nav-link-primary"><span>Work</span></a></li>
+      <li class="footer-item"><a href="play.html" class="nav-link-primary"><span>Play</span></a></li>
+      <li class="footer-item"><a href="about.html" class="nav-link-primary"><span>About</span></a></li>
+    </ul>
+  </li>
+</ul>
+
+<ul class="footer-global">
+  <li class="footer-bottom">
+    <div class="footer-tag-wrapper">
+      <img class="footer-tag-gif" src="assets/Images/footer-dap.gif" width="300" height="300" alt="" />
+      <h6 class="footer-tag">Let's connect</h6>
+    </div>
+    <div class="footer-bottom-row">
+      <p class="footer-fineprint">
+        &copy; <span id="copyright-years">2020-</span>. Designed &amp; Coded by yours truly
+      </p>
+      <p class="footer-scroll-top"><a href="#top">▲ Back to top</a></p>
+    </div>
+  </li>
+</ul>
+
+<script>
+  document.getElementById("copyright-years").textContent += new Date().getFullYear();
+</script>
+
+
+<script>
+  const gridItems = document.querySelectorAll(".work-accordion-item");
+
+  // Animate cards in as they appear (never removes the class here)
+  const gridObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = [...gridItems].indexOf(entry.target);
+          entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
+
+  gridItems.forEach((item) => gridObserver.observe(item));
+
+  // Back at the top of the page? Reset the cards below the screen
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) return;
+
+    gridItems.forEach((item) => {
+      if (item.getBoundingClientRect().top > window.innerHeight) {
+        item.classList.remove("is-visible");
+      }
+    });
+  }, { passive: true });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = document.createElement("div");
+    cursor.id = "cursor";
+    cursor.innerHTML = `<span class="info">view</span>`;
+    document.body.appendChild(cursor);
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    document.querySelectorAll("a").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("hovering");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hovering");
+      });
+    });
+  });
+</script>
+
+<script>
+  const accordionItems = document.querySelectorAll(".work-accordion-item");
+
+  accordionItems.forEach((item) => {
+    const head = item.querySelector(".work-accordion-head");
+    head.setAttribute("aria-expanded", "false");
+
+    head.addEventListener("click", (e) => {
+      e.preventDefault(); // don't go to the project page, just open/close
+
+      const wasOpen = item.classList.contains("is-open");
+
+      // Close every row
+      accordionItems.forEach((el) => {
+        el.classList.remove("is-open");
+        el.querySelector(".work-accordion-head").setAttribute("aria-expanded", "false");
+      });
+
+      // Open this one, unless it was already open
+      if (!wasOpen) {
+        item.classList.add("is-open");
+        head.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+</script>
+
+<script>
+  (() => {
+    // ---- "Let's connect" typewriter ----
+    const tag = document.querySelector(".footer-tag");
+    if (!tag) return;
+
+    const SPEED = 60; // ms per letter
+
+    const text = tag.textContent.trim();
+    tag.setAttribute("aria-label", text);
+    tag.textContent = "";
+
+    const letters = Array.from(text).map((letter) => {
+      const span = document.createElement("span");
+      span.textContent = letter;
+      span.style.visibility = "hidden";
+      span.setAttribute("aria-hidden", "true");
+      tag.appendChild(span);
+      return span;
+    });
+
+    let run = 0;
+    let typed = false;
+
+    const typeIn = () => {
+      const thisRun = ++run;
+      typed = true;
+      letters.forEach((span, i) => {
+        setTimeout(() => {
+          if (run === thisRun) span.style.visibility = "visible";
+        }, i * SPEED);
+      });
+    };
+
+    const reset = () => {
+      run++;
+      typed = false;
+      letters.forEach((span) => (span.style.visibility = "hidden"));
+    };
+
+    // Checks where the text is on screen every time the page scrolls
+    const check = () => {
+      const box = tag.getBoundingClientRect();
+      const onScreen = box.top < window.innerHeight && box.bottom > 0;
+
+      if (onScreen && !typed) typeIn();
+      else if (!onScreen && typed) reset();
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      letters.forEach((span) => (span.style.visibility = "visible"));
+    } else {
+      window.addEventListener("scroll", check, { passive: true });
+      window.addEventListener("resize", check);
+      window.addEventListener("load", check);
+      check();
+    }
+  })();
+</script>
+
+</body>
+</html>

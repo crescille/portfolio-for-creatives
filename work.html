@@ -5,8 +5,8 @@
     <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don't forget to include your keyword!" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
-    <link rel="icon" type="image/png" href="assets/branding-images/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/branding-images/crescille-buyuccan--logo--branding.svg" />
+    <link rel="icon" type="image/png" href="assets/branding-images/crescille-buyuccan--logo--branding.svg" />
     <meta property="og:image" content="screenshot.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,8 +19,8 @@
         <ul class="nav-branding">
           <!-- Logo (standalone LI) -->
           <li class="nav-branding-logo">
-            <a href="index.html">
-              <img src="assets/branding-images/logo.svg" alt="Your portfolio logo" />
+            <a href="work.html">
+              <img src="assets/branding-images/crescille-buyuccan--logo--branding.svg" alt="Your portfolio logo" />
             </a>
           </li>
           <li class="nav-branding-item">
@@ -39,86 +39,111 @@
         </ul>
       </header>
 
-      <div class="hero-headline-wrapper">
+       <div class="hero-headline-wrapper">
         <h1 class="hero-headline">
-          <span class="hero-greeting-word" id="heroGreeting">Hey</span>, 
+          (<span class="hero-greeting-word" id="heroGreeting">Hey</span>)
           <br>
-          <span id="restLine1"> I'm Crescille! Your friendly neighbourhood graphic designer. </span>
+          <span id="restLine1">(&#128131;)It's Crescille! Your friendly neighbourhood(&#10024;)graphic designer</span>
         </h1>
-        <h1 class="hero-headline" id="line2">Based in Vancouver, BC</h1>
+        <h1 class="hero-headline" id="line2">Based in Vancouver, BC(&#127956;)</h1>
       </div>
 
       <script>
-        const greetings = ["Hey", "Bonjour", "Olá", "Kumusta", "Aloha","Namaste","Ciao", "Nǐ hǎo","Hej", "Konnichiwa","Salam", "Szia", "Sawubona", "Hola"];
+        const greetings = ["Hey", "Bonjour", "Olá", "Kumusta", "Aloha", "Namaste", "Ciao", "Nǐ hǎo", "Hej", "Konnichiwa", "Salam", "Szia", "Sawubona", "Hola"];
         const greetingEl = document.getElementById("heroGreeting");
+        const restLine1 = document.getElementById("restLine1");
+        const line2 = document.getElementById("line2");
+
+        const TYPE_SPEED = 40;   // ms per letter for the greeting
+        const LINE_SPEED = 12;   // ms per letter for the two intro lines
+        const ERASE_SPEED = 25;  // ms per letter erased
+        const HOLD = 1500;       // how long a finished greeting stays
+        const GAP = 150;         // pause before typing the next greeting
+
+        const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        // Puts every letter in place but invisible, so the layout never jumps
+        function prepare(el) {
+          const text = el.textContent.trim();
+          el.textContent = "";
+          return Array.from(text).map((letter) => {
+            const span = document.createElement("span");
+            span.textContent = letter;
+            span.style.visibility = "hidden";
+            el.appendChild(span);
+            return span;
+          });
+        }
+
+        // Shows the letters one at a time
+        async function reveal(letters, speed) {
+          for (const letter of letters) {
+            letter.style.visibility = "visible";
+            await wait(speed);
+          }
+        }
+
+        // ---- Greeting cycle: type, hold, erase, next ----
         let greetingIndex = 0;
 
-        function cycleGreeting() {
-          greetingEl.classList.add("is-hidden");
-          setTimeout(() => {
-            greetingIndex = (greetingIndex + 1) % greetings.length;
-            greetingEl.textContent = greetings[greetingIndex];
-            greetingEl.classList.remove("is-hidden");
-          }, 350);
+        function typeWord(word, count = 0) {
+          const letters = Array.from(word);
+          greetingEl.textContent = letters.slice(0, count).join("");
+          if (count < letters.length) {
+            setTimeout(() => typeWord(word, count + 1), TYPE_SPEED);
+          } else {
+            setTimeout(() => eraseWord(word, letters.length), HOLD);
+          }
         }
-        setInterval(cycleGreeting, 1800);
-          const restLine1Text = "I'm Crescille! Your friendly neighbourhood graphic designer.";
-  const line2Text = "Located in Vancouver, BC";
 
-  function build(container, text) {
-    container.innerHTML = "";
-    const words = text.split(" ");
-    words.forEach((word, wi) => {
-      const w = document.createElement("span");
-      w.className = "word";
-      w.textContent = word;
-      container.appendChild(w);
-      if (wi < words.length - 1) container.appendChild(document.createTextNode(" "));
-    });
-  }
+        function eraseWord(word, count) {
+          const letters = Array.from(word);
+          greetingEl.textContent = letters.slice(0, count).join("");
+          if (count > 0) {
+            setTimeout(() => eraseWord(word, count - 1), ERASE_SPEED);
+          } else {
+            greetingIndex = (greetingIndex + 1) % greetings.length;
+            setTimeout(() => typeWord(greetings[greetingIndex]), GAP);
+          }
+        }
 
-  const restLine1 = document.getElementById("restLine1");
-  const line2 = document.getElementById("line2");
-  build(restLine1, restLine1Text);
-  build(line2, line2Text);
+// ---- Intro: type everything once ----
+        async function intro() {
+          const greetingLetters = prepare(greetingEl);
+          const line1Letters = prepare(restLine1);
+          const line2Letters = prepare(line2);
 
-  function play() {
-    const w1 = restLine1.querySelectorAll(".word");
-    const w2 = line2.querySelectorAll(".word");
-    [...w1, ...w2].forEach((el) => {
-      el.style.transitionDelay = "0ms";
-      el.style.opacity = "0";
-      el.style.transform = "translateY(40px)";
-    });
-    void restLine1.offsetWidth;
-    w1.forEach((el, i) => { el.style.transitionDelay = (i * 180) + "ms"; });
-    w2.forEach((el, i) => { el.style.transitionDelay = (w1.length * 180 + 400 + i * 180) + "ms"; });
-    requestAnimationFrame(() => {
-      [...w1, ...w2].forEach((el) => {
-        el.style.opacity = "1";
-        el.style.transform = "translateY(0)";
-      });
-    });
-  }
+          await wait(100);
+          await reveal(greetingLetters, TYPE_SPEED);
 
-  setTimeout(play, 200);
+          // Start cycling greetings now, without waiting for the lines below
+          setTimeout(() => eraseWord(greetings[0], greetings[0].length), HOLD);
+
+          await wait(80);
+          await reveal(line1Letters, LINE_SPEED);
+          await wait(120);
+          await reveal(line2Letters, LINE_SPEED);
+        }
+
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduceMotion) {
+          intro();
+        }
       </script>
-
-      <footer class="hero-footer">
-        <!-- Add a marquee here -->
-      </footer>
-      <hr class="hero-divider footer-divider">
     </section>
 
     <main class="main-work-section">
       <section class="portfolio">
-        <h2 class="uppercase-heading">Selected Works[6]</h2>
+        <h2 class="uppercase-heading">Selected Works (6)</h2>
+<nav class="work-view-toggle" aria-label="Project view">
+  <a class="work-view-btn" href="work.html" aria-current="page">Grid</a>
+  <a class="work-view-btn" href="work-version-2.html">List</a>
+</nav>
         <ul class="grid">
-         
           <li class="work-page-grid-item">
             <a class="grayscale" href="project-1.html">
               <figure>
-                <img src="assets/Images/crescille-buyuccan--&action--branding.jpg" width="1920" height="1080" class="rounded-large" loading="lazy" alt="Describe your project" />
+                <img src="assets/Images/crescille-buyuccan--&action--branding.jpg" width="1920" height="1080" class="rounded-large" loading="lazy" alt="An immersive conference empowering filmmakers, screenwriters, editors, and visual storytellers to move from idea to execution. " />
               </figure>
               <div class="project-details">
                 <h2 class="work-grid-project-title"><span>&Action</span></h2>
@@ -166,7 +191,7 @@
           <li class="work-page-grid-item">
             <a class="grayscale" href="project-5.html">
             <figure>
-              <img src="assets/temp/animated-svg-background-example.svg" width="1920" height="1080" class="rounded-large" loading="lazy" alt="Background with geometric shapes floating" />
+              <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" class="rounded-large" loading="lazy" alt="Background with geometric shapes floating" />
             </figure>
               <div class="project-details">
                 <h2 class="work-grid-project-title"><span>Re:Set</span></h2>
@@ -177,8 +202,8 @@
 
           <li class="work-page-grid-item">
             <a class="grayscale" href="404.html">
-            <figure>
-              <object type="image/svg+xml" data="assets/temp/mixed-media-animation-example.svg" class="rounded-large"></object>
+              <figure>
+              <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" class="rounded-large" loading="lazy" alt="Background with geometric shapes floating" />
             </figure>
               <div class="project-details">
                 <h2 class="work-grid-project-title"><span>Capstone Project</span></h2>
@@ -190,28 +215,6 @@
       </section>
     </main>
 
-    <section class="marquee-top">
-      <div class="marquee-top__track">
-        <div class="marquee-top__content">
-          <ul class="marquee-top__list">
-            <li class="marquee-top__item"><h3>Branding</h3></li>
-            <li class="marquee-top__item"><h3>Web Design</h3></li>
-            <li class="marquee-top__item"><h3>Illustration</h3></li>
-            <li class="marquee-top__item"><h3>Motion</h3></li>
-            <li class="marquee-top__item"><h3>Print</h3></li>
-          </ul>
-        </div>
-        <div class="marquee-top__content">
-          <ul class="marquee-top__list">
-            <li class="marquee-top__item"><h3>Branding</h3></li>
-            <li class="marquee-top__item"><h3>Web Design</h3></li>
-            <li class="marquee-top__item"><h3>Illustration</h3></li>
-            <li class="marquee-top__item"><h3>Motion</h3></li>
-            <li class="marquee-top__item"><h3>Print</h3></li>
-          </ul>
-        </div>
-      </div>
-</section>
 
 <ul class="footer-closer">
   <li class="footer-contact-social">
@@ -236,29 +239,12 @@
 <ul class="footer-global">
   <li class="footer-bottom">
     <div class="footer-tag-wrapper">
-<svg class="lets-connect" viewBox="38 115 220 40" role="img" aria-label="Let's connect">
-  <g fill="none" stroke="#e26f1f" stroke-width="4" stroke-linejoin="bevel">
-    <path pathLength="1" style="--d:0ms" transform="matrix(1.143297 0 0 1.143297 3.145461 -25.196637)" d="M52.47817,131.547111L42.236283,146.942148l2.254504,2.125674l7.343239.901802"/>
-    <path pathLength="1" style="--d:200ms" transform="translate(7.931609 -3.701418)" d="M74.812729,145.61939q-11.641771,5.509692-14.540419,4.092576t-2.512161-4.380178q7.149996-12.625218,11.465759-6.699095-1.739188,6.505852-10.113057,4.186935"/>
-    <path pathLength="1" style="--d:300ms" transform="translate(7.931609 -3.701418)" d="M80.820572,133.189432l-7.256887,14.513773l2.106838,2.340931q5.306111-.468186,10.846315-4.759893"/>
-    <path pathLength="1" style="--d:300ms" transform="translate(7.931609 -3.701418)" d="M77.855392,138.963729q4.44777.546216,6.632639-.546218"/>
-    <path pathLength="1" style="--d:400ms" transform="translate(7.931609 -3.650114)" d="M94.691878,130.453184q-2.488441,4.243577-3.507811,5.700193"/>
-    <path pathLength="1" style="--d:500ms" transform="translate(7.931609 -3.701418)" d="M107.115376,141.707412l2.149498-3.738257-3.270975-2.61678q-6.635406,3.92517-6.728862,5.513929t7.663426,7.102687l-6.915774,2.149498q-3.457887-2.429867-5.140103-4.485908"/>
-    <path pathLength="1" style="--d:600ms" transform="translate(9.931609 -3.701418)" d="M133.937367,141.707412l1.962585-3.831713-2.990606-1.962585q-10.774056,5.641065-8.130708,11.588595.747652,1.682216,6.460713,2.212679q5.412988.035963,8.355721-1.4131"/>
-    <path pathLength="1" style="--d:700ms" transform="translate(7.931609 -3.701418)" d="M141.133511,148.623186q8.224165,1.588759,11.827397-10.213232l-3.603233-2.590297q-11.027856,3.738257-8.224164,12.803529Z"/>
-    <path pathLength="1" style="--d:900ms" transform="matrix(0.988343 0.152242 -0.220991 1.434653 40.328105 -90.060703)" d="M162.815399,136.473852q-5.98121,8.31762-5.887754,12.429703"/>
-    <path pathLength="1" style="--d:900ms" transform="translate(7.931609 -3.701418)" d="M148.310487,146.637622l20.953405-8.761923l1.869128,1.401846q-1.869128,9.812924-3.831713,10.560575"/>
-    <path pathLength="1" style="--d:1100ms; animation-duration:0.7s; animation-timing-function:linear; stroke-linejoin:round" transform="translate(26.15561 -2.86031)" d="M149.170762,148.997012l20.09313-11.121313l1.848263,1.32918q-5.158134,10.495107-5.158134,10.495107c0,0,12.744217-7.758062,12.645607-7.721466q8.373869,2.318917,10.113057-4.186935-4.315763-5.926123-11.465759,6.699095-.386487,2.963062,2.512161,4.380178t13.398191-4.766664"/>
-    <path pathLength="1" style="--d:1200ms" transform="matrix(0.988326 0.152356 -0.204221 1.324767 55.909071 -73.558358)" d="M162.815399,136.473852q-5.98121,8.31762-5.887754,12.429703"/>
-    <path pathLength="1" style="--d:1400ms" transform="translate(94.918197 -3.48557)" d="M133.937367,141.707412l1.962585-3.831713-2.990606-1.962585q-10.774056,5.641065-8.130708,11.588595.747652,1.682216,2.803693,1.682216q9.626011-.934564,11.682052-3.364431"/>
-    <path pathLength="1" style="--d:1600ms" transform="translate(159.61511 -3.917266)" d="M80.820572,133.189432l-7.256887,14.513773l2.106838,2.340931q5.306111-.468186,10.846315-4.759893"/>
-    <path pathLength="1" style="--d:1700ms" transform="translate(159.61511 -3.917266)" d="M77.855392,138.963729q4.44777.546216,6.632639-.546218"/>
-  </g>
-</svg>
-</div>
+      <img class="footer-tag-gif" src="assets/Images/footer-dap.gif" width="300" height="300" alt="" />
+      <h6 class="footer-tag">Let's connect</h6>
+    </div>
     <div class="footer-bottom-row">
       <p class="footer-fineprint">
-        &copy; <span id="copyright-years">2020-</span>. Designed & Coded by yours truly
+        &copy; <span id="copyright-years">2020-</span>. Designed &amp; Coded by yours truly
       </p>
       <p class="footer-scroll-top"><a href="#top">▲ Back to top</a></p>
     </div>
@@ -269,102 +255,17 @@
   document.getElementById("copyright-years").textContent += new Date().getFullYear();
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-<script>
-  let engine, runner, shapeEls = [], shapeBodies = [];
-
-  function initFallingShapes() {
-    const container = document.getElementById('falling-shapes');
-    const w = container.clientWidth;
-    const h = container.clientHeight;
-
-    container.innerHTML = '';
-    if (runner) Matter.Runner.stop(runner);
-    shapeEls = [];
-    shapeBodies = [];
-
-    engine = Matter.Engine.create();
-    const { Bodies, World, Mouse, MouseConstraint, Runner: MRunner } = Matter;
-
-    const ground = Bodies.rectangle(w/2, h+10, w, 20, { isStatic: true });
-    const leftWall = Bodies.rectangle(-5, h/2, 10, h, { isStatic: true });
-    const rightWall = Bodies.rectangle(w+5, h/2, 10, h, { isStatic: true });
-
-   const words = ['Figma', 'Illustrator','after effects', 'premiere pro', 'indesign', 'photoshop', 'blender','touchdesigner'];
-    const colors = ['#98B2C9', '#B3AB2C','#E26F1F'];
-
-    words.forEach((word, i) => {
-      const el = document.createElement('div');
-      el.textContent = word;
-      el.style.cssText = `
-        position:absolute; top:0; left:0;
-        padding:12px 22px;
-        background:${colors[i % colors.length]};
-        color:#1c1a17; font-weight:400; font-size:1rem; text-transform: uppercase;
-        white-space:nowrap; will-change:transform;
-      `;
-      container.appendChild(el);
-      shapeEls.push(el);
-
-      const pillWidth = word.length * 12 + 60;
-      const pillHeight = 44;
-      const body = Bodies.rectangle(
-        w * (0.15 + i * (0.7 / words.length)),
-        -50 - i * 40,
-        pillWidth,
-        pillHeight,
-        { chamfer: { radius: pillHeight / 2 }, angle: (Math.random() - 0.5) * 0.6 }
-      );
-      shapeBodies.push(body);
-    });
-
-    World.add(engine.world, [ground, leftWall, rightWall, ...shapeBodies]);
-
-    const mouse = Mouse.create(container);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      constraint: { stiffness: 0.2, render: { visible: false } }
-    });
-    World.add(engine.world, mouseConstraint);
-
-    runner = MRunner.create();
-    MRunner.run(runner, engine);
-
-    (function sync() {
-      shapeBodies.forEach((body, i) => {
-        const el = shapeEls[i];
-        const bw = el.offsetWidth, bh = el.offsetHeight;
-        el.style.transform =
-          `translate(${body.position.x - bw/2}px, ${body.position.y - bh/2}px) rotate(${body.angle}rad)`;
-      });
-      requestAnimationFrame(sync);
-    })();
-  }
-
-  const shapesObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        initFallingShapes();
-      }
-    });
-  }, { threshold: 0.2 });
-
-  shapesObserver.observe(document.getElementById('falling-shapes'));
-</script>
-
 <script>
   const gridItems = document.querySelectorAll(".work-page-grid-item");
 
+  // Animate cards in as they appear (never removes the class here)
   const gridObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const index = [...gridItems].indexOf(entry.target);
-        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
-
         if (entry.isIntersecting) {
+          const index = [...gridItems].indexOf(entry.target);
+          entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
           entry.target.classList.add("is-visible");
-        } else {
-          entry.target.classList.remove("is-visible");
         }
       });
     },
@@ -372,6 +273,17 @@
   );
 
   gridItems.forEach((item) => gridObserver.observe(item));
+
+  // Back at the top of the page? Reset the cards below the screen
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) return;
+
+    gridItems.forEach((item) => {
+      if (item.getBoundingClientRect().top > window.innerHeight) {
+        item.classList.remove("is-visible");
+      }
+    });
+  }, { passive: true });
 </script>
 
 <script>
@@ -396,18 +308,68 @@
     });
   });
 </script>
-<script>
-  const letsConnect = document.querySelector('.lets-connect');
 
-  new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio >= 0.6) {
-        letsConnect.classList.add('is-visible');      // draw it
-      } else if (entry.intersectionRatio === 0) {
-        letsConnect.classList.remove('is-visible');   // reset once fully off-screen
-      }
+<script>
+  (() => {
+    // ---- "Let's connect" typewriter ----
+    const tag = document.querySelector(".footer-tag");
+    if (!tag) return;
+
+    const SPEED = 60; // ms per letter
+
+    const text = tag.textContent.trim();
+    tag.setAttribute("aria-label", text);
+    tag.textContent = "";
+
+    const letters = Array.from(text).map((letter) => {
+      const span = document.createElement("span");
+      span.textContent = letter;
+      span.style.visibility = "hidden";
+      span.setAttribute("aria-hidden", "true");
+      tag.appendChild(span);
+      return span;
     });
-  }, { threshold: [0, 0.6] }).observe(letsConnect);
+
+    let run = 0;
+    let typed = false;
+
+    const typeIn = () => {
+      const thisRun = ++run;
+      typed = true;
+      letters.forEach((span, i) => {
+        setTimeout(() => {
+          if (run === thisRun) span.style.visibility = "visible";
+        }, i * SPEED);
+      });
+    };
+
+    const reset = () => {
+      run++;
+      typed = false;
+      letters.forEach((span) => (span.style.visibility = "hidden"));
+    };
+
+    // Checks where the text is on screen every time the page scrolls
+    const check = () => {
+      const box = tag.getBoundingClientRect();
+      const onScreen = box.top < window.innerHeight && box.bottom > 0;
+
+      if (onScreen && !typed) typeIn();
+      else if (!onScreen && typed) reset();
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      letters.forEach((span) => (span.style.visibility = "visible"));
+    } else {
+      window.addEventListener("scroll", check, { passive: true });
+      window.addEventListener("resize", check);
+      window.addEventListener("load", check);
+      check();
+    }
+  })();
 </script>
+
 </body>
 </html>
