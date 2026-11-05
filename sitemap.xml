@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-
 <!-- 
 
 By placing a properly formatted XML sitemap on your webserver, you help search engine crawlers (like Google) discover which pages exist, which pages have recently changed, and how to crawl your site efficiently.
@@ -49,32 +42,140 @@ For comprehensive SEO resources tailored for designers, including sitemap best p
 🔄 Remember: This is a REPLACE workflow, not an EDIT workflow!
 -->
 
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
-  <loc>https://portfolio-2022.netlify.app/</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://crescillebuyuccan.com/</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>1.0000</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/index.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://crescillebuyuccan.com/work.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/about.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://crescillebuyuccan.com/play.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.6400</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/project-1.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://crescillebuyuccan.com/about.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.6400</priority>
 </url>
 <url>
-  <loc>https://portfolio-2022.netlify.app/project-2.html</loc>
-  <lastmod>2021-11-18T08:55:17+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://crescillebuyuccan.com/work-version-2.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.6400</priority>
 </url>
-
-
+<url>
+<loc>https://crescillebuyuccan.com/project-1.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-2.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-3.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-4.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-5.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/404.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.6400</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/index.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-6.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-lightbox.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/project-full-width.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/components.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.5120</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/sketchbook.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/resume.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/sitemap.xml</loc>
+<lastmod>2026-11-05T20:13:59+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/illustration.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-titles-below.html</loc>
+<lastmod>2026-11-05T20:13:59+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-sidebar.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-sidebar-masonry.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-clean.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-padded.html</loc>
+<lastmod>2026-11-05T20:13:59+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-grayscale.html</loc>
+<lastmod>2026-11-05T20:13:54+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
+<url>
+<loc>https://crescillebuyuccan.com/work-ghost.html</loc>
+<lastmod>2026-11-05T20:13:57+00:00</lastmod>
+<priority>0.4096</priority>
+</url>
 </urlset>
