@@ -79,41 +79,34 @@
   </div>
 </section>
 
-<section class="awards-section">
-  <h2 class="work-grid-title"><span>Achievements</span></h2>
+<section class="portfolio">
+  <h2 class="uppercase-heading work-accordion-heading">Achievements (03)</h2>
 
-  <ul class="awards-list" id="awardsList">
-    <li>
-      <a class="awards-row" href="https://www.appliedartsmag.com/winners/student/nanijauniaravit-you-will-be-found-w472/?year=2025" target="_blank" rel="noopener" data-img="assets/Images/award-01.jpg">
-        <span class="awards-year">2025</span>
-        <h2 class="awards-title"><span>Applied Arts Student Award
-          <br> Winner</span></h2>
-        <span class="awards-project">Nanijauniaravit: You will be found</span>
-        <svg class="awards-arrow" width="34" height="34" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4 10L10 4M10 4H5M10 4V9" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
-</svg>
+  <ul class="work-accordion">
+    <li class="work-accordion-item">
+      <a class="work-accordion-head" href="https://www.appliedartsmag.com/winners/student/nanijauniaravit-you-will-be-found-w472/?year=2025" target="_blank" rel="noopener">
+        <span class="work-accordion-num">(2025)</span>
+        <h2 class="work-grid-project-title"><span>Applied Arts Student Award Winner</span></h2>
+        <h4 class="work-grid-project-category">Nanijauniaravit: You will be found</h4>
+        <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
       </a>
     </li>
-    <li>
-      <a class="awards-row" href="404.html" target="_blank" rel="noopener" data-img="assets/Images/award-02.jpg">
-        <span class="awards-year">2025</span>
-        <h2 class="awards-title"><span>Salazar Awards
-          <br> Honourable Mention</span></h2>
-        <span class="awards-project">Nanijauniaravit: You will be found</span>
-       <svg class="awards-arrow" width="34" height="34" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4 10L10 4M10 4H5M10 4V9" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
-</svg>
+
+    <li class="work-accordion-item">
+      <a class="work-accordion-head" href="404.html">
+        <span class="work-accordion-num">(2025)</span>
+        <h2 class="work-grid-project-title"><span>Salazar Awards Honourable Mention</span></h2>
+        <h4 class="work-grid-project-category">Nanijauniaravit: You will be found</h4>
+        <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
       </a>
     </li>
-    <li>
-      <a class="awards-row" href="404.html" target="_blank" rel="noopener" data-img="assets/Images/award-03.jpg">
-        <span class="awards-year">2025</span>
-        <h2 class="awards-title"><span>Jim Rimmer Scholarship Award 
-          <br> Honourable Mention</span></h2>
-        <span class="awards-project">Through & Through</span>
-        <svg class="awards-arrow" width="34" height="34" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4 10L10 4M10 4H5M10 4V9" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
-</svg>
+
+    <li class="work-accordion-item">
+      <a class="work-accordion-head" href="404.html">
+        <span class="work-accordion-num">(2025)</span>
+        <h2 class="work-grid-project-title"><span>Jim Rimmer Scholarship Award Honourable Mention</span></h2>
+        <h4 class="work-grid-project-category">Through & Through</h4>
+        <svg class="work-accordion-arrow" width="28" height="28" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
       </a>
     </li>
   </ul>
@@ -161,7 +154,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
 <script>
-  const gridItems = document.querySelectorAll(".work-page-grid-item");
+  const gridItems = document.querySelectorAll(".work-page-grid-item, .work-accordion-item");
 
   const gridObserver = new IntersectionObserver(
     (entries) => {
@@ -204,19 +197,6 @@
     });
   });
 </script>
-<script>
-  const letsConnect = document.querySelector('.lets-connect');
-
-  new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio >= 0.6) {
-        letsConnect.classList.add('is-visible');      // draw it
-      } else if (entry.intersectionRatio === 0) {
-        letsConnect.classList.remove('is-visible');   // reset once fully off-screen
-      }
-    });
-  }, { threshold: [0, 0.6] }).observe(letsConnect);
-</script>
 
 <script>
   document.querySelectorAll('.hero-photo-item').forEach((el) => {
@@ -252,51 +232,6 @@
       el.style.zIndex = 1;
     });
   });
-</script>
-
-<script>
-  (() => {
-    const rows = document.querySelectorAll('.awards-row');
-    if (!rows.length) return;
-
-    let float = document.querySelector('.awards-float-img');
-    if (!float) {
-      float = document.createElement('div');
-      float.className = 'awards-float-img';
-      float.innerHTML = '<img src="" alt="" />';
-      document.body.appendChild(float);
-    }
-    const floatImg = float.querySelector('img');
-
-    let mouseX = 0, mouseY = 0, x = 0, y = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    (function follow() {
-      x += (mouseX - x) * 0.15;
-      y += (mouseY - y) * 0.15;
-      float.style.left = x + 'px';
-      float.style.top = y + 'px';
-      requestAnimationFrame(follow);
-    })();
-
-    rows.forEach((row) => {
-      row.addEventListener('mouseenter', () => {
-        const src = row.dataset.img;
-        if (!src) return;
-        floatImg.src = src;
-        float.classList.remove('active');
-        void float.offsetWidth; // restarts the pop animation on each row
-        float.classList.add('active');
-      });
-      row.addEventListener('mouseleave', () => {
-        float.classList.remove('active');
-      });
-    });
-  })();
 </script>
 
 <script>

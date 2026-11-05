@@ -111,8 +111,8 @@
   --color-text-project-title: #28100c;
   --color-text-work-grid-title: #28100c;
   /* Link States */
-  --color-link: #B3AB2C;
-  --color-link-hover: #B3AB2C;
+  --color-link: #E26F1F;
+  --color-link-hover: #E26F1F;
   --color-link-visited: #28100c;
   /* Navigation */
   --color-nav-link: #28100c;
@@ -601,7 +601,7 @@ sup {
   bottom: 0;
   width: 0%;
   height: 100%;
-  background-color: #E1E42D;
+  background-color: #98B2C9;
   transition: width 0.35s ease;
   z-index: 0;
 }
@@ -690,7 +690,7 @@ a.nav-link-primary:hover {
   bottom: 0;
   width: 0%;
   height: 100%;
-  background-color: #E1E42D;
+  background-color: #98B2C9;
   transition: width 0.35s ease;
   z-index: 0;
 }
@@ -1100,138 +1100,6 @@ align-items: center;
     align-self: end; /* pins content to the bottom, matching image's bottom */
   }
 }
- 
-/* Awards Footer */
-
-.awards-section{
-  padding: var(--padding-medium);
-  padding-top: var(--padding-large);
-  padding-bottom: var(--padding-large);
-  margin:0 auto;
-  position:relative;
-}
-.awards-section h2{
-  font-size:1rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:#7a7a76;
-  margin:0 0 32px;
-  font-weight:400;
-}
-.awards-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  border-top:1px solid #808080;
-}
-.awards-row{
-  position:relative;
-  display:flex;
-  align-items:baseline;
-  gap:20px;
-  padding:16px 4px;
-  border-bottom:1px solid #808080;
-  cursor:pointer;
-  text-decoration:none;
-  color:inherit;
-  transition:opacity .3s ease;
-}
-.awards-list:hover .awards-row:not(:hover){
-  opacity:.35;
-}
-.awards-row .awards-year{
-  font-size:0.85rem;
-  color:#7a7a76;
-  width:40px;
-  flex-shrink:0;
-  font-variant-numeric:tabular-nums;
-}
-.awards-row .awards-title{
-  letter-spacing:-0.01em;
-  margin:0;
-  flex:1;
-  overflow:hidden;
-}
-.awards-row .awards-title span{
-  display:inline-block;
-  transition:transform .4s cubic-bezier(.19,1,.22,1);
-}
-.awards-row:hover .awards-title span{
-  transform:translateY(-3px);
-}
-.awards-row .awards-project{
-  font-size:12px;
-  color:#7a7a76;
-  max-width:200px;
-  text-align:right;
-  flex-shrink:0;
-}
-
-.awards-row{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:16px 4px;
-  border-bottom:1px solid #808080;
-  cursor:pointer;
-  text-decoration:none;
-  color:inherit;
-  transition:opacity .3s ease;
-}
-
-.awards-row .awards-arrow{
-  flex-shrink:0;
-  transform:rotate(0deg);
-  transition:transform .35s cubic-bezier(.19,1,.22,1);
-}
-
-.awards-row:hover .awards-arrow{
-  transform:rotate(45deg);
-}
-
-.awards-float-img{
-  position:fixed;
-  top:0;
-  left:0;
-  width:200px;
-  height:240px;
-  overflow:hidden;
-  pointer-events:none;
-  opacity:0;
-  transform:translate(-50%,-50%) scale(0);
-  transition:opacity .25s ease;
-  z-index:50;
-  will-change:transform,opacity;
-  background:#111;
-}
-.awards-float-img.active{
-  opacity:1;
-  animation:awardsPop .35s cubic-bezier(.25,1.1,.4,1) forwards;
-}
-.awards-float-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-@keyframes awardsPop{
-  0%{   transform:translate(-50%,-50%) scale(0.7); }
-  70%{  transform:translate(-50%,-50%) scale(1.03); }
-  100%{ transform:translate(-50%,-50%) scale(1); }
-}
-
-@media (max-width:700px){
-  .awards-row{flex-wrap:wrap;}
-  .awards-row .awards-project{
-    text-align:left;
-    width:100%;
-    max-width:none;
-    order:3;
-  }
-  .awards-float-img{display:none;}
-}
 
 /* 
 
@@ -1435,7 +1303,7 @@ align-items: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 12px; /* Space below the image */
+  
 }
 
 /* Container for project description */
@@ -1960,72 +1828,6 @@ to keep your styles reusable and consistent.
   filter: grayscale(0%);
 }
 
-/* Footer marquee animation */
-.marquee-top {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  white-space: nowrap;
-  border-top: 0.8px solid #a8a6a6;
-  border-bottom: 0.8px solid #a8a6a6;
-  padding-top: var(--padding-tiny);
-  padding-bottom: var(--padding-tiny);
-}
-
-
-.marquee-top__track {
-  display: flex;
-  width: max-content;
-  animation: marquee-top-scroll 15s linear infinite;
-}
-
-.marquee-top__content {
-  display: flex;
-  flex-shrink: 0;
-}
-
-.marquee-top__list {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0.25rem;
-}
-
-.marquee-top__item {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 1.5rem;
-}
-
-.marquee-top__item h3 {
-  margin: 0;
-  font-size: 1rem;
-  white-space: nowrap;
-   text-transform: uppercase;
-  color:#28100c;
-  font-weight: 300;
-}
-
-.marquee-top__item:not(:last-child)::after {
-  content: "/";
-  margin-left: 1.5rem;
-  opacity: 0.5;
-}
-
-@keyframes marquee-top-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-top__track {
-    animation: none;
-  }
-}
-
 .work-page-grid-item {
   opacity: 0;
   transform: translateY(40px);
@@ -2065,7 +1867,7 @@ a, a:hover, button, .grayscale {
   left: 0;
   width: 14px;
   height: 14px;
-  background: #E1E42D;
+  background: #E26F1F;
   pointer-events: none;
   z-index: 9999;
   transform: translate(0%, 0%);
@@ -2087,7 +1889,7 @@ a, a:hover, button, .grayscale {
   font-family: "Lilex", monospace;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #28100c;
+  color: #F7F2DC;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
@@ -2143,7 +1945,7 @@ a, a:hover, button, .grayscale {
 
 .footer-fineprint,
 .footer-scroll-top {
-  margin: 0; /* remove default <p> spacing so they align nicely */
+  margin: 0;
 }
 
 .footer-scroll-top {
@@ -2187,9 +1989,8 @@ a, a:hover, button, .grayscale {
   right: 0;
   display: flex;
   flex-direction: row;
-  gap: 2rem;
   padding: var(--padding-small);
-  color: #f5f5f5;
+  color: #F7F2DC;
   z-index: 2;
 }
 
@@ -2228,7 +2029,7 @@ a, a:hover, button, .grayscale {
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
-  color: #28100c;
+  color: #371E12;
   max-width: 90%;
 }
 
@@ -2237,13 +2038,13 @@ a, a:hover, button, .grayscale {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #28100c;;
+  color: #371E12;;
 }
 
 .hero-about-bottom .hero-value {
   margin: 4px 0 0;
   font-size: 13px;
-  color: #28100c;
+  color: #371E12;
 }
 
 .hero-photo-block {
@@ -2315,7 +2116,7 @@ a, a:hover, button, .grayscale {
 .footer-tag-svg {
   display: block;
   width: 100%;
-  max-width: 480px;   /* adjust to taste */
+  max-width: 480px;
   height: auto;
 }
 
@@ -2343,7 +2144,7 @@ a, a:hover, button, .grayscale {
 
 .lets-connect path {
   stroke-dasharray: 1;
-  stroke-dashoffset: 1;   /* hidden until drawn */
+  stroke-dashoffset: 1;
 }
 
 .lets-connect.is-visible path {
@@ -2606,8 +2407,6 @@ html:has(.br-page), .br-page { overflow-x: clip; }
 .project-image-pair {
   display: grid;
   grid-template-columns: 1fr 1fr; 
-  margin-bottom: 12px;  
-  margin-top: 12px; 
 }
 
 .project-image-pair figure {
@@ -2636,6 +2435,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
 .project-full-width .project-image.is-visible {
   opacity: 1;
   transform: translateY(0);
+  margin-bottom: 12px;
 }
 
 /* ======================
@@ -2646,6 +2446,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   width: 100%;
   max-width: 900px; /* lower this number to make it smaller */ 
   user-select: none;
+  margin-bottom: 12px;
 }
 
 .slider-viewport {
@@ -2839,6 +2640,17 @@ a.project-nav__link:hover {
 
 .work-accordion-arrow {
   transition: transform 0.35s ease, color 0.35s ease;
+  grid-column: -2;
+}
+
+/* List rows (More Works, Achievements, Work list): hover colours the row and turns the arrow */
+.work-accordion-head:hover,
+.work-accordion-head:hover .work-accordion-num {
+  color: var(--color-nav-link-hover, #e26f1f);
+}
+
+.work-accordion-head:hover .work-accordion-arrow {
+  transform: rotate(45deg);
 }
 
 /* Open state: orange number + arrow turns to point right */
@@ -3034,4 +2846,11 @@ a.project-nav__link:hover {
 
 .hero-greeting {
   white-space: nowrap;
+}
+
+/* Hide the custom cursor on phones and tablets */
+@media (hover: none), (pointer: coarse) {
+  #cursor {
+    display: none;
+  }
 }
