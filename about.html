@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/about-canvas.css" />
   </head>
 
   <body class="work-page" id="top">
@@ -38,46 +39,291 @@
           </li>
         </ul>
       </header>
+    </section>
 
-    <section class="hero-split">
-  <div class="hero-about">
-    <div class="hero-about-top">
+<section class="about-canvas" tabindex="0" aria-label="About me, surrounded by photos. Drag to explore.">
+  <div class="about-world">
+    <div class="about-center">
       <h1>About me</h1>
-      <p>I'm Crescille Angel Buyuccan, a branding designer. I love looking at an idea from different perspectives until I land on a visual direction that fits what the piece needs to say. I play and experiment along the way but stay grounded and consistent, so the concept never gets lost. My heart's in works that builds connection and community.
-<br>
-<br>
-       When I’m not designing, you can usually find me touching grass, spending time in nature, listening to music, or taking a dance class or two. I’m always finding new ways to express myself creatively, and often, what I explore outside of design finds its way back into my work.
-        </p>
-      </p>
-      <br>
-      <br>
-        <a href="#" class="work-accordion-link">Download my resume</a></p>
+      <p>I'm Crescille Angel Buyuccan, a branding designer. I love looking at an idea from different perspectives until I land on a visual direction that fits what the piece needs to say. I play and experiment along the way but stay grounded and consistent, so the concept never gets lost. My heart's in works that builds connection and community.</p>
+      <p>When I’m not designing, you can usually find me touching grass, spending time in nature, listening to music, or taking a dance class or two. I’m always finding new ways to express myself creatively, and often, what I explore outside of design finds its way back into my work.</p>
+      <a href="#" class="work-accordion-link">Download my resume</a>
+      <div class="hero-about-bottom">
+        <h2 class="hero-label">Education</h2>
+        <p class="hero-value">Capilano University</p>
+        <p class="hero-value">Bachelor of Design in Visual Communication</p>
+        <p class="hero-value">2023 - Present</p>
+      </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="hero-about-bottom">
-      <h2 class="hero-label">Education</h2>
-      <p class="hero-value">Capilano University</p>
-      <p class="hero-value">Bachelor of Design in Visual Communication</p>
-      <p class="hero-value">2023 - Present</p>
-      
-    </div>
-          
-  </div>
 
-  <div class="hero-photo-block" id="dragZone">
-    <div class="hero-photo-item" style="left: 0px; top: 0px; width: 300px; height: 400px;">
-      <img src="assets/Images/Placeholder-Portrait.jpg" alt="Photo 1" />
-    </div>
-    <div class="hero-photo-item" style="left: 480px; top: 250px; width: 350px; height: 450px;">
-      <img src="assets/Images/Placeholder-Portrait2.jpg" alt="Photo 2" />
-    </div>
-    <div class="hero-photo-item" style="left: 185px; top: 310px; width: 400px; height: 275px;">
-      <img src="assets/Images/Placeholder-Portrait3.jpg" alt="Photo 3" />
-    </div>
   </div>
+  <div class="about-hint">Drag to explore</div>
+  <button class="about-scroll" type="button">Scroll for more <span class="arrow">↓</span></button>
+
+  <!-- Your photos: add as many as you like. More photos = fewer repeats. -->
+  <template class="about-images">
+    <img src="assets/Images/Placeholder-Portrait.jpg" alt="Photo 1">
+    <img src="assets/Images/Placeholder-Portrait2.jpg" alt="Photo 2">
+    <img src="assets/Images/Placeholder-Portrait3.jpg" alt="Photo 3">
+  </template>
 </section>
+
+<!-- Drag canvas script: keep this after the section above -->
+<script>
+// About page drag canvas: photos around the About text on a board that never ends.
+// Add or remove photos in the <template class="about-images"> in your HTML.
+(() => {
+  document.querySelectorAll('.about-canvas').forEach(init);
+
+  function init(stage) {
+    const world     = stage.querySelector('.about-world');
+    const hint      = stage.querySelector('.about-hint');
+    const center    = stage.querySelector('.about-center');
+    const scrollBtn = stage.querySelector('.about-scroll');
+    const srcs = [...stage.querySelector('template.about-images').content.querySelectorAll('img')]
+                   .map(img => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
+    if (!srcs.length) return;
+
+    // ---- Settings you can tweak ----
+    const NEAR_GAP = [18, 56];           // how close the nearest photos sit to the text (min, max px)
+    const NEAR_COUNT = 10;               // photos placed right around the text
+    const TILE_W = 1400, TILE_H = 1150;  // size of the repeating area further out
+    const COUNT = 18;                    // photos per repeating area
+    const GAP = 28;                      // minimum space between photos
+    const WIDTHS = [150, 170, 190, 210, 240];
+
+    let seed = 11;
+    const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const safeTop    = () => parseFloat(getComputedStyle(stage).getPropertyValue('--about-safe-top')) || 0;
+    const safeBottom = () => parseFloat(getComputedStyle(stage).getPropertyValue('--about-safe-bottom')) || 0;
+
+    // Read each photo's shape so it isn't cropped badly
+    // Load and decode each photo once up front, so new copies appear instantly while dragging
+    Promise.all(srcs.map(s => new Promise(res => {
+      const im = new Image();
+      im.decoding = 'async';
+      im.onload  = () => {
+        s.ar = im.naturalWidth / im.naturalHeight;
+        s.keep = im;                                   // keep it decoded in memory
+        (im.decode ? im.decode() : Promise.resolve()).catch(() => {}).then(res);
+      };
+      im.onerror = () => { s.ar = 3 / 4; res(); };
+      im.src = s.src;
+    }))).then(() => { ready = true; onSize(); });
+
+    // ---- Layout ----
+    // "near" photos are placed once, hugging the text.
+    // "tiled" photos fill a repeating area that copies itself forever in every direction.
+    let near = [], tiled = [], blockers = [], laidOutFor = '', photoN = 0, introDone = false;
+    setTimeout(() => { introDone = true; }, 1500);
+    const live = new Map();
+    const hits = (a, b, gap) =>
+      a.x < b.x + b.w + gap && a.x + a.w + gap > b.x && a.y < b.y + b.h + gap && a.y + a.h + gap > b.y;
+    const make = () => {
+      const photo = srcs[photoN++ % srcs.length];
+      const w = WIDTHS[Math.floor(rand() * WIDTHS.length)];
+      return { photo, w, h: Math.round(w / photo.ar), tilt: ((rand() - .5) * 4).toFixed(1) + 'deg' };
+    };
+
+    function layout() {
+      seed = 11; photoN = 0;
+      for (const el of live.values()) el.remove();
+      live.clear();
+      near = []; tiled = [];
+      const cw = center.offsetWidth, ch = center.offsetHeight;
+      const box = { x: -cw / 2, y: -ch / 2, w: cw, h: ch };
+
+      // 1) photos right next to the text, going round all four sides
+      for (let tries = 0; near.length < NEAR_COUNT && tries < 6000; tries++) {
+        const c = make();
+        const g = NEAR_GAP[0] + rand() * (NEAR_GAP[1] - NEAR_GAP[0]);
+        const side = near.length % 4;
+        if (side === 0) { c.x = box.x - g - c.w;   c.y = box.y - c.h / 2 + rand() * box.h; }
+        if (side === 1) { c.x = box.x + box.w + g; c.y = box.y - c.h / 2 + rand() * box.h; }
+        if (side === 2) { c.y = box.y - g - c.h;   c.x = box.x - c.w / 2 + rand() * box.w; }
+        if (side === 3) { c.y = box.y + box.h + g; c.x = box.x - c.w / 2 + rand() * box.w; }
+        if (!hits(c, box, NEAR_GAP[0] - 1) && !near.some(o => hits(c, o, GAP))) near.push(c);
+        else photoN--;
+      }
+      // the text and the near photos block the repeating photos from landing on them
+      blockers = [{ ...box }, ...near];
+
+      // 2) the repeating area, scattered at random; wraps at its edges so copies never collide
+      const wrapHits = (a, b) => {
+        for (const dx of [-TILE_W, 0, TILE_W]) for (const dy of [-TILE_H, 0, TILE_H])
+          if (hits(a, { x: b.x + dx, y: b.y + dy, w: b.w, h: b.h }, GAP)) return true;
+        return false;
+      };
+      for (let tries = 0; tiled.length < COUNT && tries < 20000; tries++) {
+        const c = make();
+        c.x = rand() * TILE_W; c.y = rand() * TILE_H;
+        if (!tiled.some(o => wrapHits(c, o))) tiled.push(c);
+        else photoN--;
+      }
+      laidOutFor = `${cw}x${ch}`;
+    }
+
+    function addCard(key, c, x, y) {
+      let el = live.get(key);
+      if (!el) {
+        el = document.createElement('figure');
+        el.className = 'about-card';
+        el.style.cssText = `left:${x}px;top:${y}px;width:${c.w}px;height:${c.h}px`;
+        el.style.setProperty('--tilt', c.tilt);
+        const img = document.createElement('img');
+        img.src = c.photo.src; img.alt = c.photo.alt; img.draggable = false; img.decoding = 'sync';
+        el.appendChild(img);
+        if (introDone) el.classList.add('is-in', 'no-anim');      // appears instantly, no pop
+        else setTimeout(() => el.classList.add('is-in'), 20 + Math.random() * 200);
+        world.appendChild(el);
+        live.set(key, el);
+      }
+      return el;
+    }
+
+    // ---- Rendering: only the photos near the screen exist, so it stays light on phones ----
+    let ox = 0, oy = 0, vx = 0, vy = 0;
+    let frameQueued = false;
+    function scheduleRender() {          // draw at most once per screen refresh
+      if (frameQueued) return;
+      frameQueued = true;
+      requestAnimationFrame(() => { frameQueued = false; render(); });
+    }
+    function render() {
+      world.style.transform = `translate3d(${ox}px, ${oy}px, 0)`;
+      const m = 600, vw = stage.clientWidth, vh = stage.clientHeight;
+      const x0 = -ox - m, x1 = -ox + vw + m, y0 = -oy - m, y1 = -oy + vh + m;
+      const visible = (x, y, c) => !(x + c.w < x0 || x > x1 || y + c.h < y0 || y > y1);
+      const seen = new Set();
+
+      near.forEach((c, i) => {
+        if (!visible(c.x, c.y, c)) return;
+        const key = `n${i}`; seen.add(key); addCard(key, c, c.x, c.y);
+      });
+
+      const tx0 = Math.floor(x0 / TILE_W) - 1, tx1 = Math.floor(x1 / TILE_W);
+      const ty0 = Math.floor(y0 / TILE_H) - 1, ty1 = Math.floor(y1 / TILE_H);
+      for (let tx = tx0; tx <= tx1; tx++) for (let ty = ty0; ty <= ty1; ty++) {
+        tiled.forEach((c, i) => {
+          const x = c.x + tx * TILE_W, y = c.y + ty * TILE_H;
+          if (!visible(x, y, c)) return;
+          const r = { x, y, w: c.w, h: c.h };
+          if (blockers.some(b => hits(r, b, GAP))) return;   // keep clear of the text + near photos
+          const key = `${i}:${tx}:${ty}`; seen.add(key); addCard(key, c, x, y);
+        });
+      }
+      for (const [key, el] of live) if (!seen.has(key)) { el.remove(); live.delete(key); }
+    }
+
+    // The About text sits at the world's origin; "home" puts it between the header and the button
+    const homeX = () => stage.clientWidth / 2;
+    const homeY = () => (stage.clientHeight + safeTop() - safeBottom()) / 2;
+    function fitHeight() {             // make sure the canvas is tall enough for the About text
+      stage.style.minHeight = (center.offsetHeight + safeTop() + safeBottom() + 16) + 'px';
+    }
+
+    // The canvas may have no size yet when the script runs (page fade-ins, fonts loading...).
+    // Watch its size and centre on the About text once it has one.
+    let ready = false, userMoved = false;
+    function onSize() {
+      if (!ready || !stage.clientWidth || !stage.clientHeight) return;
+      fitHeight();
+      if (laidOutFor !== `${center.offsetWidth}x${center.offsetHeight}`) layout();
+      if (!userMoved) { ox = homeX(); oy = homeY(); }
+      render();
+    }
+    if ('ResizeObserver' in window) new ResizeObserver(onSize).observe(stage);
+    addEventListener('resize', onSize);
+    addEventListener('load', onSize);
+    if (document.fonts) document.fonts.ready.then(onSize);
+
+    // ---- Dragging with momentum ----
+    let dragging = false, moved = 0, lastX = 0, lastY = 0, lastT = 0, downCard = null;
+
+    stage.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      if (e.target.closest('a, button')) return;   // let links and buttons work normally
+      dragging = true; moved = 0; vx = vy = 0;
+      lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
+      downCard = e.target.closest('.about-card');
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX, dy = e.clientY - lastY;
+      const now = performance.now(), dt = Math.max(1, now - lastT);
+      moved += Math.abs(dx) + Math.abs(dy);
+      if (moved > 4) { stage.classList.add('is-dragging'); userMoved = true; }
+      ox += dx; oy += dy;
+      vx = vx * .2 + (dx / dt * 16) * .8;
+      vy = vy * .2 + (dy / dt * 16) * .8;
+      lastX = e.clientX; lastY = e.clientY; lastT = now;
+      if (hint) hint.style.opacity = 0;
+      scheduleRender();
+    });
+    const end = () => {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove('is-dragging');
+      if (moved <= 4 && downCard) openLightbox(downCard.querySelector('img'));
+      if (performance.now() - lastT > 80) vx = vy = 0;
+      requestAnimationFrame(glide);
+    };
+    stage.addEventListener('pointerup', end);
+    stage.addEventListener('pointercancel', end);
+
+    function glide() {
+      if (dragging) return;
+      vx *= .95; vy *= .95;
+      if (Math.abs(vx) < .1 && Math.abs(vy) < .1) return;
+      ox += vx; oy += vy; render();
+      requestAnimationFrame(glide);
+    }
+
+    // Arrow keys when the canvas is focused
+    stage.addEventListener('keydown', e => {
+      const s = e.shiftKey ? 240 : 80;
+      const d = { ArrowLeft: [s, 0], ArrowRight: [-s, 0], ArrowUp: [0, s], ArrowDown: [0, -s] }[e.key];
+      if (!d) return;
+      e.preventDefault(); userMoved = true; ox += d[0]; oy += d[1]; render();
+    });
+
+    // ---- Keep the bottom button on screen even if the canvas is taller than the window ----
+    function pinButtons() {
+      const r = stage.getBoundingClientRect();
+      const visibleBottom = Math.min(stage.clientHeight, innerHeight - r.top);
+      stage.style.setProperty('--about-bottom', Math.max(0, stage.clientHeight - visibleBottom) + 'px');
+    }
+    addEventListener('scroll', pinButtons, { passive: true });
+    addEventListener('resize', pinButtons);
+    if ('ResizeObserver' in window) new ResizeObserver(pinButtons).observe(stage);
+
+    // ---- "Scroll for more": jump to the first visible section after the canvas ----
+    if (scrollBtn) scrollBtn.addEventListener('click', () => {
+      let next = stage.nextElementSibling;
+      while (next && (/^(SCRIPT|TEMPLATE|STYLE)$/.test(next.tagName) || !next.getClientRects().length)) next = next.nextElementSibling;
+      if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollBy({ top: stage.clientHeight, behavior: 'smooth' });
+    });
+
+    // ---- Enlarged view ----
+    let lb = document.querySelector('.about-lightbox');
+    if (!lb) {
+      lb = document.createElement('div');
+      lb.className = 'about-lightbox';
+      lb.innerHTML = '<img alt="">';
+      document.body.appendChild(lb);
+      lb.addEventListener('click', () => lb.classList.remove('is-open'));
+      addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('is-open'); });
+    }
+    function openLightbox(img) {
+      const big = lb.querySelector('img');
+      big.src = img.src; big.alt = img.alt;
+      lb.classList.add('is-open');
+    }
+  }
+})();
+</script>
 
 <section class="portfolio">
   <h2 class="uppercase-heading work-accordion-heading">Achievements (03)</h2>
@@ -199,42 +445,6 @@
 </script>
 
 <script>
-  document.querySelectorAll('.hero-photo-item').forEach((el) => {
-    const zone = el.parentElement;
-    let dragging = false;
-    let offX = 0;
-    let offY = 0;
-
-    el.addEventListener('pointerdown', (e) => {
-      dragging = true;
-      el.setPointerCapture(e.pointerId);
-      const rect = el.getBoundingClientRect();
-      offX = e.clientX - rect.left;
-      offY = e.clientY - rect.top;
-      el.style.zIndex = 10;
-    });
-
-    el.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const zoneRect = zone.getBoundingClientRect();
-      let newLeft = e.clientX - zoneRect.left - offX;
-      let newTop = e.clientY - zoneRect.top - offY;
-
-      newLeft = Math.max(0, Math.min(newLeft, zoneRect.width - el.offsetWidth));
-      newTop = Math.max(0, Math.min(newTop, zoneRect.height - el.offsetHeight));
-
-      el.style.left = newLeft + 'px';
-      el.style.top = newTop + 'px';
-    });
-
-    el.addEventListener('pointerup', () => {
-      dragging = false;
-      el.style.zIndex = 1;
-    });
-  });
-</script>
-
-<script>
   (() => {
     // ---- "Let's connect" typewriter ----
     const tag = document.querySelector(".footer-tag");
@@ -295,6 +505,8 @@
     }
   })();
 </script>
+
+
 
 </body>
 </html>
