@@ -10,10 +10,10 @@
 /* Lilex Font */
 @import url('https://fonts.googleapis.com/css2?family=Lilex:ital,wght@0,100..700;1,100..700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
 
-/* Vampiro One Font */
-@import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
+/*  IBM Plex Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 
 /*
 
@@ -79,9 +79,9 @@
 
 :root {
   /* Typography */
-  --font-family-body: "Lilex", monospace;
-  --font-family-heading: "Lilex", monospace;
-  --font-family-project-title: "Lilex", monospace;
+  --font-family-body: "IBM Plex Sans", sans-serif;
+  --font-family-heading: "IBM Plex Sans", sans-serif;
+  --font-family-project-title: "IBM Plex Sans", sans-serif;
  
   /* Core Colours */
   --color-text-primary: #28100c;
@@ -222,6 +222,8 @@ svg {
   object-fit: contain; /* Optional: Makes sure the whole image fits inside its box */
   /* Try 'cover' if you want it to fill the space, or remove this line if not needed */
 }
+
+
 
 /* ---------------------------------------- */
 /* 🎨 Utility Classes for Styling Elements  */
@@ -416,12 +418,13 @@ svg {
 /* Heading Styles (h1 - h6) */
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-family: var(--font-family-heading);
   line-height: 1;
   margin-bottom: 0.5rem;
   color: var(--h1-color);
   text-transform: uppercase;
+  font-weight: 400;
 }
 
 h2 {
@@ -430,7 +433,7 @@ h2 {
   line-height: 1.2;
   margin-bottom: 0.75rem;
   color: var(--h2-color);
-  Font-weight: 400;
+  Font-weight: 300;
   text-transform: uppercase;
 }
 
@@ -447,7 +450,7 @@ h4 {
   margin-bottom: 1rem;
   color: var(--h4-color);
   text-transform: uppercase;
-  font-weight:400;
+  font-weight:300;
 }
 
 h5 {
@@ -467,7 +470,7 @@ h6 {
 
 /* Footer purpose only */
 h6.footer-tag {
-  font-family: "lilex", monospace;
+  font-family: "IBM Plex Sans", sans-serif;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -496,10 +499,11 @@ p {
   font-size: 1rem;
   line-height: 1.3;
   margin-bottom: 1rem;
+  font-weight: 300;
 }
 
 strong {
-  font-weight: 700; /* Makes text bold */
+  font-weight: 600; /* Makes text bold */
 }
 
 em {
@@ -792,10 +796,13 @@ a.nav-link-primary:hover {
   flex-direction: column;
   flex: 1;
   gap: 1rem;
-  padding: var(--padding-small);
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+  padding-left: var(--padding-ultra);
+  padding-right: var(--padding-ultra);
   text-align: center;
   justify-content: center;
-align-items: center;
+  align-items: center;
 }
 
 .hero-icon {
@@ -1373,8 +1380,10 @@ align-items: center;
 }
 
 .project-item {
+  font-family: "ibm-plex-sans", sans-serif;
   font-size: 1rem;
   line-height: 1.2; /* Consistent line height for project items to improve spacing */
+  font-weight: 300;
 }
 
 /*
@@ -1611,19 +1620,13 @@ to keep your styles reusable and consistent.
 
   .nav-branding-logo {
     width: 3rem;
-    /* TODO: Adjust the width of the logo on large devices here. */
+   
   }
 
   .hero {
     min-height: 100vh;
   }
 
-  .hero-headline-wrapper {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    padding-left: var(--padding-ultra);
-    padding-right: var(--padding-ultra);
-  }
   .error-headline-wrapper {
     padding-top: var(--padding-small);
     padding-bottom: var(--padding-small);
@@ -1816,7 +1819,7 @@ to keep your styles reusable and consistent.
 /* Grayscale filter with full-colour on hover and tap */
 
 .work-page-grid-item a.grayscale img,
-.work-page-grid-item-footer a.grayscale img {
+.-footer a.grayscale img {
   filter: grayscale(100%);
   transition: filter 0.4s ease;
 }
@@ -1886,9 +1889,9 @@ a, a:hover, button, .grayscale {
 }
 
 #cursor .info {
-  font-family: "Lilex", monospace;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 0.85rem;
-  font-weight: 400;
+  font-weight: 300;
   color: #F7F2DC;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2172,6 +2175,15 @@ a, a:hover, button, .grayscale {
 html:has(.br-page), .br-page { overflow-x: clip; }
 .br-page { background: #fff; color: #000; }
 
+/* Sky + grass behind the whole 404 page */
+.br-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #fff center / cover no-repeat;
+}
+
 .br-stage {
   position: relative;
   box-sizing: border-box;
@@ -2180,7 +2192,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   padding-top: var(--padding-medium);
   padding-bottom: var(--padding-medium);
   text-align: center;
-  font-family: "lilex", monospace;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 .br-tag {
@@ -2255,7 +2267,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   align-items: center;
   gap: .5em;
 }
-.br-doors a { color: inherit; text-decoration: none; }
+.br-doors a { color: inherit; text-decoration: none; font-size: 1em; font-weight: 300; }
 .br-doors a u { text-decoration: underline; text-underline-offset: 3px; }
 
 .br-doors a:hover,
@@ -2274,7 +2286,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   border: 2px solid;
   border-color: #fff #000 #000 #fff;
   box-shadow: inset -1px -1px #808080, inset 1px 1px #dfdfdf;
-  font-family: "lilex", monospace;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 12px;
   text-align: left;
   pointer-events: auto;
@@ -2295,7 +2307,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   background: #c0c0c0; color: #000;
   border: 1px solid; border-color: #fff #000 #000 #fff;
   box-shadow: inset -1px -1px #808080;
-  font: "lilex", monospace;
+  font: "IBM Plex Sans", sans-serif;
   cursor: pointer;
 }
 .br-tbtn::before { content: ""; position: absolute; inset: -8px; } /* bigger tap target */
@@ -2333,6 +2345,9 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   .br-photo, .br-photo.br-burst::after, .br-win, .br-win.br-shake { animation: none; }
 }
 
+
+
+
 /* ---- popping console text ---- */
 .br-console {
   position: absolute;
@@ -2340,7 +2355,7 @@ html:has(.br-page), .br-page { overflow-x: clip; }
   left: 3%;
   top: 17%;
   width: min(270px, calc(100% - 32px));
-  font: 12px/1.5 "lilex", monospace;
+  font: 12px/1.5 "IBM Plex Sans", sans-serif;
   text-align: left;
   white-space: pre-wrap;
   pointer-events: none;
@@ -2832,13 +2847,13 @@ a.project-nav__link:hover {
 
 @media (max-width: 600px) {
   h6.footer-tag {
-    font-size: 11vw;
+    font-size: 14vw;
   }
 }
 
 @media (max-width: 600px) {
   .hero-headline-wrapper .hero-headline {
-    font-size: 6vw;
+    font-size: 1.75rem;
     line-height: 1.15;
     overflow-wrap: break-word;
   }
@@ -2979,7 +2994,7 @@ a.project-nav__link:hover {
 .about-center a { text-align: center !important; }
 .about-center p { max-width: none; margin-left: auto; margin-right: auto; }
 
-.about-center h1 { margin: 0 0 16px; font-size: 32px; font-weight: 500; }
+.about-center h1 { margin: 0 0 16px; font-size: 32px; }
 .about-center p { margin: 0; font-size: 14px; line-height: 1.6; }
 .about-center p + p { margin-top: 1em; }
 .about-center .work-accordion-link {
@@ -3047,4 +3062,431 @@ body:has(.about-canvas) .hero-header {
 body:has(.about-canvas) .hero-header a,
 body:has(.about-canvas) .hero-header img {
   pointer-events: auto;        /* logo and nav links still clickable */
+}
+
+/* "Back to about" button: shows once you drag away from the text */
+.about-home {
+  position: absolute;
+  right: 24px;
+  bottom: calc(24px + var(--about-bottom, 0px));
+  z-index: 30;
+  padding: 9px 16px;
+  border: 1px solid #1f1d1b;
+  border-radius: 0;
+  background: #f5f5f5;
+  color: #1f1d1b;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+.about-home.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.about-home:hover { background: #ebebeb; }
+@media (max-width: 768px) {
+  /* on phones it sits just above "Scroll for more" */
+  .about-home { right: 50%; transform: translate(50%, 12px); bottom: calc(72px + var(--about-bottom, 0px)); }
+  .about-home.is-visible { transform: translate(50%, 0); }
+}
+
+/* ---- Hover video on work grid ---- */
+.work-media {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.work-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.work-video.is-playing {
+  opacity: 1;
+}
+
+.work-media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.work-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.work-media video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.work-page-grid-item a:hover .work-media video {
+  opacity: 1;
+}
+
+/* Play section */
+
+.play-filters {
+  flex-wrap: wrap;
+}
+
+button.work-view-btn {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* Same underline as the Grid / List switch */
+.work-view-btn[aria-pressed="true"] {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+/* ---- Masonry grid: images keep their own shape ---- */
+.play-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 4 220px;
+  column-gap: 1rem;
+}
+
+.play-item {
+  break-inside: avoid;
+  margin-bottom: 0.5rem;
+}
+
+.play-item[hidden] {
+  display: none;
+}
+
+.play-media {
+  position: relative;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.play-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Motion pieces: plain video, plays on its own, full shape, no crop */
+.play-grid .play-media video {
+  position: static;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: none;
+  pointer-events: none;
+}
+
+/* Small play badge so motion pieces read as video on phones too */
+.play-badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 2;
+  padding: 2px 6px;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---- Caption: (01) Title (Year) + label ---- */
+.play-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.play-caption .work-grid-project-title {
+  font-size: 1.125rem;
+  margin-bottom: 0;
+}
+
+.play-num {
+  color: #808080;
+}
+
+.play-year {
+  flex-shrink: 0;
+  font-size: 1em;
+  line-height: 1.2;
+  color: #808080;
+  white-space: nowrap;
+}
+
+
+.play-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--gap-small);
+  padding: var(--padding-large) 0 var(--padding-medium);
+  margin-bottom: var(--padding-medium);
+}
+
+.play-hero-title {
+  margin: 0;
+  font-size: clamp(4rem, 14vw, 11rem);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.play-hero-count {
+  margin-left: 0.15em;
+  font-size: 0.5em;
+  font-weight: 300;
+  letter-spacing: 0;
+  color: #808080;
+  vertical-align: top;
+}
+
+.play-hero-text {
+  max-width: 34ch;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==============================================================
+   PROJECT POP-UP
+   Mobile: images, then info stacked below.
+   Desktop (992px+): images on the left, info on the right.
+   ============================================================== */
+
+html.play-modal-open {
+  overflow: hidden;
+}
+
+.play-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000; /* under the custom cursor (9999) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-tiny);
+}
+
+.play-modal[hidden] {
+  display: none;
+}
+
+.play-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.6); /* same as the about lightbox */
+}
+
+.play-modal-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1240px;
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--color-bg);
+  border: 1px solid #1f1d1b;
+  border-radius: 0;
+  animation: about-pop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2); /* keyframes from style.css */
+}
+
+.play-modal-media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-small);
+  align-content: start;
+  padding: var(--padding-small);
+}
+
+.play-modal-media img,
+.play-modal-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.play-modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);
+  padding: var(--padding-small);
+}
+
+.play-modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-close {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #1f1d1b;
+  border-radius: 0;
+  background: var(--color-bg);
+  color: #1f1d1b;
+}
+
+.play-close:hover {
+  background: #ebebeb;
+}
+
+.play-modal-num {
+  margin: 0;
+}
+
+.play-modal-title {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.play-modal-body p {
+  line-height: 1.5;
+}
+
+.play-modal-body .project-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 0.75px solid #808080;
+}
+
+.play-modal-body .project-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 0.75px solid #808080;
+}
+
+.play-modal-body .project-item span:first-child {
+  color: #808080;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.play-modal-nav {
+  margin: auto 0 0;
+  padding-top: var(--padding-small);
+}
+
+.play-modal-nav .project-nav__link {
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  .play-modal {
+    padding: var(--padding-medium);
+  }
+
+  .play-modal-dialog {
+    flex-direction: row;
+    height: min(820px, 100%);
+    overflow: hidden;
+  }
+
+  .play-modal-media {
+    flex: 1 1 62%;
+    min-width: 0;
+    overflow-y: auto;
+    padding: var(--padding-medium);
+  }
+
+  .play-modal-info {
+    flex: 0 0 38%;
+    max-width: 440px;
+    overflow-y: auto;
+    border-top: 0;
+    padding: var(--padding-medium);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-modal-dialog {
+    animation: none;
+  }
+}
+
+.play-modal-media > :first-child {
+  grid-column: 1 / -1;     /* takes the full row */
+  justify-self: center;    /* centered */
+  width: auto;
+  max-width: 100%;
+}
+
+
+.play-modal-media > .play-modal-vimeo {
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+}
+
+/* Extras with class="play-wide" take a full row instead of half */
+.play-modal-media > .play-wide {
+  grid-column: 1 / -1;
+}
+
+.play-media--vimeo {
+  aspect-ratio: 16 / 9;
+}
+
+.play-media--vimeo iframe,
+.play-modal-vimeo iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;   /* clicks go to the link, so the pop-up still opens */
 }
