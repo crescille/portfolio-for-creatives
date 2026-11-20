@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
-    <link rel="icon" type="image/png" href="assets/branding-images/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/branding-images/favicon.png" />
     <meta property="og:image" content="screenshot.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,7 +20,7 @@
         <ul class="nav-branding">
           <!-- Logo (standalone LI) -->
           <li class="nav-branding-logo">
-            <a href="work.html">
+            <a href="index.html">
               <img src="assets/branding-images/crescille-buyuccan--logo--branding.svg" alt="Your portfolio logo" />
             </a>
           </li>
@@ -44,23 +44,21 @@
 <section class="about-canvas" tabindex="0" aria-label="About me, surrounded by photos. Drag to explore.">
   <div class="about-world">
     <div class="about-center">
-      <h1 class="hero-headline">About me</h1>
-      <p>I'm Crescille Angel Buyuccan, a branding designer with a curious mind and a love for trying new things. I'm drawn to playful ideas, unexpected directions, and work that is pretty cool and rad.</p>
-      <p>When I’m not designing, you can usually find me touching grass, spending time in nature, listening to music, or taking a dance class or two. I’m always finding new ways to express myself creatively, and often, what I explore outside of design finds its way back into my work.
-</p>
+      <h1>About me</h1>
+      <p>I'm Crescille Angel Buyuccan, a branding designer. I love looking at an idea from different perspectives until I land on a visual direction that fits what the piece needs to say. I play and experiment along the way but stay grounded and consistent, so the concept never gets lost. My heart's in works that builds connection and community.</p>
+      <p>When I’m not designing, you can usually find me touching grass, spending time in nature, listening to music, or taking a dance class or two. I’m always finding new ways to express myself creatively, and often, what I explore outside of design finds its way back into my work.</p>
       <a href="#" class="work-accordion-link">Download my resume</a>
       <div class="hero-about-bottom">
         <h2 class="hero-label">Education</h2>
-        <p class="hero-value">Capilano University
-        <br> Bachelor of Design in Visual Communication
-        <br> 2023 - Present</p>
+        <p class="hero-value">Capilano University</p>
+        <p class="hero-value">Bachelor of Design in Visual Communication</p>
+        <p class="hero-value">2023 - Present</p>
       </div>
     </div>
 
   </div>
   <div class="about-hint">Drag to explore</div>
-  <button class="about-scroll" type="button">Scroll for more ↓ </button>
-  <button class="about-home" type="button">Back to about</button>
+  <button class="about-scroll" type="button">Scroll for more <span class="arrow">↓</span></button>
 
   <!-- Your photos: add as many as you like. More photos = fewer repeats. -->
   <template class="about-images">
@@ -82,7 +80,6 @@
     const hint      = stage.querySelector('.about-hint');
     const center    = stage.querySelector('.about-center');
     const scrollBtn = stage.querySelector('.about-scroll');
-    const homeBtn   = stage.querySelector('.about-home');
     const srcs = [...stage.querySelector('template.about-images').content.querySelectorAll('img')]
                    .map(img => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
     if (!srcs.length) return;
@@ -216,8 +213,6 @@
         });
       }
       for (const [key, el] of live) if (!seen.has(key)) { el.remove(); live.delete(key); }
-      // show "Back to about" once the text is mostly off screen
-      if (homeBtn) homeBtn.classList.toggle('is-visible', Math.hypot(ox - homeX(), oy - homeY()) > 250);
     }
 
     // The About text sits at the world's origin; "home" puts it between the header and the button
@@ -284,25 +279,6 @@
       ox += vx; oy += vy; render();
       requestAnimationFrame(glide);
     }
-
-    // "Back to about": glide back to the text
-    function animateTo(tx, ty, dur = 800) {
-      const sx = ox, sy = oy, t0 = performance.now(); vx = vy = 0;
-      const step = now => {
-        if (dragging) return;
-        const t = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - t, 3);
-        ox = sx + (tx - sx) * k; oy = sy + (ty - sy) * k; render();
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }
-    if (homeBtn) homeBtn.addEventListener('click', () => {
-      // after dragging far, jump close first so the trip back stays short and smooth
-      const dx = ox - homeX(), dy = oy - homeY(), far = 1500, d = Math.hypot(dx, dy);
-      if (d > far) { ox = homeX() + dx / d * far; oy = homeY() + dy / d * far; render(); }
-      userMoved = false;
-      animateTo(homeX(), homeY());
-    });
 
     // Arrow keys when the canvas is focused
     stage.addEventListener('keydown', e => {
@@ -530,5 +506,7 @@
   })();
 </script>
 
-  </body>
+
+
+</body>
 </html>

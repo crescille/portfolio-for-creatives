@@ -1,26 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Crescille Buyuccan Portfolio | Play</title>
-    <meta name="description" content="Play: illustration, motion, branding and UI/UX experiments by Crescille Buyuccan, a Vancouver-based branding designer." />
+    <title>Free Creative Portfolio Template: October 2025 Version | Play Page</title>
+    <meta name="description" content="When writing a meta description, keep it between 140 and 160 characters so Google can display your entire message. Don’t forget to include your keyword!" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="assets/branding-images/favicon.svg" />
-    <link rel="icon" type="image/png" href="assets/branding-images/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/branding-images/favicon.png" />
     <meta property="og:image" content="screenshot.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/masonry.css" />
+    <link rel="stylesheet" href="./lightbox2/dist/css/lightbox.min.css" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/play.css" />
   </head>
 
   <body class="work-page" id="top">
     <section>
       <header class="hero-header">
         <ul class="nav-branding">
+          <!-- Logo (standalone LI) -->
           <li class="nav-branding-logo">
-            <a href="work.html">
-              <img src="assets/branding-images/crescille-buyuccan--logo--branding.svg" alt="Your portfolio logo" />
+            <a href="index.html">
+              <img src="assets/branding-images/logo.svg" alt="Your portfolio logo" />
             </a>
           </li>
           <li class="nav-branding-item">
@@ -38,340 +40,108 @@
           </li>
         </ul>
       </header>
-    </section>
+
+      
+<div class="project-description-container padding-large">
+      <div class="project-title col-2">
+        <h2>Miscellaneous Works</h2>
+      </div>
+      <div class="project-description col-2">
+        <p>My collection of miscellaneous design projects and experiments.</p>
+      </div>
+    </div>
 
     <main class="main-work-section">
       <section class="portfolio">
-        <div class="play-hero">
-          <h1 class="hero-headline">Playground<sup class="play-hero-count">(<span id="playCount">12</span>)</sup></h1>
-          <p class="play-hero-text">
-            Archived projects, personal work, and other things that are too good to leave out.
-          </p>
-        </div>
-
-        <nav class="work-view-toggle play-filters" aria-label="Filter by discipline">
-          <button class="work-view-btn" type="button" data-filter="all" aria-pressed="true">All (<span class="play-filter-count">12</span>)</button>
-          <button class="work-view-btn" type="button" data-filter="illustration" aria-pressed="false">Illustration (<span class="play-filter-count">3</span>)</button>
-          <button class="work-view-btn" type="button" data-filter="motion" aria-pressed="false">Motion (<span class="play-filter-count">3</span>)</button>
-          <button class="work-view-btn" type="button" data-filter="branding" aria-pressed="false">Branding (<span class="play-filter-count">3</span>)</button>
-          <button class="work-view-btn" type="button" data-filter="uiux" aria-pressed="false">UI/UX (<span class="play-filter-count">3</span>)</button>
-          <button class="work-view-btn" type="button" data-filter="other" aria-pressed="false">Other (<span class="play-filter-count">2</span>)</button>
-        </nav>
-
-        <!--
-          HOW TO ADD A PIECE
-          Copy one <li class="play-item"> block and change:
-            • data-category: illustration, motion, branding or uiux
-            • id: play-13, play-14 ... (any unique name)
-            • the image, title and year (keep the play-num, play-title and play-year classes:
-              the pop-up reads them)
-            • the hidden .play-details: description, role/tools, extra pop-up images
-          Numbers (01), (02)... and all the counts update themselves.
-          Mix the categories up as you go so the grid feels random.
-          Motion pieces: add a <video> after the <img> plus the "Play" badge (see play-02).
-        -->
-        <ul class="play-grid">
-    <li class="work-page-grid-item play-item" data-category="illustration" id="play-01">
-      <a class="play-link" href="#play-01">
-        <figure class="play-media">
-          <img src="assets/play/crescille-buyuccan--enemy-within--illustration.jpg" width="1017" height="1633" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(01)</span> <span class="play-title">Enemy Within</span></h2>
-          <p class="uppercase-heading play-year">(2025)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>The theme being "friend or foe". The concept of “Ouroboros” highlights how one can become one’s own worst enemy.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Illustrator</span></li>
-          <li class="project-item"><span>Tool</span><span>Procreate</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-        <div class="play-details-media">
-          <img src="assets/play/crescille-buyuccan--enemy-within-blue---illustration.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-          <img src="assets/play/crescille-buyuccan--enemy-within-red--illustration.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-        </div>
-      </div>
-    </li>
-
-
-    <li class="work-page-grid-item play-item" data-category="motion" id="play-02">
-      <a class="grayscale play-link" href="#play-02">
-       <figure class="play-media play-media--vimeo">
-  <iframe src="https://player.vimeo.com/video/1247446964?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="Zombie apocalypse environment"></iframe>
-</figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(02)</span> <span class="play-title">Apocalypse</span></h2>
-          <p class="uppercase-heading play-year">(2024)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Illustrator</span></li>
-          <li class="project-item"><span>Tools</span><span>Illustrator / Procreate / After Effects</span></li>
-        </ul>
-      </div>
-    </li>
-    
-    <li class="work-page-grid-item play-item" data-category="motion" id="play-03">
-      <a class="play-link" href="#play-03">
- <figure class="play-media play-media--loop">
-      <video src="assets/play/crescille-buyuccan--vsdf--motion.mp4" poster="assets/play/crescille-buyuccan--vsdf--poster.jpg" width="720" height="1280" autoplay muted loop playsinline></video>
-    </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(03)</span> <span class="play-title">VSDF </span></h2>
-          <p class="uppercase-heading play-year">(2025)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>Poster and motion for Vancouver Street Dance Festival</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Designer</span></li>
-          <li class="project-item"><span>Tools</span><span>Illustrator / After Effects</span></li>
-        </ul>
-               <!-- pop up when you click on project -->
-                <div class="play-details-media">
-  <img class="play-wide" src="assets/play/crescille-buyuccan--vsdf-poster--design.jpg" width="1920" height="1080" loading="lazy" alt="write here" />
-</div>
-      </div>
-    </li>
-
-
-
-   <li class="work-page-grid-item play-item" data-category="motion" id="play-04">
-      <a class="grayscale play-link" href="#play-04">
- <figure class="play-media play-media--vimeo" style="aspect-ratio: 100 / 61.96;">
-      <iframe src="https://player.vimeo.com/video/1247457519?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="The Library"></iframe>
-    </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(04)</span> <span class="play-title">The Library</span></h2>
-          <p class="uppercase-heading play-year">(2026)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A speculative design exhibition that imagines a near-future where knowledge has become a tiered, subscription-based commodity rather than a public right.
-          <br>
-          <br> Model library game not by me
-        </p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Signage(?) / Motion Designer</span></li>
-          <li class="project-item"><span>Tools</span><span>Illustrator / After Effects /  Premiere Pro</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-<div class="play-details-media">
-  <video class="play-wide" src="assets/play/crescille-buyuccan--library-ads--motion.mp4" width="1920" height="1080" muted loop playsinline preload="none"></video>
-  <img class="play-wide" src="assets/play/crescille-buyuccan--library-ads--motion.jpg" width="1920" height="1080" loading="lazy" alt="Collage of loud, multilingual pop-up style ads made for The Library exhibition" />
-</div>
-      </div>
-    </li>
-
-
-
-
-    <li class="work-page-grid-item play-item" data-category="illustration" id="play-05">
-      <a class="play-link" href="#play-05">
-        <figure class="play-media">
-          <img src="assets/play/crescille-buyuccan--monster--illustration.jpg" width="1200" height="1200" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(05)</span> <span class="play-title">Ad Monster</span></h2>
-          <p class="uppercase-heading play-year">(2024)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Illustrator</span></li>
-          <li class="project-item"><span>Tools</span><span>Illustrator</span></li>
-        </ul>
-       
-      </div>
-    </li>
-    <li class="work-page-grid-item play-item" data-category="branding" id="play-06">
-      <a class="grayscale play-link" href="#play-06">
-        <figure class="play-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1200" height="1600" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(06)</span> <span class="play-title">Project Title</span></h2>
-          <p class="uppercase-heading play-year">(YYYY)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Your role</span></li>
-          <li class="project-item"><span>Tools</span><span>Tools used</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-        <div class="play-details-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-        </div>
-      </div>
-    </li>
-
-    <li class="work-page-grid-item play-item" data-category="branding" id="play-07">
-      <a class="grayscale play-link" href="#play-07">
-        <figure class="play-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1600" height="1200" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(07)</span> <span class="play-title">Project Title</span></h2>
-          <p class="uppercase-heading play-year">(YYYY)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Your role</span></li>
-          <li class="project-item"><span>Tools</span><span>Tools used</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-        <div class="play-details-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-        </div>
-      </div>
-    </li>
-
-
-    <li class="work-page-grid-item play-item" data-category="illustration" id="play-08">
-      <a class="play-link" href="#play-08">
-        <figure class="play-media">
-          <img src="assets/play/crescille-buyuccan--brother-portrait--illustration.jpg" width="1920" height="1200" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(08)</span> <span class="play-title">Bro</span></h2>
-          <p class="uppercase-heading play-year">(2024)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A portrait set</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Illustration</span></li>
-          <li class="project-item"><span>Tools</span><span>Procreate</span></li>
-        </ul>
-      </div>
-    </li>
-    <li class="work-page-grid-item play-item" data-category="branding" id="play-09">
-      <a class="grayscale play-link" href="#play-09">
-        <figure class="play-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1500" height="1000" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(09)</span> <span class="play-title">Project Title</span></h2>
-          <p class="uppercase-heading play-year">(YYYY)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Your role</span></li>
-          <li class="project-item"><span>Tools</span><span>Tools used</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-        <div class="play-details-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-        </div>
-      </div>
-    </li>
-    <li class="work-page-grid-item play-item" data-category="illustration" id="play-10">
-      <a class="play-link" href="#play-10">
-        <figure class="play-media">
-          <img src="assets/play/crescille-buyuccan--character-design--illustration.jpg" width="1200" height="1700" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(10)</span> <span class="play-title">Unknown</span></h2>
-          <p class="uppercase-heading play-year">(2025)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>Part of an assignment exploring different styles. This is a character design for a fantasy setting.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Illustrator</span></li>
-          <li class="project-item"><span>Tools</span><span>Procreate</span></li>
-        </ul>
-      </div>
-    </li>
-    <li class="work-page-grid-item play-item" data-category="uiux" id="play-11">
-      <a class="grayscale play-link" href="#play-11">
-        <figure class="play-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1440" height="1080" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(11)</span> <span class="play-title">Project Title</span></h2>
-          <p class="uppercase-heading play-year">(YYYY)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>A few lines about the project: the brief, what you made and how it turned out.</p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Your role</span></li>
-          <li class="project-item"><span>Tools</span><span>Tools used</span></li>
-        </ul>
-        <!-- pop up when you click on project -->
-        <div class="play-details-media">
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-          <img src="assets/images/placeholder-work-image.jpg" width="1920" height="1080" loading="lazy" alt="Describe this image" />
-        </div>
-      </div>
-    </li>
-
-
-   <li class="work-page-grid-item play-item" data-category="other" id="play-12">
-      <a class="play-link" href="#play-12">
-        <figure class="play-media">
-          <img src="assets/play/crescille-buyuccan--tour-poster--design.jpg" width="1440" height="1800" loading="lazy" alt="Describe this piece" />
-        </figure>
-        <div class="play-caption">
-          <h2 class="uppercase-heading"><span class="play-num">(12)</span> <span class="play-title">Sunburn Poster</span></h2>
-          <p class="uppercase-heading play-year">(2023)</p>
-        </div>
-      </a>
-      <div class="play-details" hidden>
-        <p>Made a poster inspired from Dominic Fike’s Sunburn album and the “Don’t Stare at the Sun” World Tour, just for funsies. </p>
-        <ul class="project-info-list">
-          <li class="project-item"><span>Role</span><span>Designer</span></li>
-          <li class="project-item"><span>Tools</span><span>Photoshop / Procreate</span></li>
-        </ul>
-      </div>
-    </li>
-
+        <ul class="masonry-grid padding-small">
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/cherry-plant.jpg" data-lightbox="project-1" data-title="Cherry plant">
+              <figure>
+                <img src="css-masonry/files/images/cherry-plant.jpg" width="800" height="1200" loading="lazy" alt="Cherry plant" title="Cherry plant" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/oranges-pomegranates.jpg" data-lightbox="project-2" data-title="Oranges and Pomegranates">
+              <figure>
+                <img src="css-masonry/files/images/oranges-pomegranates.jpg" width="1152" height="768" loading="lazy" alt="Oranges and Pomegranates" title="Oranges and Pomegranates" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/strawberry.jpg" data-lightbox="project-3" data-title="Strawberry">
+              <figure>
+                <img src="css-masonry/files/images/strawberry.jpg" width="1072" height="657" loading="lazy" alt="Strawberry" title="Strawberry" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/blueberries.jpg" data-lightbox="project-4" data-title="Blueberries">
+              <figure>
+                <img src="css-masonry/files/images/blueberries.jpg" width="986" height="657" loading="lazy" alt="Blueberries" title="Blueberries" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/pears.jpg" data-lightbox="project-5" data-title="Pears">
+              <figure>
+                <img src="css-masonry/files/images/pears.jpg" width="1028" height="657" loading="lazy" alt="Pears" title="Pears" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/easter-eggs.jpg" data-lightbox="project-6" data-title="Easter eggs">
+              <figure class=>
+                <img src="css-masonry/files/images/easter-eggs.jpg" width="523" height="657" loading="lazy" alt="Easter eggs" title="Easter eggs" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/lemons.jpg" data-lightbox="project-7" data-title="Lemons">
+              <figure>
+                <img src="css-masonry/files/images/lemons.jpg" width="493" height="657" loading="lazy"alt="Lemons" title="Lemons" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/cherries.jpg" data-lightbox="project-8" data-title="Cherries">
+              <figure>
+                <img src="css-masonry/files/images/cherries.jpg" width="985" height="657" loading="lazy" alt="Cherries" title="Cherries" />
+              </figure>
+            </a>
+          </li>
+          <li class="masonry-item">
+            <a href="css-masonry/files/images/grapes.jpg" data-lightbox="project-9" data-title="Grapes">
+              <figure>
+                <img src="css-masonry/files/images/grapes.jpg" width="985" height="657" loading="lazy" alt="Grapes" title="Grapes" />
+              </figure>
+            </a>
+          </li>
         </ul>
       </section>
     </main>
-
-    <!-- Project pop-up (filled in by the script below) -->
-    <div class="play-modal" id="playModal" hidden>
-      <div class="play-modal-backdrop" data-play-close></div>
-      <div class="play-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="playModalTitle">
-        <div class="play-modal-media" id="playModalMedia"></div>
-        <aside class="play-modal-info">
-          <div class="play-modal-top">
-            <p class="work-accordion-num play-modal-num" id="playModalNum"></p>
-            <button class="play-close" type="button" data-play-close aria-label="Close">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
-            </button>
-          </div>
-          <h2 class="play-modal-title" id="playModalTitle"></h2>
-          <div class="play-modal-body" id="playModalBody"></div>
-          <nav class="project-nav play-modal-nav" aria-label="More from Play">
-            <a class="project-nav__link project-nav__prev" href="#" id="playPrev">
-              <svg class="project-nav__arrow" width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
-              Prev
-            </a>
-            <a class="project-nav__link project-nav__next" href="#" id="playNext">
-              Next
-              <svg class="project-nav__arrow" width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/></svg>
-            </a>
-          </nav>
-        </aside>
+   <section class="marquee-top">
+      <div class="marquee-top__track">
+        <div class="marquee-top__content">
+          <ul class="marquee-top__list">
+            <li class="marquee-top__item"><h3>Branding</h3></li>
+            <li class="marquee-top__item"><h3>Web Design</h3></li>
+            <li class="marquee-top__item"><h3>Illustration</h3></li>
+            <li class="marquee-top__item"><h3>Motion</h3></li>
+            <li class="marquee-top__item"><h3>Print</h3></li>
+          </ul>
+        </div>
+        <div class="marquee-top__content">
+          <ul class="marquee-top__list">
+            <li class="marquee-top__item"><h3>Branding</h3></li>
+            <li class="marquee-top__item"><h3>Web Design</h3></li>
+            <li class="marquee-top__item"><h3>Illustration</h3></li>
+            <li class="marquee-top__item"><h3>Motion</h3></li>
+            <li class="marquee-top__item"><h3>Print</h3></li>
+          </ul>
+        </div>
       </div>
-    </div>
+</section>
 
 <ul class="footer-closer">
   <li class="footer-contact-social">
@@ -396,14 +166,31 @@
 <ul class="footer-global">
   <li class="footer-bottom">
     <div class="footer-tag-wrapper">
-      <img class="footer-tag-gif" src="assets/Images/footer-dap.gif" width="300" height="300" alt="" />
-      <h6 class="footer-tag">Let's connect</h6>
-    </div>
+<svg class="lets-connect" viewBox="38 115 220 40" role="img" aria-label="Let's connect">
+  <g fill="none" stroke="#e26f1f" stroke-width="4" stroke-linejoin="bevel">
+    <path pathLength="1" style="--d:0ms" transform="matrix(1.143297 0 0 1.143297 3.145461 -25.196637)" d="M52.47817,131.547111L42.236283,146.942148l2.254504,2.125674l7.343239.901802"/>
+    <path pathLength="1" style="--d:200ms" transform="translate(7.931609 -3.701418)" d="M74.812729,145.61939q-11.641771,5.509692-14.540419,4.092576t-2.512161-4.380178q7.149996-12.625218,11.465759-6.699095-1.739188,6.505852-10.113057,4.186935"/>
+    <path pathLength="1" style="--d:300ms" transform="translate(7.931609 -3.701418)" d="M80.820572,133.189432l-7.256887,14.513773l2.106838,2.340931q5.306111-.468186,10.846315-4.759893"/>
+    <path pathLength="1" style="--d:300ms" transform="translate(7.931609 -3.701418)" d="M77.855392,138.963729q4.44777.546216,6.632639-.546218"/>
+    <path pathLength="1" style="--d:400ms" transform="translate(7.931609 -3.650114)" d="M94.691878,130.453184q-2.488441,4.243577-3.507811,5.700193"/>
+    <path pathLength="1" style="--d:500ms" transform="translate(7.931609 -3.701418)" d="M107.115376,141.707412l2.149498-3.738257-3.270975-2.61678q-6.635406,3.92517-6.728862,5.513929t7.663426,7.102687l-6.915774,2.149498q-3.457887-2.429867-5.140103-4.485908"/>
+    <path pathLength="1" style="--d:600ms" transform="translate(9.931609 -3.701418)" d="M133.937367,141.707412l1.962585-3.831713-2.990606-1.962585q-10.774056,5.641065-8.130708,11.588595.747652,1.682216,6.460713,2.212679q5.412988.035963,8.355721-1.4131"/>
+    <path pathLength="1" style="--d:700ms" transform="translate(7.931609 -3.701418)" d="M141.133511,148.623186q8.224165,1.588759,11.827397-10.213232l-3.603233-2.590297q-11.027856,3.738257-8.224164,12.803529Z"/>
+    <path pathLength="1" style="--d:900ms" transform="matrix(0.988343 0.152242 -0.220991 1.434653 40.328105 -90.060703)" d="M162.815399,136.473852q-5.98121,8.31762-5.887754,12.429703"/>
+    <path pathLength="1" style="--d:900ms" transform="translate(7.931609 -3.701418)" d="M148.310487,146.637622l20.953405-8.761923l1.869128,1.401846q-1.869128,9.812924-3.831713,10.560575"/>
+    <path pathLength="1" style="--d:1100ms; animation-duration:0.7s; animation-timing-function:linear; stroke-linejoin:round" transform="translate(26.15561 -2.86031)" d="M149.170762,148.997012l20.09313-11.121313l1.848263,1.32918q-5.158134,10.495107-5.158134,10.495107c0,0,12.744217-7.758062,12.645607-7.721466q8.373869,2.318917,10.113057-4.186935-4.315763-5.926123-11.465759,6.699095-.386487,2.963062,2.512161,4.380178t13.398191-4.766664"/>
+    <path pathLength="1" style="--d:1200ms" transform="matrix(0.988326 0.152356 -0.204221 1.324767 55.909071 -73.558358)" d="M162.815399,136.473852q-5.98121,8.31762-5.887754,12.429703"/>
+    <path pathLength="1" style="--d:1400ms" transform="translate(94.918197 -3.48557)" d="M133.937367,141.707412l1.962585-3.831713-2.990606-1.962585q-10.774056,5.641065-8.130708,11.588595.747652,1.682216,2.803693,1.682216q9.626011-.934564,11.682052-3.364431"/>
+    <path pathLength="1" style="--d:1600ms" transform="translate(159.61511 -3.917266)" d="M80.820572,133.189432l-7.256887,14.513773l2.106838,2.340931q5.306111-.468186,10.846315-4.759893"/>
+    <path pathLength="1" style="--d:1700ms" transform="translate(159.61511 -3.917266)" d="M77.855392,138.963729q4.44777.546216,6.632639-.546218"/>
+  </g>
+</svg>
+</div>
     <div class="footer-bottom-row">
       <p class="footer-fineprint">
-        &copy; <span id="copyright-years">2020-</span>. Designed &amp; Coded by yours truly
+        &copy; <span id="copyright-years">2020-</span>. Designed & Coded by yours truly
       </p>
-      <p class="footer-scroll-top"><a href="#top">▲ Up up and away </a></p>
+      <p class="footer-scroll-top"><a href="#top">▲ Back to top</a></p>
     </div>
   </li>
 </ul>
@@ -412,206 +199,28 @@
   document.getElementById("copyright-years").textContent += new Date().getFullYear();
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
 <script>
-  // ---- Play: numbering, counts, filters, rise-on-scroll, pop-up ----
-  (() => {
-    const items = [...document.querySelectorAll(".play-item")];
-    const buttons = [...document.querySelectorAll(".play-filters .work-view-btn")];
-    const pad = (n) => String(n).padStart(2, "0");
-    const labels = { illustration: "Illustration", motion: "Motion", branding: "Branding", uiux: "UI/UX" };
+  const gridItems = document.querySelectorAll(".work-page-grid-item");
 
-    // Number every piece in page order and fill in the counts
-    items.forEach((item, i) => {
-      const num = item.querySelector(".play-num");
-      if (num) num.textContent = "(" + pad(i + 1) + ")";
-    });
-    document.getElementById("playCount").textContent = pad(items.length);
-    buttons.forEach((btn) => {
-      const f = btn.dataset.filter;
-      const n = f === "all" ? items.length : items.filter((i) => i.dataset.category === f).length;
-      btn.querySelector(".play-filter-count").textContent = n;
-    });
+  const gridObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = [...gridItems].indexOf(entry.target);
+        entry.target.style.transitionDelay = (index % 3) * 120 + "ms";
 
-    // ---- Rise on scroll (same feel as the work grid) ----
-    const riseObserver = new IntersectionObserver(
-      (entries) => {
-        let n = 0;
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !entry.target.classList.contains("is-visible")) {
-            entry.target.style.transitionDelay = (n++ % 3) * 120 + "ms";
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
-    );
-    items.forEach((item) => riseObserver.observe(item));
-
-    // Back at the top of the page? Reset the cards below the screen
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 10) return;
-      items.forEach((item) => {
-        if (item.getBoundingClientRect().top > window.innerHeight) item.classList.remove("is-visible");
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
       });
-    }, { passive: true });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+  );
 
-    // ---- Filters ----
-    function applyFilter(filter) {
-      buttons.forEach((b) => b.setAttribute("aria-pressed", b.dataset.filter === filter ? "true" : "false"));
-      items.forEach((item) => {
-        item.hidden = !(filter === "all" || item.dataset.category === filter);
-        item.classList.remove("is-visible");
-        item.style.transitionDelay = "0ms";
-        riseObserver.unobserve(item);
-      });
-      // Let the hidden state settle, then watch again so the cards rise back in
-      requestAnimationFrame(() => {
-        items.forEach((item) => { if (!item.hidden) riseObserver.observe(item); });
-      });
-    }
-    buttons.forEach((btn) => btn.addEventListener("click", () => applyFilter(btn.dataset.filter)));
-
-// ---- Motion pieces: play by themselves, pause when off screen ----
-const tileVideos = document.querySelectorAll(".play-grid .play-media video");
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const v = entry.target;
-    if (entry.isIntersecting) { v.muted = true; v.play().catch(() => {}); }
-    else v.pause();
-  });
-});
-tileVideos.forEach((v) => {
-  v.muted = true;
-  v.removeAttribute("controls");
-  videoObserver.observe(v);
-});
-
-    // ---- Pop-up ----
-    const modal = document.getElementById("playModal");
-    const mMedia = document.getElementById("playModalMedia");
-    const mNum = document.getElementById("playModalNum");
-    const mTitle = document.getElementById("playModalTitle");
-    const mBody = document.getElementById("playModalBody");
-    const prevBtn = document.getElementById("playPrev");
-    const nextBtn = document.getElementById("playNext");
-    const closeBtn = modal.querySelector(".play-close");
-    let current = null;
-    let lastFocus = null;
-
-    const shown = () => items.filter((i) => !i.hidden);
-
-    function fill(item) {
-      current = item;
-      const tag = labels[item.dataset.category] || item.dataset.category;
-      // Reads the caption; a missing class just leaves that spot blank
-      const text = (sel) => { const el = item.querySelector(sel); return el ? el.textContent.trim() : ""; };
-      const year = text(".play-year").replace(/[()]/g, "");
-      mNum.textContent = text(".play-num");
-      mTitle.textContent = text(".play-title") || text(".play-caption h2");
-
-// Media: the tile's video (motion) or image in full colour, then any extras
-      mMedia.innerHTML = "";
-      const tileVideo = item.querySelector(".play-media video");
-      const tileFrame = item.querySelector(".play-media iframe");
-      if (tileFrame) {
-        // Vimeo: same plain looping video, in a 16:9 box
-        const box = document.createElement("div");
-        box.className = "play-modal-vimeo";
-        const frame = tileFrame.cloneNode();
-        frame.removeAttribute("loading");
-        box.appendChild(frame);
-        mMedia.appendChild(box);
-      } else if (tileVideo) {
-        const v = document.createElement("video");
-        v.src = tileVideo.getAttribute("src");
-        v.muted = true; v.loop = true; v.autoplay = true; v.controls = false;
-        v.setAttribute("playsinline", "");
-        mMedia.appendChild(v);
-      } else {
-        const img = item.querySelector(".play-media img").cloneNode();
-        img.removeAttribute("loading");
-        mMedia.appendChild(img);
-      }
-      const details = item.querySelector(".play-details");
-      const extra = details && details.querySelector(".play-details-media");
-      if (extra) [...extra.children].forEach((el) => mMedia.appendChild(el.cloneNode(true)));
-mMedia.querySelectorAll("video").forEach((v) => { v.muted = true; v.play().catch(() => {}); });
-
-      // Text: description + info list, with Year and Discipline added at the top
-      mBody.innerHTML = "";
-      if (details) {
-        [...details.children].forEach((el) => {
-          if (!el.classList.contains("play-details-media")) mBody.appendChild(el.cloneNode(true));
-        });
-      }
-      let list = mBody.querySelector(".project-info-list");
-      if (!list) { list = document.createElement("ul"); list.className = "project-info-list"; mBody.appendChild(list); }
-      [["Discipline", tag], ["Year", year]].forEach(([k, v]) => {
-        const li = document.createElement("li");
-        li.className = "project-item";
-        li.innerHTML = "<span></span><span></span>";
-        li.children[0].textContent = k;
-        li.children[1].textContent = v;
-        list.prepend(li);
-      });
-
-      mMedia.scrollTop = 0;
-      modal.querySelector(".play-modal-info").scrollTop = 0;
-      history.replaceState(null, "", "#" + item.id);
-    }
-
-    function open(item) {
-      lastFocus = document.activeElement;
-      fill(item);
-      modal.hidden = false;
-      document.documentElement.classList.add("play-modal-open");
-      closeBtn.focus();
-    }
-
-    function close() {
-      if (modal.hidden) return;
-      modal.hidden = true;
-      mMedia.innerHTML = ""; // stops any playing video
-      document.documentElement.classList.remove("play-modal-open");
-      history.replaceState(null, "", location.pathname + location.search);
-      if (lastFocus) lastFocus.focus();
-    }
-
-    function step(dir) {
-      const list = shown();
-      const i = list.indexOf(current);
-      if (i < 0 || !list.length) return;
-      fill(list[(i + dir + list.length) % list.length]);
-    }
-
-    items.forEach((item) => {
-      item.querySelector(".play-link").addEventListener("click", (e) => {
-        e.preventDefault();
-        open(item);
-      });
-    });
-    modal.querySelectorAll("[data-play-close]").forEach((el) => el.addEventListener("click", close));
-    prevBtn.addEventListener("click", (e) => { e.preventDefault(); step(-1); });
-    nextBtn.addEventListener("click", (e) => { e.preventDefault(); step(1); });
-
-    document.addEventListener("keydown", (e) => {
-      if (modal.hidden) return;
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") step(-1);
-      if (e.key === "ArrowRight") step(1);
-      // keep Tab inside the pop-up
-      if (e.key === "Tab") {
-        const f = [...modal.querySelectorAll("button, a[href], video[controls]")];
-        const first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    });
-
-    // Opening the page with #play-05 in the address opens that piece
-    const fromHash = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
-    if (fromHash && fromHash.classList.contains("play-item")) open(fromHash);
-  })();
+  gridItems.forEach((item) => gridObserver.observe(item));
 </script>
 
 <script>
@@ -636,67 +245,18 @@ mMedia.querySelectorAll("video").forEach((v) => { v.muted = true; v.play().catch
     });
   });
 </script>
-
 <script>
-  (() => {
-    // ---- "Let's connect" typewriter ----
-    const tag = document.querySelector(".footer-tag");
-    if (!tag) return;
+  const letsConnect = document.querySelector('.lets-connect');
 
-    const SPEED = 60; // ms per letter
-
-    const text = tag.textContent.trim();
-    tag.setAttribute("aria-label", text);
-    tag.textContent = "";
-
-    const letters = Array.from(text).map((letter) => {
-      const span = document.createElement("span");
-      span.textContent = letter;
-      span.style.visibility = "hidden";
-      span.setAttribute("aria-hidden", "true");
-      tag.appendChild(span);
-      return span;
+  new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio >= 0.6) {
+        letsConnect.classList.add('is-visible');      // draw it
+      } else if (entry.intersectionRatio === 0) {
+        letsConnect.classList.remove('is-visible');   // reset once fully off-screen
+      }
     });
-
-    let run = 0;
-    let typed = false;
-
-    const typeIn = () => {
-      const thisRun = ++run;
-      typed = true;
-      letters.forEach((span, i) => {
-        setTimeout(() => {
-          if (run === thisRun) span.style.visibility = "visible";
-        }, i * SPEED);
-      });
-    };
-
-    const reset = () => {
-      run++;
-      typed = false;
-      letters.forEach((span) => (span.style.visibility = "hidden"));
-    };
-
-    const check = () => {
-      const box = tag.getBoundingClientRect();
-      const onScreen = box.top < window.innerHeight && box.bottom > 0;
-
-      if (onScreen && !typed) typeIn();
-      else if (!onScreen && typed) reset();
-    };
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduceMotion) {
-      letters.forEach((span) => (span.style.visibility = "visible"));
-    } else {
-      window.addEventListener("scroll", check, { passive: true });
-      window.addEventListener("resize", check);
-      window.addEventListener("load", check);
-      check();
-    }
-  })();
+  }, { threshold: [0, 0.6] }).observe(letsConnect);
 </script>
-
 </body>
 </html>
